@@ -3,20 +3,26 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TablesComponent } from './tables/tables.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { ButtonComponent } from './button/button.component';
-import { EventDialogueComponent } from './event-dialogue/event-dialogue.component';
-import { BackpuDialogueComponent } from './backpu-dialogue/backpu-dialogue.component';
+import { EventDialogueComponent } from './Dialogues/event-dialogue/event-dialogue.component';
+import { BackupDialogueComponent } from './Dialogues/backup-dialogue/backup-dialogue.component';
+import { HomePageComponent } from './NavBar/home-page/home-page.component';
+import { ClientsComponent } from './NavBar/clients/clients.component';
+import { ConfigsComponent } from './NavBar/configs/configs.component';
+import { BackupsComponent } from './backups/backups.component';
+import { UserMenuComponent } from './NavBar/user-menu/user-menu.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    TablesComponent,
-    NavbarComponent,
-    ButtonComponent,
     EventDialogueComponent,
-    BackpuDialogueComponent
+    BackupDialogueComponent,
+    HomePageComponent,
+    ClientsComponent,
+    ConfigsComponent,
+    BackupsComponent,
+    UserMenuComponent,
+
   ],
   imports: [
     BrowserModule,
