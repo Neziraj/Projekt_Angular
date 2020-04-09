@@ -15,9 +15,7 @@ import { ConfigPageComponent } from './Config/config-page/config-page.component'
 import { ClientHistoryTableComponent } from './Client/Table/client-history-table/client-history-table.component';
 import { NewClientTableComponent } from './Client/Table/new-client-table/new-client-table.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ClientsButtonComponent } from './Client/Button/clients-button/clients-button.component';
-import { AddingClientButtonComponent } from './Client/Button/adding-client-button/adding-client-button.component';
-import { EditClientButtonComponent } from './Client/Button/edit-client-button/edit-client-button.component';
+
 
 
 @NgModule({
@@ -36,10 +34,6 @@ import { EditClientButtonComponent } from './Client/Button/edit-client-button/ed
     ClientHistoryTableComponent,
     NewClientTableComponent,
     NavbarComponent,
-    ClientsButtonComponent,
-    AddingClientButtonComponent,
-    EditClientButtonComponent,
-
   ],
   imports: [
     BrowserModule,
