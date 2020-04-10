@@ -16,8 +16,6 @@ import { ClientHistoryTableComponent } from './Client/Table/client-history-table
 import { NewClientTableComponent } from './Client/Table/new-client-table/new-client-table.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

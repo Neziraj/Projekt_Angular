@@ -1,31 +1,34 @@
 
-.FontNav
-{
-  color: Green;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 3.5%;
-  font-size: 40px;
-  font-weight: bold;
-}
-
 .NavSquare {
-  background-color: lightgray;
   width: 103%;
-  height: 190px;
+  height: 180px;
+
+  display: flex;
+  align-items: center ;
+
+  margin-left: -2%;
+  margin-top: -2%;
+
+}
+.Test
+{
+  background-color: white;
+  width: 20%;
+  height: 180px;
 
   display: flex;
   align-items: center ;
   justify-content: center;
+  border-left: solid 1px Black ;
+  border-bottom: solid 2px Black;
 
-  margin-left: -2%;
-  margin-top: -3.5%;
-
-  border-bottom-style: groove;
+  color: Green;
+  font-size: 43px;
+  font-weight: bold;
+  border-radius: 5px;
 }
-.line {
 
 
 
-}
+
 
