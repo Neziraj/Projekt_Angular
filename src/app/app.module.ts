@@ -16,7 +16,9 @@ import { ClientHistoryTableComponent } from './Client/Table/client-history-table
 import { NewClientTableComponent } from './Client/Table/new-client-table/new-client-table.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ConfigDialogueComponent } from './Dialogues/config-dialogue/config-dialogue.component';
-import { UserTableComponent } from './user-table/user-table.component';
+import { UserTableComponent } from './User/user-table/user-table.component';
+import { HttpClientModule} from '@angular/common/http';
+import {DataService} from './data.service';
 
 @NgModule({
   declarations: [
@@ -39,9 +41,10 @@ import { UserTableComponent } from './user-table/user-table.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
