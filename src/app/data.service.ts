@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Admin } from './Models/admin.model';
 import { Client} from './Models/Client.model';
-import { Config } from './Models/Config.model';
+import { Configuration } from './Models/Config.model';
 import { DestFtp } from './Models/DestFtpServer.model';
 import { DestGoogleDrive } from './Models/DestGoogleDrive.model';
 import { DestLocal } from './Models/DestLocal.model';
@@ -23,17 +23,17 @@ export class DataService {
 
   AdminURL = 'http://localhost:49497/api/admin';
   ClientURL = 'http://localhost:49497/api/client';
-  ConfigURL = 'http://localhost:49497/api/config';
-  DestFtpURL = 'http://localhost:49497/api/admin';
-  DestGoogleURL = 'http://localhost:49497/api/admin';
-  DestLocalURL = 'http://localhost:49497/api/admin';
-  DestSourceURL = 'http://localhost:49497/api/admin';
-  JobURL = 'http://localhost:49497/api/admin';
-  SettingURL = 'http://localhost:49497/api/admin';
-  SettingsClientURL = 'http://localhost:49497/api/admin';
-  SettingsMailURL = 'http://localhost:49497/api/admin';
-  SheduleURL = 'http://localhost:49497/api/admin';
-  SourceURL = 'http://localhost:49497/api/admin';
+  ConfigURL = 'http://localhost:49497/api/configuration';
+  DestFtpURL = 'http://localhost:49497/api/';
+  DestGoogleURL = 'http://localhost:49497/api/';
+  DestLocalURL = 'http://localhost:49497/api/';
+  DestSourceURL = 'http://localhost:49497/api/DestSource';
+  JobURL = 'http://localhost:49497/api/';
+  SettingURL = 'http://localhost:49497/api/';
+  SettingsClientURL = 'http://localhost:49497/api/';
+  SettingsMailURL = 'http://localhost:49497/api/';
+  SheduleURL = 'http://localhost:49497/api/';
+  SourceURL = 'http://localhost:49497/api/';
 
 
   getAdmins()
@@ -46,9 +46,9 @@ export class DataService {
     return this.http.get<Client[]>(this.ClientURL);
   }
 
-  getConfig()
+  getConfigs()
   {
-    return this.http.get<Config[]>(this.ConfigURL);
+    return this.http.get<Configuration[]>(this.ConfigURL);
   }
 
   getDestFtp()
