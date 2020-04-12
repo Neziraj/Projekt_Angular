@@ -15,6 +15,8 @@ import { ConfigPageComponent } from './Config/config-page/config-page.component'
 import { ClientHistoryTableComponent } from './Client/Table/client-history-table/client-history-table.component';
 import { NewClientTableComponent } from './Client/Table/new-client-table/new-client-table.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ConfigDialogueComponent } from './Dialogues/config-dialogue/config-dialogue.component';
+import { UserTableComponent } from './user-table/user-table.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     ClientHistoryTableComponent,
     NewClientTableComponent,
     NavbarComponent,
+    ConfigDialogueComponent,
+    UserTableComponent,
   ],
   imports: [
     BrowserModule,

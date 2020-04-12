@@ -1,14 +1,63 @@
 .ConfigButton
+ {
+   width: 450px;
+   height: 70px;
+
+   display: flex;
+   align-items: center ;
+   justify-content: center;
+
+   font-weight: bold ;
+   font-size: 25px;
+
+
+   border-radius: 30px;
+   border: solid 2px brown;
+   background: sandybrown;
+
+   position: absolute;
+   right:40%;
+   top: 16%;
+ }
+.ClientButton
 {
-  width: 450px;
+  width: 400px;
   height: 70px;
 
-  font-size: 35px;
+  display: flex;
+  align-items: center ;
+  justify-content: center;
+
+  font-weight: bold ;
+  font-size: 25px;
 
 
   border-radius: 30px;
-  border: solid 1px orangered;
+  border: solid 2px brown;
+  background: mediumpurple;
 
-
+  position: absolute;
+  right: 8%;
+  top: 16%;
 }
+.ClientConfigButton
+{
+  width: 400px;
+  height: 70px;
 
+  display: flex;
+  align-items: center ;
+  justify-content: center;
+
+  font-weight: bold ;
+  font-size: 25px;
+
+
+  border-radius: 30px;
+  border: solid 2px brown;
+  background: indianred;
+
+  position: absolute;
+  right: 75%;
+  top: 16%;
+}
