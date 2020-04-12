@@ -1,63 +1,33 @@
-.ConfigButton
- {
-   width: 450px;
-   height: 70px;
-
-   display: flex;
-   align-items: center ;
-   justify-content: center;
-
-   font-weight: bold ;
-   font-size: 25px;
-
-
-   border-radius: 30px;
-   border: solid 2px brown;
-   background: sandybrown;
-
-   position: absolute;
-   right:40%;
-   top: 16%;
- }
-.ClientButton
-{
-  width: 400px;
-  height: 70px;
-
-  display: flex;
-  align-items: center ;
-  justify-content: center;
-
-  font-weight: bold ;
-  font-size: 25px;
-
-
-  border-radius: 30px;
-  border: solid 2px brown;
-  background: mediumpurple;
-
+#menu{
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 1.7vw;
+  font-weight: bold;
   position: absolute;
-  right: 8%;
-  top: 16%;
+  margin-top: 17vh;
+  margin-right: 15px;
 }
-.ClientConfigButton
-{
-  width: 400px;
-  height: 70px;
 
-  display: flex;
-  align-items: center ;
-  justify-content: center;
+#menu li{
+  box-sizing: border-box;
+  display: block;
+  width: 28vw;
+  height: 5vw;
+  float: left;
+  border: 0.1vw solid #000000;
+  background-color: white;
+  text-align: center;
+  padding: 0.75em 1em;
+  border-radius: 60px;
+  margin-left: 3.6vw;
+}
 
-  font-weight: bold ;
-  font-size: 25px;
+a{
+  color: black;
+  text-decoration: none;
+}
 
-
-  border-radius: 30px;
-  border: solid 2px brown;
-  background: indianred;
-
-  position: absolute;
-  right: 75%;
-  top: 16%;
+a:hover{
+  color:green;
 }
