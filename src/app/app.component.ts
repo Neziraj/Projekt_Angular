@@ -8,7 +8,7 @@ import { DestGoogleDrive } from './Models/DestGoogleDrive.model';
 import { DestLocal } from './Models/DestLocal.model';
 import { DestSource } from './Models/DestSource.model';
 import { Job } from './Models/Job.model';
-import { Settings } from './Models/Settings.model';
+import {Setting} from './Models/Settings.model';
 import { SettingsClient } from './Models/SettingsClient.model';
 import { SettingsMail } from './Models/SettingsMail.model';
 import { Shedule } from './Models/Shedule.model';
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit{
   DestLocal$: DestLocal[];
   DestSource$: DestSource[];
   Job$: Job[];
-  Settings$: Settings[];
+  Setting$: Setting[];
   SettingsClient$: SettingsClient[];
   SettingsMail$: SettingsMail[];
   Shedule$: Shedule[];
@@ -40,6 +40,31 @@ export class AppComponent implements OnInit{
   {
     return this.dataService.getAdmins()
     .subscribe(data => this.Admins$ = data);
+    return this.dataService.getClient()
+      .subscribe(data => this.Clients$ = data);
+    return this.dataService.getConfig()
+      .subscribe(data => this.Configs$ = data);
+    return this.dataService.getDestFtp()
+      .subscribe(data => this.DestFtp$ = data);
+    return this.dataService.getDestGoogleDrive()
+      .subscribe(data => this.DestGoogleDrive$ = data);
+    return this.dataService.getDestLocal()
+      .subscribe(data => this.DestLocal$ = data);
+    return this.dataService.getDestSource()
+      .subscribe(data => this.DestSource$ = data);
+    return this.dataService.getJob()
+      .subscribe(data => this.Job$ = data);
+    return this.dataService.getSetting()
+      .subscribe(data => this.Setting$ = data);
+    return this.dataService.getSettingsClient()
+      .subscribe(data => this.SettingsClient$ = data);
+    return this.dataService.getSettingsMail()
+      .subscribe(data => this.SettingsMail$ = data);
+    return this.dataService.getShedule()
+      .subscribe(data => this.Shedule$ = data);
+    return this.dataService.getSource()
+      .subscribe(data => this.Source$ = data);
+
   }
 
 }
