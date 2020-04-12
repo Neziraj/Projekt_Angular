@@ -17,6 +17,7 @@ import { NewClientTableComponent } from './Client/Table/new-client-table/new-cli
 import { NavbarComponent } from './navbar/navbar.component';
 import { ConfigDialogueComponent } from './Dialogues/config-dialogue/config-dialogue.component';
 import { UserTableComponent } from './user-table/user-table.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { UserTableComponent } from './user-table/user-table.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
