@@ -14,10 +14,11 @@ import { ClientPageComponent } from './Client/client-page/client-page.component'
 import { ConfigPageComponent } from './Config/config-page/config-page.component';
 import { ClientHistoryTableComponent } from './Client/Table/client-history-table/client-history-table.component';
 import { NewClientTableComponent } from './Client/Table/new-client-table/new-client-table.component';
-import { NavbarComponent } from './Pages/Home/navbar/navbar.component';
+import { NavbarComponent } from        './Pages/Home/navbar/navbar.component';
 import { ConfigDialogueComponent } from './Dialogues/config-dialogue/config-dialogue.component';
 import { UserTableComponent } from './user-table/user-table.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { OngoingBackupsComponent } from './Pages/Home/Ongoing-Backups/Ongoing-Backups.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http'
     NavbarComponent,
     ConfigDialogueComponent,
     UserTableComponent,
+    OngoingBackupsComponent
   ],
   imports: [
     BrowserModule,
