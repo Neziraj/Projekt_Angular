@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Projekt20"
+    }
+  },
+  "defaultProject": "Projekt20",
+  "cli": {
+    "analytics": "deb9188d-2535-4fd2-8d83-aea648239e46"
+  }
 }
