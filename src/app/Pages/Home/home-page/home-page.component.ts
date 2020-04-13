@@ -15,6 +15,7 @@ export class HomePageComponent implements OnInit {
   Clients$: Client[];
   Job$: Job[];
   Shedule$: Shedule[];
+  headers = ['ID', 'Name', 'DateOfLogin'];
 
   constructor(private dataService: HomePageDataService,
               private router: Router){}
@@ -23,10 +24,6 @@ ngOnInit()
 {
     return this.dataService.getClient()
       .subscribe(data => this.Clients$ = data);
-  }
-
-
-
-
+}
 
 }
