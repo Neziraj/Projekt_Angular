@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Configuration} from '../../../Models/Config.model';
-import {ConfigurationDataService} from '../../../Services/configuration.data.service';
 
 @Component({
   selector: 'app-configuration-page',
@@ -9,13 +7,9 @@ import {ConfigurationDataService} from '../../../Services/configuration.data.ser
 })
 export class ConfigurationPageComponent implements OnInit {
 
-  Config$: Configuration[];
-
-  constructor(private dataService: ConfigurationDataService ) { }
+  constructor() { }
 
   ngOnInit(){
-    return this.dataService.getConfig()
-      .subscribe(data => this.Config$ = data);
   }
 
 }

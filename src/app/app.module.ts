@@ -12,7 +12,12 @@ import { BackupsPageComponent } from './Pages/Backups/backups-page/backups-page.
 import {Routes} from '@angular/router';
 import {ClientPageComponent} from './Pages/Clients/client-page/client-page.component';
 import { OngoingBackupsComponent } from './Pages/Home/ongoing-backups/ongoing-backups.component';
-
+import { ClientTableComponent } from './Pages/Clients/client-table/client-table.component';
+import { NewClientTableComponent } from './Pages/Clients/new-client-table/new-client-table.component';
+import { ClientHistoryTableComponent } from './Pages/Clients/client-history-table/client-history-table.component';
+import { ConfigurationTableComponent } from './Pages/Configurations/configuration-table/configuration-table.component';
+import { IncomingBackupComponent } from './Pages/Backups/incoming-backup/incoming-backup.component';
+import {CompletedBackupComponent} from './Pages/Backups/completed-backups/completed-backup.component';
 
 
 const appRoutes: Routes = [
@@ -28,6 +33,12 @@ const appRoutes: Routes = [
     ConfigurationPageComponent,
     BackupsPageComponent,
     OngoingBackupsComponent,
+    ClientTableComponent,
+    NewClientTableComponent,
+    ClientHistoryTableComponent,
+    ConfigurationTableComponent,
+    IncomingBackupComponent,
+    CompletedBackupComponent,
   ],
   imports: [
     BrowserModule,

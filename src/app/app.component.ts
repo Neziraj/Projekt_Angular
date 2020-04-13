@@ -20,7 +20,7 @@ import { Shedule } from './Models/Shedule.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit{
-  constructor(private dataService: HomePageDataService) {}
+  constructor() {}
 
   ngOnInit()
   {

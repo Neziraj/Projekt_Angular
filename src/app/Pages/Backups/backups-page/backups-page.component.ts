@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BackupDataService} from '../../../Services/backup.data.service';
-import {Job} from '../../../Models/Job.model';
-import {Shedule} from '../../../Models/Shedule.model';
-
+import {CompletedBackupComponent} from '../completed-backups/completed-backup.component';
 
 @Component({
   selector: 'app-backups-page',
@@ -10,15 +7,11 @@ import {Shedule} from '../../../Models/Shedule.model';
   styleUrls: ['./backups-page.component.scss']
 })
 export class BackupsPageComponent implements OnInit {
-  Shedule$: Shedule[];
-  Job$: Job[];
 
-  constructor(private dataService: BackupDataService) { }
+
+  constructor() { }
 
   ngOnInit(){
-
-    return this.dataService.getShedule()
-      .subscribe(data => this.Shedule$ = data);
   }
 
 }

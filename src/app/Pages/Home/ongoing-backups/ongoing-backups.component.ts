@@ -27,7 +27,7 @@ ngOnInit()
     .subscribe(data => this.Client$ = data);
 
     this.dataService.getConfiguration()
-    .subscribe(data => this.Configuration$ = data)
+    .subscribe(data => this.Configuration$ = data);
 }
 
 }
