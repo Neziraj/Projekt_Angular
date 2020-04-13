@@ -3,19 +3,4 @@
     <li class="create"><a href="">Vytvoření nové konfigurace</a></li>
     <li class="clients"><a href="">Nových Klientů: XY</a></li>
   </ul>
-  <app-navbar></app-navbar>
-
-  <table mdbTable bordered="true">
-    <thead>
-    <tr>
-      <th *ngFor="let head of headers" scope="col">{{head}}</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr mdbTableCol *ngFor="let Client of Clients$ ">
-      <th scope="row">{{Client.Name}}</th>
-      <td>{{Client.DateOfLogin}}</td>
-    </tr>
-    </tbody>
-  </table>
-
+  <app-ongoing-backups></app-ongoing-backups>

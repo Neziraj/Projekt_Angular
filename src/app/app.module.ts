@@ -11,6 +11,7 @@ import { ConfigurationPageComponent } from './Pages/Configurations/configuration
 import { BackupsPageComponent } from './Pages/Backups/backups-page/backups-page.component';
 import {Routes} from '@angular/router';
 import {ClientPageComponent} from './Pages/Clients/client-page/client-page.component';
+import { OngoingBackupsComponent } from './Pages/Home/ongoing-backups/ongoing-backups.component';
 
 
 
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
     NavbarComponent,
     ConfigurationPageComponent,
     BackupsPageComponent,
+    OngoingBackupsComponent,
   ],
   imports: [
     BrowserModule,
