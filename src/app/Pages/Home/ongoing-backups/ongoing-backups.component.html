@@ -1,13 +1,15 @@
 <table mdbTable bordered="true">
   <thead>
+    <caption>Probíhající zálohy</caption>
   <tr>
-    <th *ngFor="let head of headers" scope="col">{{head}}</th>
+    <td *ngFor="let head of headers" scope="col">{{head}}</td>
   </tr>
   </thead>
   <tbody>
-  <tr mdbTableCol *ngFor="let Job of Job$ ">
-    <th scope="row">{{Job.IdClient}}</th>
-    <td>{{Job.IdConfiguration}}</td>
+  <tr *ngFor="let job of Job$, let i = index" [attr.data-index]="i">
+    <th scope="row">{{ Client$[job.IdClient].Name }}</th>
+    <td>{{ Configuration$[job.IdConfiguration].Name }}</td>
+    <td>{{ Configuration$[job.IdConfiguration].Description }}</td>
   </tr>
   </tbody>
 </table>

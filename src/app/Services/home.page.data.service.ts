@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Client} from '../Models/Client.model';
 import { Job } from '../Models/Job.model';
-import { Shedule } from '../Models/Shedule.model';
+import { Configuration } from '../Models/Config.model';
 
 
 
@@ -15,6 +15,7 @@ export class HomePageDataService {
   ClientURL = 'http://localhost:49497/api/client';
   JobURL = 'http://localhost:49497/api/job';
   SheduleURL = 'http://localhost:49497/api/shedule';
+  ConfigurationURL = 'http://localhost:49497/api/configuration';
 
   getClient()
   {
@@ -24,8 +25,8 @@ export class HomePageDataService {
   {
     return this.http.get<Job[]>(this.JobURL);
   }
-  getShedule()
+  getConfiguration()
   {
-    return this.http.get<Shedule[]>(this.SheduleURL);
+    return this.http.get<Configuration[]>(this.ConfigurationURL);
   }
 }
