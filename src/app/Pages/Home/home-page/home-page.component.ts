@@ -3,6 +3,8 @@ import {Client} from '../../../Models/Client.model';
 import {Job} from '../../../Models/Job.model';
 import {Shedule} from '../../../Models/Shedule.model';
 import {HomePageDataService} from '../../../Services/home.page.data.service';
+import {ClientPageComponent} from '../../Clients/client-page/client-page.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -14,12 +16,17 @@ export class HomePageComponent implements OnInit {
   Job$: Job[];
   Shedule$: Shedule[];
 
-  constructor(private dataService: HomePageDataService) { }
+  constructor(private dataService: HomePageDataService,
+              private router: Router){}
 
-  ngOnInit()
-  {
+ngOnInit()
+{
     return this.dataService.getClient()
       .subscribe(data => this.Clients$ = data);
   }
+
+
+
+
 
 }
