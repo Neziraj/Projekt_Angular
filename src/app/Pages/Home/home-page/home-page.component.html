@@ -4,4 +4,7 @@
     <li class="manag"><a href="">Spravovat Klienta</a></li>
     <li class="create"><a href="">Vytvoření nové konfigurace</a></li>
     <li class="clients"><a href="">Nových Klientů: XY</a></li>
+    <div *ngFor='let Client of Clients$ '>
+      <h2>{{ Client.Name}} - {{ Client.Id}} - {{ Client.DateOfLogin}}</h2>
+    </div>
   </ul>

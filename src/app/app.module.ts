@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { EventDialogueComponent } from './Dialogues/event-dialogue/event-dialogue.component';
 import { BackupDialogueComponent } from './Backup/backup-dialogue/backup-dialogue.component';
 import { HomePageComponent } from './Pages/Home/home-page/home-page.component';
@@ -17,7 +18,8 @@ import { NewClientTableComponent } from './Client/Table/new-client-table/new-cli
 import { NavbarComponent } from './Pages/Home/navbar/navbar.component';
 import { ConfigDialogueComponent } from './Dialogues/config-dialogue/config-dialogue.component';
 import { UserTableComponent } from './user-table/user-table.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HomePageDataService} from './Services/home.page.data.service';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [HomePageDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

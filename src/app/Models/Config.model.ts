@@ -1,4 +1,4 @@
-export class Config
+export class Configuration
 {
   Id: number;
   Name: string;
