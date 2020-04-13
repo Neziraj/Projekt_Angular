@@ -6,7 +6,7 @@ import { Client} from '../Models/Client.model';
 @Injectable({
   providedIn: 'root'
 })
-export class  ClientDataService{
+export class  ClientDataService {
   constructor(private http: HttpClient) { }
 
   ClientURL = 'http://localhost:49497/api/client';

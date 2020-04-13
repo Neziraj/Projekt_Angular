@@ -1,4 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { HomePageDataService } from './Services/home.page.data.service';
+import { Admin } from './Models/admin.model';
+import { Client} from './Models/Client.model';
+import { Configuration } from './Models/Config.model';
+import { DestFtp } from './Models/DestFtpServer.model';
+import { DestGoogleDrive } from './Models/DestGoogleDrive.model';
+import { DestLocal } from './Models/DestLocal.model';
+import { DestSource } from './Models/DestSource.model';
+import { Job } from './Models/Job.model';
+import {Setting} from './Models/Settings.model';
+import { SettingsClient } from './Models/SettingsClient.model';
+import { SettingsMail } from './Models/SettingsMail.model';
+import { Shedule } from './Models/Shedule.model';
+
 
 @Component({
   selector: 'app-root',
@@ -6,14 +20,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit{
-
-  constructor() {}
+  constructor(private dataService: HomePageDataService) {}
 
   ngOnInit()
   {
-
-
-
   }
 
 }

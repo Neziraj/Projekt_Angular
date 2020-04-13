@@ -1,6 +1,6 @@
-
 import {Configuration} from '../Models/Config.model';
-
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,6 @@ export class ConfigurationDataService {
 
   getConfig()
   {
-    return this.http.get<Client[]>(this.ConfigURL);
+    return this.http.get<Configuration[]>(this.ConfigURL);
   }
 }

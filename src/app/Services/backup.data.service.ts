@@ -13,7 +13,6 @@ export class BackupDataService {
   JobURL = 'http://localhost:49497/api/job';
   SheduleURL = 'http://localhost:49497/api/shedule';
 
-
   getJob()
   {
     return this.http.get<Job[]>(this.JobURL);
