@@ -3,8 +3,8 @@ export class Configuration
   Id: number;
   Name: string;
   Description: string;
-  BackupTime: string;
+  BackupType: string;
   Cron: string;
-  RepeatableBackupNumber: boolean;
+  RepeatableBackup: boolean;
   SavedBackupNumber: number;
 }

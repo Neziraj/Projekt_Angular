@@ -1,5 +1,6 @@
 export class Shedule
 {
+  Id: number;
   IdJob: number;
   BackupDate: Date;
   ErrorCode: string;

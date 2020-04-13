@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Admin} from '../Models/Admin.model';
-import {SettingsMail} from '../Models/SettingsMail.model';
-import {SettingsClient} from '../Models/SettingsClient.model';
-import {Setting} from '../Models/Settings.model';
+import {SettingsMail} from '../Models/SettingMail.model';
+import {SettingsClient} from '../Models/SettingClient.model';
+import {Setting} from '../Models/Setting.model';
 
 @Injectable({
   providedIn: 'root'
