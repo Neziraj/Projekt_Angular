@@ -22,8 +22,8 @@ import { ClientQuery } from '../Models/Queries/ClientQuery';
 export class HomePageDataService {
   constructor(private http: HttpClient) { }
 
-  QueryURL = 'http://localhost:49497/api/admin/homequery';
-  ClientQueryURL = 'http://localhost:49497/api/admin/clientquery';
+  QueryURL = 'http://localhost:49497/api/query/homequery';
+  ClientQueryURL = 'http://localhost:49497/api/query/clientquery';
 
   AdminURL = 'http://localhost:49497/api/admin';
   ClientURL = 'http://localhost:49497/api/client';
