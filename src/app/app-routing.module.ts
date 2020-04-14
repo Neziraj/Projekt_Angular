@@ -27,5 +27,6 @@ export const RoutingComponents = [
   ClientPageComponent,
   ConfigurationPageComponent,
   CompletedBackupComponent,
-  UserPageComponent
+  UserPageComponent,
+  
 ]

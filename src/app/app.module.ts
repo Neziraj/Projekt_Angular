@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomePageComponent } from './Pages/Home/home-page/home-page.component';
 import { UserPageComponent } from './Pages/User/user-page/user-page.component';
-import { HomeNavbarComponent } from './Pages/Home/navbar/home-navbar.component';
 import { HomePageDataService } from './Services/home.page.data.service';
 import { ConfigurationPageComponent } from './Pages/Configurations/configuration-page/configuration-page.component';
 import { BackupsPageComponent } from './Pages/Backups/backups-page/backups-page.component';
@@ -27,7 +26,6 @@ const appRoutes: Routes = [
     AppComponent,
     HomePageComponent,
     UserPageComponent,
-    HomeNavbarComponent,
     ConfigurationPageComponent,
     BackupsPageComponent,
     OngoingBackupsComponent,
