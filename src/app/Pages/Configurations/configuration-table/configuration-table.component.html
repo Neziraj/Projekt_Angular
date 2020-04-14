@@ -1,1 +1,17 @@
-<p>configuration-table works!</p>
+<table>
+    <thead>
+        <caption>Konfigurace</caption>
+        <tr>
+            <td *ngFor="let head of headers">{{ head }}</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let config of Config$'>
+            <td>{{ config.Id }}</td>
+            <td>{{ config.Name }}</td>
+            <td>{{ config.Description }}</td>
+            <td>NASTAVENÍ</td>
+            <td>SMAZAT</td>
+        </tr>
+    </tbody>
+</table>

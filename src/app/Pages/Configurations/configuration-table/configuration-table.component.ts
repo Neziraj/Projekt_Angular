@@ -8,7 +8,7 @@ import {ConfigurationDataService} from '../../../Services/configuration.data.ser
   styleUrls: ['./configuration-table.component.scss']
 })
 export class ConfigurationTableComponent implements OnInit {
-
+  headers = ['ID', 'Název', 'Popis', 'Nastavení', 'Smazat'];
   Config$: Configuration[];
 
   constructor(private dataService: ConfigurationDataService ) { }
