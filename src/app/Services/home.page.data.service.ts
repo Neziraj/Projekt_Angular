@@ -1,32 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Client} from '../Models/Client.model';
-import { Job } from '../Models/Job.model';
-import { Configuration } from '../Models/Config.model';
-
-
+import { HomeQuery } from '../Models/Queries/HomeQuery';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomePageDataService {
   constructor(private http: HttpClient) { }
+  QueryURL = 'http://localhost:49497/api/admin/homequery';
 
-  ClientURL = 'http://localhost:49497/api/client';
-  JobURL = 'http://localhost:49497/api/job';
-  SheduleURL = 'http://localhost:49497/api/shedule';
-  ConfigurationURL = 'http://localhost:49497/api/configuration';
-
-  getClient()
+  getQuery()
   {
-    return this.http.get<Client[]>(this.ClientURL);
-  }
-  getJob()
-  {
-    return this.http.get<Job[]>(this.JobURL);
-  }
-  getConfiguration()
-  {
-    return this.http.get<Configuration[]>(this.ConfigurationURL);
+    return this.http.get<HomeQuery[]>(this.QueryURL);
   }
 }
