@@ -7,7 +7,7 @@ import {CompletedBackupComponent} from '../completed-backups/completed-backup.co
   styleUrls: ['./navbar.backup.component.scss']
 })
 
-export class navbarBackupComponent implements OnInit {
+export class NavbarBackupComponent implements OnInit {
 
   constructor() { }
 

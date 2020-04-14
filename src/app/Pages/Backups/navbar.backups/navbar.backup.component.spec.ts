@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavbarComponent } from './navbar.backup.component';
+import { BackupNavbarComponent } from './navbar.backup.component';
 
-describe('NavbarComponent', () => {
-  let component: NavbarComponent;
-  let fixture: ComponentFixture<NavbarComponent>;
+describe('BackupNavbarComponent', () => {
+  let component: BackupNavbarComponent;
+  let fixture: ComponentFixture<BackupNavbarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavbarComponent ]
+      declarations: [ BackupNavbarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavbarComponent);
+    fixture = TestBed.createComponent(BackupNavbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

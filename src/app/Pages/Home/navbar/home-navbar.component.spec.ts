@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ClientTableComponent } from './client-table.component';
+import { HomeNavbarComponent } from './home-navbar.component';
 
-describe('ClientTableComponent', () => {
-  let component: ClientTableComponent;
-  let fixture: ComponentFixture<ClientTableComponent>;
+describe('NavbarComponent', () => {
+  let component: HomeNavbarComponent;
+  let fixture: ComponentFixture<HomeNavbarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClientTableComponent ]
+      declarations: [ HomeNavbarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClientTableComponent);
+    fixture = TestBed.createComponent(HomeNavbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
