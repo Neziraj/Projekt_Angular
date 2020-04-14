@@ -19,5 +19,4 @@ ngOnInit()
     this.dataService.getQuery()
     .subscribe(data => this.HomeQuery$ = data);
 }
-
 }
