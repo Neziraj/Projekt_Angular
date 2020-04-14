@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Job} from '../Models/Job.model';
-import {Shedule} from '../Models/Shedule.model';
+import {Schedule} from '../Models/Shedule.model';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -19,6 +19,6 @@ export class BackupDataService {
   }
   getShedule()
   {
-    return this.http.get<Shedule[]>(this.SheduleURL);
+    return this.http.get<Schedule[]>(this.SheduleURL);
   }
 }

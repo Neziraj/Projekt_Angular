@@ -8,15 +8,16 @@ import { HomeQuery } from 'src/app/Models/Queries/HomeQuery';
   templateUrl: './ongoing-backups.component.html',
   styleUrls: ['./ongoing-backups.component.scss']
 })
-export class OngoingBackupsComponent implements OnInit {
+export class OngoingBackupsComponent implements OnInit 
+{
   HomeQuery$: HomeQuery[];
   headers = ['Název Klienta', 'Název Konfigurage', 'Popis Konfigurace'];
 
   constructor(private dataService: HomePageDataService, private router: Router){}
 
-ngOnInit()
-{
-    this.dataService.getQuery()
-    .subscribe(data => this.HomeQuery$ = data);
-}
+  ngOnInit()
+  {
+      this.dataService.getQuery()
+      .subscribe(data => this.HomeQuery$ = data);
+  }
 }

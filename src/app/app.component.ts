@@ -11,7 +11,7 @@ import { Job } from './Models/Job.model';
 import {Setting} from './Models/Setting.model';
 import { SettingsClient } from './Models/SettingClient.model';
 import { SettingsMail } from './Models/SettingMail.model';
-import { Shedule } from './Models/Shedule.model';
+import { Schedule } from './Models/Shedule.model';
 
 
 @Component({

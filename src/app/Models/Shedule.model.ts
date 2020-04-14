@@ -1,4 +1,4 @@
-export class Shedule
+export class Schedule
 {
   Id: number;
   IdJob: number;

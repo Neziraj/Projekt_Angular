@@ -14,7 +14,7 @@ import { ConfigurationTableComponent } from './Pages/Configurations/configuratio
 import { IncomingBackupComponent } from './Pages/Backups/incoming-backup/incoming-backup.component';
 import { CompletedBackupComponent } from './Pages/Backups/completed-backups/completed-backup.component';
 import { ClientPageComponent } from './Pages/Clients/client-page/client-page.component';
-import { ClientsComponent } from './Pages/Clients/clients/clients.component';
+import { ClientsTableComponent } from './Pages/Clients/clients/clients.component';
 import { NewClientsComponent } from './Pages/Clients/new-clients/new-clients.component';
 import { ClientsHistoryComponent } from './clients-history/clients-history.component';
 
@@ -33,7 +33,7 @@ const appRoutes: Routes = [
     IncomingBackupComponent,
     CompletedBackupComponent,
     ClientPageComponent,
-    ClientsComponent,
+    ClientsTableComponent,
     NewClientsComponent,
     ClientsHistoryComponent,
     RoutingComponents,

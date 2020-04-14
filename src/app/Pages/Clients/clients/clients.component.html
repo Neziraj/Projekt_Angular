@@ -1,1 +1,19 @@
-<p>clients works!</p>
+<table>
+    <thead>
+        <caption>Klienti</caption>
+        <tr>
+            <td *ngFor="let head of headers">{{ head }}</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let client of ClientQuery$'>
+            <td>{{ client.ID }}</td>
+            <td>{{ client.Name }}</td>
+            <td>{{ client.IP }}</td>
+            <td>{{ client.MAC }}</td>
+            <td>{{ client.Configuration }}</td>
+            <td>NASTAVENÍ</td>
+            <td>PŘIPOJENO</td>
+        </tr>
+    </tbody>
+</table>

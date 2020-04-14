@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {BackupDataService} from '../../../Services/backup.data.service';
 import {Job} from '../../../Models/Job.model';
-import {Shedule} from '../../../Models/Shedule.model';
+import {Schedule} from '../../../Models/Shedule.model';
 
 
 @Component({
@@ -10,7 +10,7 @@ import {Shedule} from '../../../Models/Shedule.model';
   styleUrls: ['./incoming-backup.component.scss']
 })
 export class IncomingBackupComponent implements OnInit {
-  Shedule$: Shedule[];
+  Shedule$: Schedule[];
   Job$: Job[];
 
   constructor(private dataService: BackupDataService) { }
