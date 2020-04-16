@@ -1,19 +1,32 @@
-<table>
-    <thead>
-        <caption>Klienti</caption>
+<label class="label">
+  Klienti
+</label>
+
+<table class="table">
+
+  <thead class="thead-dark">
+
         <tr>
             <td *ngFor="let head of headers">{{ head }}</td>
         </tr>
+
     </thead>
     <tbody>
+
         <tr *ngFor='let client of ClientQuery$'>
             <td>{{ client.ID }}</td>
             <td>{{ client.Name }}</td>
             <td>{{ client.IP }}</td>
             <td>{{ client.MAC }}</td>
             <td>{{ client.Configuration }}</td>
-            <td>NASTAVENÍ</td>
-            <td>PŘIPOJENO</td>
+          <td>
+            <button type="button" class="btn btn-outline-secondary">Nastavení</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-outline-danger">Smazat</button>
+          </td>
         </tr>
+
     </tbody>
+
 </table>

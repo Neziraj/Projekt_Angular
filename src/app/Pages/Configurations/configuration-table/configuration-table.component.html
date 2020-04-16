@@ -1,17 +1,29 @@
-<table>
-    <thead>
-        <caption>Konfigurace</caption>
+<label class="label">
+  Konfigurace
+</label>
+
+<table class="table table-bordered">
+
+  <thead class="thead-dark">
+
         <tr>
             <td *ngFor="let head of headers">{{ head }}</td>
         </tr>
+
     </thead>
+
     <tbody>
         <tr *ngFor='let config of Config$'>
             <td>{{ config.Id }}</td>
             <td>{{ config.Name }}</td>
-            <td>{{ config.Description }}</td>
-            <td>NASTAVENÍ</td>
-            <td>SMAZAT</td>
+            <td>{{ config.Description }} </td>
+            <td>
+              <button type="button" class="btn btn-outline-secondary">Nastavení</button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-outline-danger">Smazat</button>
+            </td>
         </tr>
     </tbody>
+
 </table>

@@ -7,6 +7,7 @@ import {ConfigurationDataService} from '../../../Services/configuration.data.ser
   templateUrl: './configuration-table.component.html',
   styleUrls: ['./configuration-table.component.scss']
 })
+
 export class ConfigurationTableComponent implements OnInit {
   headers = ['ID', 'Název', 'Popis', 'Nastavení', 'Smazat'];
   Config$: Configuration[];
@@ -17,5 +18,4 @@ export class ConfigurationTableComponent implements OnInit {
     return this.dataService.getConfig()
       .subscribe(data => this.Config$ = data);
   }
-
 }

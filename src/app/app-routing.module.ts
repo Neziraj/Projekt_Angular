@@ -14,17 +14,17 @@ const routes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'clients', component: ClientPageComponent },
   { path: 'configurations', component: ConfigurationPageComponent },
-  { path: 'backups', component: CompletedBackupComponent},
+  { path: 'backups', component: BackupsPageComponent},
   { path: 'user', component: UserPageComponent },
   { path: 'completedbackups', component: CompletedBackupComponent },
   { path: 'ongoinbackups', component: BackupsPageComponent },
   { path: 'upcomingbackups', component: IncomingBackupComponent },
-  //{ path: '**', component: PageNotFound }
+  /*{ path: '**', component: PageNotFound }*/
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }
 
@@ -33,5 +33,5 @@ export const RoutingComponents = [
   ClientPageComponent,
   ConfigurationPageComponent,
   UserPageComponent,
-  CompletedBackupComponent
-]
+  CompletedBackupComponent,
+];

@@ -1,6 +1,7 @@
-<ul>
-    <li><a routerLink="/completedbackups">Provedené zálogy</a></li>
-    <li><a routerLink="/ongoinbackups">Probíhající zálohy</a></li>
-    <li><a routerLink="/upcomingbackups">Nadcházející zálohy</a></li>
-  </ul>
-  <app-ongoing-backups></app-ongoing-backups>
+<nav class="navbar navbar-expand-sm bg-light justify-content-center">
+    <a routerLink="/completedbackups" class="button">Provedené zálohy</a>
+    <a routerLink="/ongoinbackups" class="button">Probíhající zálohy</a>
+    <a routerLink="/upcomingbackups" class="button">Nadcházející zálohy</a>
+</nav>>
+
+<router-outlet></router-outlet>

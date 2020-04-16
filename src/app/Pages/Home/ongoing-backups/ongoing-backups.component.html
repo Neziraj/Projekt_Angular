@@ -1,17 +1,21 @@
-<table mdbTable bordered="true">
-    <thead>
-        <caption>
-          Probíhající zálohy
-        </caption>
-        <tr>
-            <td *ngFor="let head of headers" scope="col">{{head}}</td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let query of HomeQuery$">
-          <td>{{ query.CLName }}</td>
-          <td>{{ query.COName }}</td>
-          <td>{{ query.Desc }}</td>
-        </tr>
-    </tbody>
+<label class=label>
+  Probíhající zálohy
+</label>
+
+<table class="table table-bordered">
+
+  <thead>
+  <tr >
+    <td *ngFor="let head of headers" scope="col">{{head}}</td>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let query of HomeQuery$">
+    <td>{{ query.CLName }}</td>
+    <td>{{ query.COName }}</td>
+    <td>{{ query.Desc }}</td>
+  </tr>
+  </tbody>
+
 </table>
