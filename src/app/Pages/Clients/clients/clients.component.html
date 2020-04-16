@@ -1,5 +1,4 @@
 <table class="TableSettings table-bordered">
-
   <thead>
         <tr class="TableHeader">
             <td *ngFor="let head of headers">{{ head }}</td>
@@ -12,10 +11,10 @@
             <td>{{ client.IP }}</td>
             <td>{{ client.MAC }}</td>
             <td>{{ client.Configuration }}</td>
-          <td>
+          <td class="Row">
             <button type="button" class="btn btn-outline-secondary">Nastavení</button>
           </td>
-          <td>
+          <td class="Row">
           <button type="button" class="btn btn-outline-danger">Smazat</button>
         </td>
         </tr>
