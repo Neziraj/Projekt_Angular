@@ -1,7 +1,7 @@
 <table class="TableSettings table-bordered">
 
-  <thead class="TableHeader">
-        <tr>
+  <thead >
+        <tr class= "TableHeader">
             <td *ngFor="let head of headers">{{ head }}</td>
         </tr>
 
@@ -12,12 +12,12 @@
             <td>{{ config.Id }}</td>
             <td>{{ config.Name }}</td>
             <td>{{ config.Description }} </td>
-            <td>
-              <button type="button" class="btn btn-outline-secondary">Nastavení</button>
-            </td>
-            <td>
-              <button type="button" class="btn btn-outline-danger">Smazat</button>
-            </td>
+          <td>
+            <button type="button" class="btn btn-outline-secondary">Nastavení</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-outline-danger">Smazat</button>
+          </td>
         </tr>
     </tbody>
 

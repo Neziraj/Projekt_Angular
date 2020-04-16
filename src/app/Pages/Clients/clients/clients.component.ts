@@ -9,10 +9,10 @@ import { ClientQuery } from 'src/app/Models/Queries/ClientQuery';
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.scss']
 })
-export class ClientsTableComponent implements OnInit 
+export class ClientsTableComponent implements OnInit
 {
   ClientQuery$: ClientQuery[];
-  headers = ['ID', 'Název', 'IP', 'MAC', 'Konfigurace', 'Nastavení', 'Připojení'];
+  headers = ['ID', 'Název', 'IP', 'MAC', 'Konfigurace', '', ''];
 
   constructor(private dataService: HomePageDataService, private router: Router) { }
 
