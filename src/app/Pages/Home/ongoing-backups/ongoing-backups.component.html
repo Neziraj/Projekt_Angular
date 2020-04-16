@@ -1,11 +1,7 @@
-<label class=label>
-  Probíhající zálohy
-</label>
+<table class="TableSettings table-bordered">
 
-<table class="table table-bordered">
-
-  <thead>
-  <tr >
+  <thead class="TableHeader">
+  <tr>
     <td *ngFor="let head of headers" scope="col">{{head}}</td>
   </tr>
   </thead>
@@ -16,6 +12,7 @@
     <td>{{ query.COName }}</td>
     <td>{{ query.Desc }}</td>
   </tr>
+
   </tbody>
 
 </table>

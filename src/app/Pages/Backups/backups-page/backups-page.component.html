@@ -1,7 +1,11 @@
-<nav class="navbar navbar-expand-sm bg-light justify-content-center">
-    <a routerLink="/completedbackups" class="button">Provedené zálohy</a>
-    <a routerLink="/ongoinbackups" class="button">Probíhající zálohy</a>
-    <a routerLink="/upcomingbackups" class="button">Nadcházející zálohy</a>
-</nav>>
+<header>
+  <div class="page-header">
+    <ul>
+      <li><a routerLink="/completedbackups">Provedené zálohy</a></li>
+      <li><a routerLink="/ongoinbackups">Probíhající zálohy</a></li>
+      <li><a routerLink="/upcomingbackups">Nadcházející zálohy</a></li>
+    </ul>
+  </div>
+</header>
 
 <router-outlet></router-outlet>
