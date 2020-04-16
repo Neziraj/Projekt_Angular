@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { HomeQuery } from '../Models/Queries/HomeQuery';
 import { Client } from '../Models/Client.model';
 import { Admin } from '../Models/Admin.model';
@@ -15,15 +15,15 @@ import { SettingsMail } from '../Models/SettingMail.model';
 import { Schedule } from '../Models/Shedule.model';
 import { Source } from '../Models/Source.model';
 import { ClientQuery } from '../Models/Queries/ClientQuery';
+import { throwError } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class HomePageDataService {
+@Injectable({ providedIn: 'root' })
+export class HomePageDataService 
+{
   constructor(private http: HttpClient) { }
 
-  QueryURL = 'http://localhost:49497/api/admin/homequery';
-  ClientQueryURL = 'http://localhost:49497/api/admin/clientquery';
+  QueryURL = 'http://localhost:49497/api/query/homequery';
+  ClientQueryURL = 'http://localhost:49497/api/query/clientquery';
 
   AdminURL = 'http://localhost:49497/api/admin';
   ClientURL = 'http://localhost:49497/api/client';
@@ -39,65 +39,43 @@ export class HomePageDataService {
   ScheduleURL = 'http://localhost:49497/api/schedule'
   SourceURL = 'http://localhost:49497/api/source';
 
-  getQuery()
-  {
-    return this.http.get<HomeQuery[]>(this.QueryURL);
-  }
-  getClientQuery()
-  {
-    return this.http.get<ClientQuery[]>(this.ClientQueryURL);
-  }
+  loginURL = 'http://localhost:49497/api/admin';
 
-  getAdmin()
+  getQuery() { return this.http.get<HomeQuery[]>(this.QueryURL); }
+
+  getClientQuery() { return this.http.get<ClientQuery[]>(this.ClientQueryURL); }
+
+
+  getAdmin() { return this.http.get<Admin[]>(this.AdminURL); }
+
+  getClient() { return this.http.get<Client[]>(this.ClientURL); }
+
+  getConfiguration() { return this.http.get<Configuration[]>(this.ConfigurationURL); }
+
+  getDestFTPServer() { return this.http.get<DestFtp[]>(this.DestFTPServerURL); }
+
+  getDestGoogleDrive() { return this.http.get<DestGoogleDrive[]>(this.DestGoogleDriveURL); }
+
+  getDestLocal() { return this.http.get<DestLocal[]>(this.DestLocalURL); }
+
+  getDestSource() { return this.http.get<DestSource[]>(this.DestSourceURL); }
+
+  getJob() { return this.http.get<Job[]>(this.JobURL); }
+
+  getSetting() { return this.http.get<Setting[]>(this.SettingURL); }
+
+  getSettingsClient() { return this.http.get<SettingsClient[]>(this.SettingsClientURL); }
+
+  getSettingsMail() { return this.http.get<SettingsMail[]>(this.SettingsMailURL); }  
+
+  getSchedule() { return this.http.get<Schedule[]>(this.ScheduleURL) }
+
+  getSource() { return this.http.get<Source[]>(this.SourceURL); }
+
+  userAuthentication(email, password)
   {
-    return this.http.get<Admin[]>(this.AdminURL);
-  }
-  getClient()
-  {
-    return this.http.get<Client[]>(this.ClientURL);
-  }
-  getConfiguration()
-  {
-    return this.http.get<Configuration[]>(this.ConfigurationURL);
-  }
-  getDestFTPServer()
-  {
-    return this.http.get<DestFtp[]>(this.DestFTPServerURL);
-  }
-  getDestGoogleDrive()
-  {
-    return this.http.get<DestGoogleDrive[]>(this.DestGoogleDriveURL);
-  }
-  getDestLocal()
-  {
-    return this.http.get<DestLocal[]>(this.DestLocalURL);
-  }
-  getDestSource()
-  {
-    return this.http.get<DestSource[]>(this.DestSourceURL);
-  }
-  getJob()
-  {
-    return this.http.get<Job[]>(this.JobURL);
-  }
-  getSetting()
-  {
-    return this.http.get<Setting[]>(this.SettingURL);
-  }
-  getSettingsClient()
-  {
-    return this.http.get<SettingsClient[]>(this.SettingsClientURL);
-  }
-  getSettingsMail()
-  {
-    return this.http.get<SettingsMail[]>(this.SettingsMailURL);
-  }  
-  getSchedule()
-  {
-    return this.http.get<Schedule[]>(this.ScheduleURL)
-  }
-  getSource()
-  {
-    return this.http.get<Source[]>(this.SourceURL);
-  }
+    var data = "email=" + email + "password=" + password;
+    var reqHeader: HttpHeaders;
+    return this.http.post(this.loginURL, data, {headers: reqHeader});
+  } // Dodělat
 }
