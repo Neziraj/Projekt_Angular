@@ -17,6 +17,8 @@ import { ClientPageComponent } from './Pages/Clients/client-page/client-page.com
 import { ClientsTableComponent } from './Pages/Clients/clients/clients.component';
 import { NewClientsComponent } from './Pages/Clients/new-clients/new-clients.component';
 import { ClientsHistoryComponent } from './clients-history/clients-history.component';
+import { LoginComponent } from './Pages/login/login.component';
+import { RegisterComponent } from './Pages/register/register.component';
 
 
 
@@ -38,6 +40,8 @@ const appRoutes: Routes = [
     NewClientsComponent,
     ClientsHistoryComponent,
     RoutingComponents,
+    LoginComponent,
+    RegisterComponent,
     
   ],
   imports: [
