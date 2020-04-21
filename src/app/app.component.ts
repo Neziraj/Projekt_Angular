@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HomePageDataService } from './Services/home.page.data.service';
 import { Admin } from './Models/admin.model';
 import { Client} from './Models/Client.model';
 import { Configuration } from './Models/Config.model';

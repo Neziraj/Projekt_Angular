@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDataService} from '../../../Services/user.data.service';
 import {Admin} from '../../../Models/Admin.model';
 import {SettingsMail} from '../../../Models/SettingMail.model';
 import {SettingsClient} from '../../../Models/SettingClient.model';
@@ -19,11 +18,10 @@ export class UserPageComponent implements OnInit {
   SetClient$: SettingsClient[];
   Setting$: Setting[];
 
-  constructor(private dataService: UserDataService) { }
+  constructor() { }
 
   ngOnInit(){
-    return this.dataService.getSetting()
-      .subscribe(data => this.Setting$ = data);
   }
 
 }
+

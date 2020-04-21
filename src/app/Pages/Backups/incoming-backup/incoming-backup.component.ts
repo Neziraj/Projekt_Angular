@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {BackupDataService} from '../../../Services/backup.data.service';
 import {Job} from '../../../Models/Job.model';
 import {Schedule} from '../../../Models/Shedule.model';
 
@@ -13,12 +12,9 @@ export class IncomingBackupComponent implements OnInit {
   Shedule$: Schedule[];
   Job$: Job[];
 
-  constructor(private dataService: BackupDataService) { }
+  constructor() { }
 
   ngOnInit(){
-
-    return this.dataService.getShedule()
-      .subscribe(data => this.Shedule$ = data);
   }
 
 }

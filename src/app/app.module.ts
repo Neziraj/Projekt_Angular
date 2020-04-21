@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomePageComponent } from './Pages/Home/home-page/home-page.component';
 import { UserPageComponent } from './Pages/User/user-page/user-page.component';
-import { HomePageDataService } from './Services/home.page.data.service';
 import { ConfigurationPageComponent } from './Pages/Configurations/configuration-page/configuration-page.component';
 import { BackupsPageComponent } from './Pages/Backups/backups-page/backups-page.component';
 import { Routes } from '@angular/router';
@@ -42,14 +41,13 @@ const appRoutes: Routes = [
     RoutingComponents,
     LoginComponent,
     RegisterComponent,
-    
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [HomePageDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

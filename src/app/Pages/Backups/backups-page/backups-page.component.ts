@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import {CompletedBackupComponent} from '../completed-backups/completed-backup.component';
 
@@ -13,5 +14,4 @@ export class BackupsPageComponent implements OnInit {
 
   ngOnInit(){
   }
-
 }
