@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'backups', component: CompletedBackupComponent},
   { path: 'user', component: UserPageComponent },
   { path: 'completedbackups', component: CompletedBackupComponent },
-  { path: 'upcomingbackups', component: IncomingBackupComponent },
+  { path: 'incomingbackups', component: IncomingBackupComponent },
   //{ path: '**', component: PageNotFound }
 ];
 
