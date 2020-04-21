@@ -1,6 +1,6 @@
 export class Client
 {
-  Id: number;
+  public Id: number;
   Name: string;
   IP: string;
   MAC: string;

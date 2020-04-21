@@ -1,6 +1,6 @@
 export class ClientQuery
 {
-    ID: number;
+    public ID: number;
     Name: string;
     IP: string;
     MAC: string;

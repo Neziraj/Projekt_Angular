@@ -7,4 +7,3 @@ import {Injectable} from '@angular/core';
 export class HomeQueryService extends TemplateDataService{
   URL = this.URL + 'query/homequery';
 }
-

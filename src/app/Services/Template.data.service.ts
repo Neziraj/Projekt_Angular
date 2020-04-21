@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Admin} from '../Models/Admin.model';
 import {Configuration} from '../Models/Config.model';
+import {Observable} from 'rxjs';
+import {Client} from '../Models/Client.model';
+import {ClientQuery} from '../Models/Queries/ClientQuery';
+
 
 @Injectable({
   providedIn: 'root'
 })
-
-  export class TemplateDataService {
+export class TemplateDataService {
   constructor(private http: HttpClient) {
   }
 
@@ -16,17 +18,22 @@ import {Configuration} from '../Models/Config.model';
   get() {
     return this.http.get<[]>(this.URL);
   }
-/*
-  post() {
-  return this.http.post<[]>(this.URL);
+
+  delete()
+  {
+    const index = '1';
+    return this.http.delete<[]>(this.URL + index);
   }
 
-  put() {
-    return this.http.put<[]>(this.URL);
-  }
-*/
-  delete() {
-    return this.http.delete<[]>(this.URL);
-  }
+    /*
+      post() {
+      return this.http.post<[]>(this.URL);
+      }
 
+      put() {
+        return this.http.put<[]>(this.URL);
+      }
+
+
+      */
 }

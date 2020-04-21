@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import {ClientService} from '../../../Services/Templates/DataService/Client';
 import {ClientQuery} from '../../../Models/Queries/ClientQuery';
 
+
 @Component({
   selector: 'app-clients-table',
   templateUrl: './clients.component.html',
@@ -14,11 +15,16 @@ export class ClientsTableComponent implements OnInit
   ClientQuery$: ClientQuery[];
   headers = ['ID', 'Název', 'IP', 'MAC', 'Konfigurace', '', ''];
 
-  constructor(private dataService: ClientService, router: Router) { }
-
-  ngOnInit(){
-    return this.dataService.get()
-      .subscribe(data => this.ClientQuery$ = data);
+  constructor(private dataService: ClientService, router: Router) {
+  }
+  OnDelete()
+  {
+    this.dataService.delete().subscribe(data => this.ClientQuery$ = data);
   }
 
+  ngOnInit() {
+    return this.dataService.get()
+      .subscribe(data => this.ClientQuery$ = data);
+
+  }
 }
