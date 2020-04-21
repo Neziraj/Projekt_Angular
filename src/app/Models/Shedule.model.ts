@@ -1,7 +1,7 @@
 export class Schedule
 {
-  Id: number;
-  IdJob: number;
-  BackupDate: Date;
-  ErrorCode: string;
+    Id: number;
+    IdJob: number;
+    BackupDate: Date;
+    ErrorCode: string;
 }

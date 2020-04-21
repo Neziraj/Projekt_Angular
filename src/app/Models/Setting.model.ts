@@ -1,6 +1,6 @@
 export class Setting
 {
-  Id: number;
-  IdAdmin: number;
-  DefaultMenuTable: number;
+    Id: number;
+    IdAdmin: number;
+    DefaultMenuTable: number;
 }

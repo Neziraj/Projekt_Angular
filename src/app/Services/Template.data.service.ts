@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class TemplateDataService {
+export class TemplateDataService<T> {
   constructor(private http: HttpClient) {
   }
 

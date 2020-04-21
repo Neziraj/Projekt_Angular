@@ -4,7 +4,8 @@ import {Injectable} from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class DestSourceService extends TemplateDataService{
+export class DestSourceService extends TemplateDataService<DestSourceService>
+{
   URL = this.URL + 'destsource';
 }
 

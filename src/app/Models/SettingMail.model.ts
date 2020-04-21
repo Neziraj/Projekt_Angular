@@ -1,7 +1,7 @@
 export class SettingsMail
 {
-Id: number;
-IdSettings: number;
-SendMail: boolean;
-Cron: string;
+    Id: number;
+    IdSettings: number;
+    SendMail: boolean;
+    Cron: string;
 }
