@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Configuration} from '../Models/Config.model';
-import {Observable} from 'rxjs';
-import {Client} from '../Models/Client.model';
-import {ClientQuery} from '../Models/Queries/ClientQuery';
-
 
 @Injectable({
   providedIn: 'root'
