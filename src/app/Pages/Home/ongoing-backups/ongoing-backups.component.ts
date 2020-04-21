@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HomeQuery } from 'src/app/Models/Queries/HomeQuery';
+import {HomeQueryService} from '../../../Services/Templates/DataService/Queries/Home';
 
 @Component({
   selector: 'app-ongoing-backups',
@@ -9,12 +10,15 @@ import { HomeQuery } from 'src/app/Models/Queries/HomeQuery';
 })
 export class OngoingBackupsComponent implements OnInit
 {
-  HomeQuery$: HomeQuery[];
-  headers = ['Název Klienta', 'Název Konfigurage', 'Popis Konfigurace', ''];
 
-  constructor(router: Router){}
+  headers = ['Název Klienta', 'Název Konfigurage', 'Popis Konfigurace', ''];
+  HomeQuery$: HomeQuery[];
+
+  constructor(private dataService: HomeQueryService, private router: Router){}
 
   ngOnInit()
   {
+      this.dataService.get()
+      .subscribe(data => this.HomeQuery$ = data);
   }
 }

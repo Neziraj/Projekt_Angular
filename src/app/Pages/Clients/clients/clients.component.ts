@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from 'src/app/Models/Client.model';
 import { Router } from '@angular/router';
-import { ClientQuery } from 'src/app/Models/Queries/ClientQuery';
+import {ClientService} from '../../../Services/Templates/DataService/Client';
+import {ClientQuery} from '../../../Models/Queries/ClientQuery';
 
 @Component({
   selector: 'app-clients-table',
@@ -13,9 +14,11 @@ export class ClientsTableComponent implements OnInit
   ClientQuery$: ClientQuery[];
   headers = ['ID', 'Název', 'IP', 'MAC', 'Konfigurace', '', ''];
 
-  constructor(router: Router) { }
+  constructor(private dataService: ClientService, router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    return this.dataService.get()
+      .subscribe(data => this.ClientQuery$ = data);
   }
 
 }

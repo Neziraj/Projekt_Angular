@@ -1,11 +1,10 @@
+import {TemplateDataService} from '../../Template.data.service';
 import {Injectable} from '@angular/core';
-import {Job} from '../../../Models/Job.model';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-
-export class JobService {
-  constructor(private http: HttpClient) { }
+export class JobService extends TemplateDataService{
+  URL = this.URL + 'job';
 }
+

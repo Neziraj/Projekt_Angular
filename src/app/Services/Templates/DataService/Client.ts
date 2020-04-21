@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Client } from '../../../Models/Client.model';
+import {TemplateDataService} from '../../Template.data.service';
+import {Injectable} from '@angular/core';
 
-
-
-export class  ClientService {
-  constructor(private http: HttpClient) { }
+@Injectable({
+  providedIn: 'root'
+})
+export class ClientService extends TemplateDataService{
+  URL = this.URL + 'client';
 }

@@ -4,6 +4,7 @@ import {Injectable} from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class SettingService extends TemplateDataService{
-  URL = this.URL + 'setting';
+export class ScheduleService extends TemplateDataService{
+  URL = this.URL + 'schedule';
 }
+
