@@ -8,6 +8,10 @@ import { CompletedBackupComponent } from './Pages/Backups/completed-backups/comp
 import { OngoingBackupsComponent } from './Pages/Home/ongoing-backups/ongoing-backups.component';
 import { IncomingBackupComponent } from './Pages/Backups/incoming-backup/incoming-backup.component';
 import { BackupsPageComponent } from './Pages/Backups/backups-page/backups-page.component';
+/*login*/
+import { LoginComponent  } from './Pages/login/login.component';
+/*register*/
+import { RegisterComponent  } from './Pages/register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,7 +23,10 @@ const routes: Routes = [
   { path: 'completedbackups', component: CompletedBackupComponent },
   { path: 'ongoinbackups', component: BackupsPageComponent },
   { path: 'upcomingbackups', component: IncomingBackupComponent },
-  //{ path: '**', component: PageNotFound }
+  /*login*/
+  { path: 'login', component: LoginComponent},
+  /*register*/
+  { path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({
@@ -34,4 +41,4 @@ export const RoutingComponents = [
   ConfigurationPageComponent,
   UserPageComponent,
   CompletedBackupComponent
-]
+];

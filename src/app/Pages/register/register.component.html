@@ -1,1 +1,38 @@
-<p>register works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="OnSubmit(email, password)">
+
+  Jméno:
+  <input formControlName="name">
+  <span *ngIf="name.errors.required || name.touched">
+      Vyplňte jméno!
+  </span>
+  <span *ngIf="email.invalid && email.touched">
+      Vyplňte email!
+  </span>
+
+  Příjmení:
+  <input formControlName="surname">
+  <span *ngIf="surname.errors.required">
+      Vyplňte příjmení!
+  </span>
+
+  Telefonní číslo:
+  <input formControlName="phoneNumber">
+  <span *ngIf="phoneNumber.errors.required">
+      Vyplňte telefonní číslo!
+  </span>
+
+  Email:
+  <input formControlName="email">
+  <span *ngIf="email.errors.required">
+      Vyplňte email!
+  </span>
+
+  Password:
+  <input formControlName="password">
+  <span *ngIf="password.errors.minLength">
+      Vyplňte heslo!
+  </span>
+
+  <button [disabled]="registerForm.invalid" type="submit">Registrovat se</button>
+
+</form>

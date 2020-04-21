@@ -1,5 +1,18 @@
-<form (ngSubmit)="OnSubmit(Email.value, Password.value)">
-    <input type="text" #Email ngModel name="Email" placeholder="Email" required>
-    <input type="password" #Password ngModel name="Password" placeholder="Password" required>
-    <button>Login</button>
+<form [formGroup]="loginForm" (ngSubmit)="OnSubmit(email, password)">
+
+  Email:
+  <input formControlName="email">
+  <span *ngIf="email.invalid && email.touched">
+      Vyplňte email!
+  </span>
+
+  Heslo:
+  <input formControlName="password">
+  <span *ngIf="password.invalid && password.touched">
+      Vyplňte heslo!
+  </span>
+
+  <button [disabled]="loginForm.invalid" type="submit">Přihlásit se</button>
+  <button >Nemáte účet? Založte si ho...</button>
+
 </form>

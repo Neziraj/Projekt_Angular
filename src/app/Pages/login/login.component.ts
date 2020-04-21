@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { debuglog } from 'util';
+import { FormGroup, Validators, FormBuilder } from  '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,16 +9,34 @@ import { debuglog } from 'util';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  loginForm: FormGroup;
+
   /*
   isLoginErro: Boolean = false;
   */
-  constructor(router: Router) { }
-
-  ngOnInit(): void {
+  constructor(router: Router, private formBuilder: FormBuilder ) {
   }
 
-  OnSubmit(email, password)
-  {
+  ngOnInit(): void {
+    this.loginForm  =  this.formBuilder.group({
+      email: ['', [
+        Validators.required
+      ]],
+      password: ['', [
+        Validators.required
+      ]]
+    });
+  }
+
+  get email() {
+    return this.loginForm.get('email');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
+  }
+
+  OnSubmit(email, password) {
     /*
     console.log("TEst");
     /*this.service.userAuthentication(email, password).subscribe((data : any) => {
@@ -29,5 +47,4 @@ export class LoginComponent implements OnInit {
       this.isLoginErro = true;
     });*/
   }
-
 }

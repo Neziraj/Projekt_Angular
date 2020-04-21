@@ -18,6 +18,7 @@ import { NewClientsComponent } from './Pages/Clients/new-clients/new-clients.com
 import { ClientsHistoryComponent } from './clients-history/clients-history.component';
 import { LoginComponent } from './Pages/login/login.component';
 import { RegisterComponent } from './Pages/register/register.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -41,12 +42,12 @@ const appRoutes: Routes = [
     RoutingComponents,
     LoginComponent,
     RegisterComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent]
 })
