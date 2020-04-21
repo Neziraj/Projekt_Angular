@@ -9,7 +9,6 @@ import {CompletedBackupComponent} from '../completed-backups/completed-backup.co
 })
 export class BackupsPageComponent implements OnInit {
 
-
   constructor() { }
 
   ngOnInit(){

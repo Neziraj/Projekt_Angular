@@ -1,11 +1,16 @@
-<header>
-  <div class="page-header">
-    <ul>
-      <li><a routerLink="/completedbackups">Provedené zálohy</a></li>
-      <li><a routerLink="/ongoinbackups">Probíhající zálohy</a></li>
-      <li><a routerLink="/incomingbackups">Nadcházející zálohy</a></li>
-    </ul>
-  </div>
-</header>
+<table class="TableSettings table-bordered">
+  <thead>
+  <tr class="TableHeader">
+    <td *ngFor="let head of headers" scope="col">{{head}}</td>
+  </tr>
+  </thead>
 
-<app-ongoing-backups></app-ongoing-backups>
+  <tbody class="TableBox" >
+  <tr *ngFor="let query of IncomingBackupQuery$">
+    <td>{{ query.BackupDate}}</td>
+    <td>{{ query.Name }}</td>
+    <td>{{ query.Configuration }}</td>
+    <td>{{ query.Description}}</td>
+  </tr>
+  </tbody>
+</table>

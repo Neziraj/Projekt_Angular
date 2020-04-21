@@ -1,6 +1,7 @@
-export class ClientQuery
+import { ModelTemplate } from '../ModelTemplate';
+
+export class ClientQuery extends ModelTemplate
 {
-    ID: number;
     Name: string;
     IP: string;
     MAC: string;

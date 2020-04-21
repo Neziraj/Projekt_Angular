@@ -6,16 +6,16 @@
     </thead>
     <tbody class="TableBox">
         <tr  *ngFor='let client of ClientQuery$'>
-            <td>{{ client.ID }}</td>
+            <td>{{ client.Id }}</td>
             <td>{{ client.Name }}</td>
             <td>{{ client.IP }}</td>
             <td>{{ client.MAC }}</td>
             <td>{{ client.Configuration }}</td>
           <td class="Row">
-            <button type="button" class="btn btn-outline-secondary">Nastavení</button>
+            <button type="button" class="btn btn-outline-secondary" >Nastavení</button>
           </td>
           <td class="Row">
-          <button type="button" class="btn btn-outline-danger">Smazat</button>
+          <button type="button" class="btn btn-outline-danger" (click)="OnDelete()">Smazat</button>
         </td>
         </tr>
     </tbody>

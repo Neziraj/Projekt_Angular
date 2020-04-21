@@ -1,6 +1,7 @@
-export class Job
+import { ModelTemplate } from './ModelTemplate';
+
+export class Job extends ModelTemplate
 {
-    Id: number;
     IdClient: number;
     IdConfiguration: number;
 }

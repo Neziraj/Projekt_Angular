@@ -1,9 +1,10 @@
-export class DestGoogleDrive
+import { ModelTemplate } from './ModelTemplate';
+
+export class DestGoogleDrive extends ModelTemplate
 {
-  Id: number;
-  IdDestSource: number;
-  Gmail: string;
-  Password: string;
-  Path: string;
-  fileSuffix: string;
+    IdDestSource: number;
+    Gmail: string;
+    Password: string;
+    Path: string;
+    fileSuffix: string;
 }

@@ -1,6 +1,7 @@
-export class  DestSource
+import { ModelTemplate } from './ModelTemplate';
+
+export class DestSource extends ModelTemplate
 {
-Id: number;
-IdConfiguration: number;
+    IdConfiguration: number;
 }
 

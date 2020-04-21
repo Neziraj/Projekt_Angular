@@ -1,7 +1,9 @@
-export class Schedule
+import { ModelTemplate } from './ModelTemplate';
+
+export class Schedule extends ModelTemplate
 {
-  Id: number;
-  IdJob: number;
-  BackupDate: Date;
-  ErrorCode: string;
+
+    IdJob: number;
+    BackupDate: Date;
+    ErrorCode: string;
 }

@@ -1,7 +1,8 @@
-export class DestLocal
+import { ModelTemplate } from './ModelTemplate';
+
+export class DestLocal extends ModelTemplate
 {
-  Id: number;
-  IdDestSource: number;
-  Path: string;
-  FileSuffix: string;
+    IdDestSource: number;
+    Path: string;
+    FileSuffix: string;
 }

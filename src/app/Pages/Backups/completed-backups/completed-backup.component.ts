@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Job} from '../../../Models/Job.model';
-import {Schedule} from '../../../Models/Shedule.model';
+import { HomeQuery} from '../../../Models/Queries/HomeQuery';
+import {HomeQueryService} from '../../../Services/Templates/DataService/Queries/HomeQueryService';
+import {CompletedBackupsQueryService} from '../../../Services/Templates/DataService/Queries/CompletedBackupsQueryService';
+import {CompletedBackupsQuery} from '../../../Models/Queries/CompletedBackupsQuery';
 
 
 @Component({
@@ -9,12 +11,14 @@ import {Schedule} from '../../../Models/Shedule.model';
   styleUrls: ['./completed-backup.component.scss']
 })
 export class CompletedBackupComponent implements OnInit {
-  Shedule$: Schedule[];
-  Job$: Job[];
+  CompletedBackupQuery$: CompletedBackupsQuery[];
 
-  constructor() {
+  headers = ['Datum', 'Název Klienta', 'Název Konfigurace', 'Popis', 'Průběh'];
+  constructor(private dataService: CompletedBackupsQueryService) {
   }
 
   ngOnInit(){
+    this.dataService.get()
+      .subscribe(data => this.CompletedBackupQuery$ = data);
   }
 }

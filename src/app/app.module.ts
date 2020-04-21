@@ -8,7 +8,6 @@ import { UserPageComponent } from './Pages/User/user-page/user-page.component';
 import { ConfigurationPageComponent } from './Pages/Configurations/configuration-page/configuration-page.component';
 import { BackupsPageComponent } from './Pages/Backups/backups-page/backups-page.component';
 import { Routes } from '@angular/router';
-import { OngoingBackupsComponent } from './Pages/Home/ongoing-backups/ongoing-backups.component';
 import { ConfigurationTableComponent } from './Pages/Configurations/configuration-table/configuration-table.component';
 import { IncomingBackupComponent } from './Pages/Backups/incoming-backup/incoming-backup.component';
 import { CompletedBackupComponent } from './Pages/Backups/completed-backups/completed-backup.component';
@@ -31,7 +30,6 @@ const appRoutes: Routes = [
     UserPageComponent,
     ConfigurationPageComponent,
     BackupsPageComponent,
-    OngoingBackupsComponent,
     ConfigurationTableComponent,
     IncomingBackupComponent,
     CompletedBackupComponent,

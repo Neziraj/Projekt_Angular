@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Admin } from './Models/admin.model';
 import { Client} from './Models/Client.model';
-import { Configuration } from './Models/Config.model';
+import { Configuration } from './Models/Configuration.model';
 import { DestFtp } from './Models/DestFtpServer.model';
 import { DestGoogleDrive } from './Models/DestGoogleDrive.model';
 import { DestLocal } from './Models/DestLocal.model';
