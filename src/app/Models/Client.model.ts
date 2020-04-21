@@ -1,6 +1,7 @@
-export class Client
+import { ModelTemplate } from './ModelTemplate';
+
+export class Client extends ModelTemplate
 {
-    Id: number;
     Name: string;
     IP: string;
     MAC: string;

@@ -1,6 +1,7 @@
-export class SettingsMail
+import { ModelTemplate } from './ModelTemplate';
+
+export class SettingsMail extends ModelTemplate
 {
-    Id: number;
     IdSettings: number;
     SendMail: boolean;
     Cron: string;

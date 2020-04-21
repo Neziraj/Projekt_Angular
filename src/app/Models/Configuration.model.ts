@@ -1,6 +1,7 @@
-export class Configuration
+import { ModelTemplate } from './ModelTemplate';
+
+export class Configuration extends ModelTemplate
 {
-    Id: number;
     Name: string;
     Description: string;
     BackupType: string;

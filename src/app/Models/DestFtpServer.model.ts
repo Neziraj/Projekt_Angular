@@ -1,6 +1,7 @@
-export class DestFtp
+import { ModelTemplate } from './ModelTemplate';
+
+export class DestFtp extends ModelTemplate
 {
-    Id: number;
     IdDestSource: number;
     Site: string;
     Login: string;

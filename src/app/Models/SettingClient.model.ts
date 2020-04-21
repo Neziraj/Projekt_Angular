@@ -1,6 +1,7 @@
-export class SettingsClient
+import { ModelTemplate } from './ModelTemplate';
+
+export class SettingsClient extends ModelTemplate
 {
-    Id: number;
     IdSettings: number;
     ClientHistoryInterval: number;
     ClientHistoryIntervalUnits: number;

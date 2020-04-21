@@ -1,6 +1,7 @@
-export class Setting
+import { ModelTemplate } from './ModelTemplate';
+
+export class Setting extends ModelTemplate
 {
-    Id: number;
     IdAdmin: number;
     DefaultMenuTable: number;
 }

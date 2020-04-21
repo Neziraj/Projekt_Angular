@@ -1,6 +1,7 @@
-export class Admin 
+import { ModelTemplate } from './ModelTemplate';
+
+export class Admin extends ModelTemplate
 {
-    Id: number;
     Name: string;
     Surname: string;
     Password: string;

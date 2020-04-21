@@ -1,6 +1,7 @@
-export class Source
+import { ModelTemplate } from './ModelTemplate';
+
+export class Source extends ModelTemplate
 {
-    Id: number;
     IdDestSource: number;
     Path: string;
 }
