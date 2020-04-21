@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Job} from '../../../Models/Job.model';
-import {Schedule} from '../../../Models/Shedule.model';
-
+import {IncomingBackupsQuery} from '../../../Models/Queries/IncomingBackupsQuery';
+import {IncomingBackupsQueryService} from '../../../Services/Templates/DataService/Queries/IncomingBackupsQueryService';
 
 @Component({
   selector: 'app-incoming-backup',
@@ -9,12 +8,14 @@ import {Schedule} from '../../../Models/Shedule.model';
   styleUrls: ['./incoming-backup.component.scss']
 })
 export class IncomingBackupComponent implements OnInit {
-  Shedule$: Schedule[];
-  Job$: Job[];
+  IncomingBackupQuery$: IncomingBackupsQuery[];
+  headers = ['Datum', 'Název Klienta', 'Název Konfigurace', 'Popis konfigurace'];
 
-  constructor() { }
+  constructor(private dataService: IncomingBackupsQueryService) { }
 
   ngOnInit(){
+    this.dataService.get()
+      .subscribe(data => this.IncomingBackupQuery$ = data);
   }
 
 }

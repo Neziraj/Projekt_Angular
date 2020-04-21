@@ -6,9 +6,9 @@ import { TestBed } from '@angular/core/testing';
 @Injectable({
   providedIn: 'root'
 })
-export class TemplateDataService<T extends ModelTemplate>
-{
-  constructor(private http: HttpClient) { }
+export class TemplateDataService<T extends ModelTemplate> {
+  constructor(private http: HttpClient) {
+  }
 
   URL = 'http://localhost:49497/api/';
 
@@ -16,18 +16,21 @@ export class TemplateDataService<T extends ModelTemplate>
     return this.http.get<[]>(this.URL);
   }
 
-  delete()
-  {
+  delete() {
     return this.http.delete<[]>(this.URL);
   }
+}
 
-  post() 
+/*
+  post()
   {
     return this.http.post<[]>(this.URL);
   }
 
-  put() 
+  put()
   {
     return this.http.put<[]>(this.URL);
   }
 }
+
+ */

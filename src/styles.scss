@@ -29,16 +29,19 @@
 
       a {
         color: black;
+        border: 0.5px solid grey ;
         opacity: 0.7;
         padding: 0.3vw;
         border-radius: 0.2vw;
-        box-shadow: 0.2vw 0.6vw 0.4vw 0.2vw rgba(0, 0, 0, 0.19);
+        box-shadow: 0.1vw 0.5vw 0.4vw 0.1vw rgba(0, 0, 0, 0.19);
       }
 
       a:hover {
-        opacity: 1;
+        opacity: 2;
         text-decoration: none;
+        animation: backwards;
         cursor: pointer;
+        padding: 0.35vw;
       }
     }
   }
@@ -53,13 +56,13 @@
   justify-content: center;
   text-align: center;
   margin-top: 4vh;
-  background-color: whitesmoke;
+  background-color: #F8F8FF;
   box-shadow: 0.2vw 0.6vw 0.4vw 0.2vw rgba(0, 0, 0, 0.19);
 }
 
 .TableHeader
 {
-  background-color: #212529;
+  background-color: #000c18;
   font-weight: inherit;
   font-size: 3vh;
   color: whitesmoke;
