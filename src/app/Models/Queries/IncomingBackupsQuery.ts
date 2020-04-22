@@ -1,9 +1,10 @@
 import { ModelTemplate } from '../ModelTemplate';
+import DateTimeFormat = Intl.DateTimeFormat;
 
 export class IncomingBackupsQuery extends ModelTemplate
 {
-  BackupDate: Date;
-  Name: string;
-  Configuration: string;
+  Datum: Date;
+  ClientName: string;
+  ConfigurationName: string;
   Description: string;
 }

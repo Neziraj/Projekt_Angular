@@ -1,19 +1,17 @@
 <table class="TableSettings table-bordered">
   <thead>
   <tr class="TableHeader">
-    <td *ngFor="let head of headers" scope="col">{{head}}</td>
+    <td *ngFor="let head of headers" scope="col">{{ head }}</td>
   </tr>
   </thead>
 
   <tbody class="TableBox" >
-  <tr *ngFor="let query of CompletedBackupQuery$">
-    <td>{{ query.BackupDate}}</td>
-    <td>{{ query.ClientName}}</td>
+  <tr class="Row" *ngFor="let query of CompletedBackupQuery$">
+    <td>{{ query.Datum | date:'mm:hh:dd MM.yyyy' }}</td>
+    <td>{{ query.ClientName }}</td>
     <td>{{ query.ConfigurationName }}</td>
-    <td>{{ query.Description}}</td>
-    <td>{{ query.Error}}</td>
+    <td>{{ query.Description }}</td>
+    <td>{{ query.Error }}</td>
   </tr>
   </tbody>
 </table>
-
-
