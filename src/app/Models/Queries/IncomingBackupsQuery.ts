@@ -1,4 +1,5 @@
 import { ModelTemplate } from '../ModelTemplate';
+import DateTimeFormat = Intl.DateTimeFormat;
 
 export class IncomingBackupsQuery extends ModelTemplate
 {
