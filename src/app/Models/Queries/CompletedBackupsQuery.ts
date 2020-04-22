@@ -3,7 +3,7 @@ import DateTimeFormat = Intl.DateTimeFormat;
 
 export class CompletedBackupsQuery extends ModelTemplate
 {
-Datum: DateTimeFormat;
+Datum: Date;
 ClientName: string;
 ConfigurationName: string;
 Description: string;
