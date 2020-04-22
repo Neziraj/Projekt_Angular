@@ -1,1 +1,20 @@
-<p>new-clients works!</p>
+<table class="TableSettings table-bordered">
+  <thead>
+  <tr class="TableHeader">
+    <td *ngFor="let head of headers">{{ head }}</td>
+  </tr>
+  </thead>
+  <tbody class="TableBox">
+  <tr class="Row" *ngFor='let query of NewClientsQuery$'>
+    <td>{{ query.Datum }}</td>
+    <td>{{ query.Name }}</td>
+    <td class="Row">
+      <button type="button" class="btn btn-success " >Přidat</button>
+    </td>
+    <td class="Row">
+      <button type="button" class="btn btn-danger">Odmítnout</button>
+    </td>
+  </tr>
+  </tbody>
+
+</table>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {NewClientsQueryService} from '../../../Services/Templates/DataService/Queries/NewClientsQueryService';
+import {NewClientsQuery} from '../../../Models/Queries/NewClientsQuery';
+
 
 @Component({
   selector: 'app-new-clients',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-clients.component.scss']
 })
 export class NewClientsComponent implements OnInit {
+  NewClientsQuery$: NewClientsQuery[];
 
-  constructor() { }
+  headers = ['Datum', 'Název', '', ''];
+  constructor(private dataService: NewClientsQueryService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    return this.dataService.get()
+      .subscribe(data => this.NewClientsQuery$ = data);
   }
 
 }
