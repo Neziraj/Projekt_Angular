@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 import { AppRoutingModule, RoutingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { HomePageComponent } from './Pages/Home/home-page/home-page.component';
 import { UserPageComponent } from './Pages/User/user-page/user-page.component';
 import { ConfigurationPageComponent } from './Pages/Configurations/configuration-page/configuration-page.component';
@@ -18,6 +19,9 @@ import { ClientsHistoryComponent } from './clients-history/clients-history.compo
 import { LoginComponent } from './Pages/login/login.component';
 import { RegisterComponent } from './Pages/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+// used to create fake backend
+import { fakeBackendProvider } from './_helpers';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 
 
 
@@ -46,6 +50,12 @@ const appRoutes: Routes = [
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    // provider used to create fake backend
+    fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })
