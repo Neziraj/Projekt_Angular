@@ -6,8 +6,8 @@
   </thead>
 
   <tbody class="TableBox" >
-  <tr *ngFor="let query of CompletedBackupQuery$">
-    <td>{{ query.BackupDate}}</td>
+  <tr class="Row" *ngFor="let query of CompletedBackupQuery$">
+    <td>{{ query.Datum}}</td>
     <td>{{ query.ClientName}}</td>
     <td>{{ query.ConfigurationName }}</td>
     <td>{{ query.Description}}</td>
