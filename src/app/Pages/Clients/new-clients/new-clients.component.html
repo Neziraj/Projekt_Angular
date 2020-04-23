@@ -9,12 +9,17 @@
     <td>{{ query.DateOfLogin }}</td>
     <td>{{ query.Name }}</td>
     <td class="Row">
-      <button type="button" class="btn btn-success " >Přidat</button>
+      <button type="button" (click)="openModal('custom-modal-1')">Přijmout</button>
     </td>
     <td class="Row">
       <button type="button" class="btn btn-danger">Odmítnout</button>
     </td>
   </tr>
   </tbody>
-
 </table>
+
+<jw-modal id="custom-modal-1">
+  <h1>A Custom Modal!</h1>
+  <p>Home page text: <input type="text" [(ngModel)]="bodyText" /></p>
+  <button (click)="closeModal('custom-modal-1');">Close</button>
+</jw-modal>

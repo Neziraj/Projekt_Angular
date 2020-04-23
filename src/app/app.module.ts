@@ -14,10 +14,11 @@ import { ClientPageComponent } from './Pages/Clients/client-page/client-page.com
 import { ClientsTableComponent } from './Pages/Clients/clients/clients.component';
 import { NewClientsComponent } from './Pages/Clients/new-clients/new-clients.component';
 import { LoginComponent } from './Pages/login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { ModalModule } from './_modal';
 
 
 
@@ -41,7 +42,9 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule,
+    FormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
