@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ModelTemplate } from '../Models/ModelTemplate';
 import { TestBed } from '@angular/core/testing';
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,10 @@ export class TemplateDataService<T extends ModelTemplate> {
   delete(index) {
     return this.http.delete<[]>(this.URL + index);
   }
+  put(item: T)
+  {
+    return this.http.put<T>(this.URL, item);
+  }
 }
 
 /*
@@ -27,10 +32,7 @@ export class TemplateDataService<T extends ModelTemplate> {
     return this.http.post<[]>(this.URL);
   }
 
-  put()
-  {
-    return this.http.put<[]>(this.URL);
-  }
+
 }
 
  */
