@@ -14,7 +14,6 @@ import { ClientPageComponent } from './Pages/Clients/client-page/client-page.com
 import { ClientsTableComponent } from './Pages/Clients/clients/clients.component';
 import { NewClientsComponent } from './Pages/Clients/new-clients/new-clients.component';
 import { LoginComponent } from './Pages/login/login.component';
-import { RegisterComponent } from './Pages/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
@@ -37,7 +36,6 @@ const appRoutes: Routes = [
     NewClientsComponent,
     RoutingComponents,
     LoginComponent,
-    RegisterComponent,
   ],
   imports: [
     BrowserModule,

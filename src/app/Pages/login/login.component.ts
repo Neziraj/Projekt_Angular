@@ -38,8 +38,6 @@ export class LoginComponent implements OnInit {
 
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
-  get username() { return this.username; }
-  get password() { return this.password; }
 
   onSubmit() {
     this.submitted = true;

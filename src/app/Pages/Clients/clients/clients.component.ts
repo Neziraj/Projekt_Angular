@@ -12,7 +12,7 @@ import { ClientQueryService } from 'src/app/Services/Templates/DataService/Queri
 export class ClientsTableComponent implements OnInit
 {
   ClientQuery$: ClientQuery[];
-  headers = ['ID', 'Název', 'IP', 'MAC', 'Konfigurace', '', ''];
+  headers = ['ID', 'Název', 'MAC', 'Konfigurace', '', ''];
 
   constructor(private dataService: ClientQueryService, router: Router) {
   }
