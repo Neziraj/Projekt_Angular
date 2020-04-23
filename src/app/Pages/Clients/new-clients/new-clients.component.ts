@@ -4,6 +4,7 @@ import {NewClientsQuery} from '../../../Models/Queries/NewClientsQuery';
 
 import { ModalService } from 'src/app/_modal';
 import {Client} from '../../../Models/Client.model';
+import { ClientService } from 'src/app/Services/Templates/DataService/ClientService';
 
 
 @Component({
@@ -16,9 +17,9 @@ export class NewClientsComponent implements OnInit {
   myClient: Client;
 
   headers = ['Datum', 'Název', '', ''];
-  constructor(private dataService: NewClientsQueryService, private modalService: ModalService) { }
+  constructor(private putDataService: ClientService, private dataService: NewClientsQueryService, private modalService: ModalService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     return this.dataService.get()
       .subscribe(data => this.NewClientsQuery$ = data);
   }
@@ -34,7 +35,8 @@ export class NewClientsComponent implements OnInit {
 
   saveNewClientName(newClientName: string) {
     this.myClient.Name = newClientName;
-    this.myClient.DateOfLogin = new Date(2018, 0O5, 0O5, 17, 23, 42);
-
+    this.myClient.DateOfLogin = new Date();
+    return this.putDataService.put(this.myClient)
+      .subscribe(data => this.myClient = data);
   }
 }
