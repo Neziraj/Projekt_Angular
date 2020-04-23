@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {NewClientsQueryService} from '../../../Services/Templates/DataService/Queries/NewClientsQueryService';
-import {NewClientsQuery} from '../../../Models/Queries/NewClientsQuery';
-
+import { NewClientsQueryService } from '../../../Services/Templates/DataService/Queries/NewClientsQueryService';
 import { ModalService } from 'src/app/_modal';
-import {Client} from '../../../Models/Client.model';
+import { Client } from '../../../Models/Client.model';
 import { ClientService } from 'src/app/Services/Templates/DataService/ClientService';
 
 
@@ -36,7 +34,14 @@ export class NewClientsComponent implements OnInit {
   saveNewClientName(newClientName: string) {
     this.myClient.Name = newClientName;
     this.myClient.DateOfLogin = new Date();
+
     return this.putDataService.put(this.myClient)
       .subscribe(data => this.myClient = data);
+  }
+
+  Deny(client: Client)
+  {
+    return this.putDataService.delete(this.myClient.Id)
+      .subscribe();
   }
 }
