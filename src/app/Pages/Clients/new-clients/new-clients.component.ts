@@ -16,7 +16,7 @@ export class NewClientsComponent implements OnInit {
   NewClientsQuery$: Client[];
   myClient: Client;
 
-  headers = ['Datum', 'Název', '', ''];
+  headers = ['Název', '', ''];
   constructor(private putDataService: ClientService, private dataService: NewClientsQueryService, private modalService: ModalService) { }
 
   ngOnInit() {
@@ -29,8 +29,8 @@ export class NewClientsComponent implements OnInit {
     this.myClient = client;
   }
 
-  closeModal(id: string) {
-    this.modalService.close(id);
+  closeModal(idDialog: string) {
+    this.modalService.close(idDialog);
   }
 
   saveNewClientName(newClientName: string) {
