@@ -19,7 +19,7 @@
 
 <jw-modal id="edit-client-modal">
   <h1>Nový klient</h1>
-  <p>Název klienta: <input #myInput type="text" [(ngModel)]="myClient.Name"/></p>
+  <p>Název klienta: <input #myInput type="text"/></p>
   <button (click)="closeModal('edit-client-modal'); saveNewClientName(myInput.value)">Save</button>
   <button (click)="closeModal('edit-client-modal');">Close</button>
 </jw-modal>
