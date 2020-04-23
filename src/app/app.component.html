@@ -1,12 +1,31 @@
+
+
 <header>
   <div class="container-header">
     <ul>
-      <li><a routerLink="/clients">Klienti</a></li>
-      <li><a routerLink="/configurations">Konfigurace</a></li>
-      <li><a routerLink="/incomingbackups"> Nadcházející zálohy </a></li>
-      <li><a routerLink="/completedbackups">Dokončené Zálohy</a></li>
 
-      <li class="right">User</li>
+      <li class="Object"><a class="O" routerLink="/clients">Klienti</a></li>
+      <li class="Object"><a routerLink="/configurations">Konfigurace</a></li>
+      <li class="Object"><a routerLink="/incomingbackups"> Nadcházející zálohy </a></li>
+      <li class="Object"><a routerLink="/completedbackups">Dokončené Zálohy</a></li>
+
+
+      <nav class="navbar right">
+        <div>
+          <ul >
+              <a data-toggle="dropdown" >User</a>
+
+              <ul class="dropdown-menu ">
+                <li><a>Nastavení</a></li>
+                <li><a>O Aplikaci</a></li>
+                <li><a>Odhlásit se</a></li>
+              </ul>
+
+          </ul>
+        </div>
+      </nav>
+
+
     </ul>
   </div>
 </header>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Admin } from './Models/admin.model';
 import { Client} from './Models/Client.model';
 import { Configuration } from './Models/Configuration.model';
@@ -41,3 +41,4 @@ export class AppComponent implements OnInit{
   }
 
 }
+
