@@ -5,29 +5,10 @@
       <li><a routerLink="/configurations">Konfigurace</a></li>
       <li><a routerLink="/incomingbackups"> Nadcházející zálohy </a></li>
       <li><a routerLink="/completedbackups">Dokončené Zálohy</a></li>
-      <div class="dropdown right">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          User
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div>
+
+      <li class="right">User</li>
     </ul>
   </div>
 </header>
-<!-- Basic dropdown -->
-<a class="btn btn-primary dropdown-toggle mr-4" type="button" data-toggle="dropdown" aria-haspopup="true"
-   aria-expanded="false">Basic dropdown</a>
 
-<div class="dropdown-menu">
-  <a class="dropdown-item" href="#">Action</a>
-  <a class="dropdown-item" href="#">Another action</a>
-  <a class="dropdown-item" href="#">Something else here</a>
-  <div class="dropdown-divider"></div>
-  <a class="dropdown-item" href="#">Separated link</a>
-</div>
-<!-- Basic dropdown -->
 <router-outlet></router-outlet>
