@@ -26,6 +26,6 @@ export class TemplateDataService<T extends ModelTemplate> {
 
   post(item: T)
   {
-
+    return this.http.post<T>(this.URL, item);
   }
 }

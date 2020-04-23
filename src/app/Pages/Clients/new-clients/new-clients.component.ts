@@ -41,7 +41,7 @@ export class NewClientsComponent implements OnInit {
 
   Deny(client: Client)
   {
-    return this.putDataService.delete(this.myClient.Id)
+    return this.putDataService.delete(client.Id)
       .subscribe();
   }
 }
