@@ -34,5 +34,7 @@ export class NewClientsComponent implements OnInit {
 
   saveNewClientName(newClientName: string) {
     this.myClient.Name = newClientName;
+    this.myClient.DateOfLogin = new Date(2018, 0O5, 0O5, 17, 23, 42);
+
   }
 }

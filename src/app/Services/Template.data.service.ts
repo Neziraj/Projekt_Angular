@@ -31,6 +31,4 @@ export class TemplateDataService<T extends ModelTemplate> {
   {
     return this.http.put<[]>(this.URL);
   }
-}
-
- */
+}*/
