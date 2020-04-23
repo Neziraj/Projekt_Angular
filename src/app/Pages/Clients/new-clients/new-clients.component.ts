@@ -3,6 +3,7 @@ import {NewClientsQueryService} from '../../../Services/Templates/DataService/Qu
 import {NewClientsQuery} from '../../../Models/Queries/NewClientsQuery';
 
 import { ModalService } from 'src/app/_modal';
+import {Client} from '../../../Models/Client.model';
 
 
 @Component({
@@ -11,23 +12,27 @@ import { ModalService } from 'src/app/_modal';
   styleUrls: ['./new-clients.component.scss']
 })
 export class NewClientsComponent implements OnInit {
-  NewClientsQuery$: NewClientsQuery[];
-  bodyText: string;
+  NewClientsQuery$: Client[];
+  myClient: Client;
 
   headers = ['Datum', 'Název', '', ''];
   constructor(private dataService: NewClientsQueryService, private modalService: ModalService) { }
 
   ngOnInit(){
-    this.bodyText = 'This text can be updated in modal 1';
     return this.dataService.get()
       .subscribe(data => this.NewClientsQuery$ = data);
   }
 
-  openModal(id: string) {
-    this.modalService.open(id);
+  openModal(idDialog: string, client: Client) {
+    this.modalService.open(idDialog);
+    this.myClient = client;
   }
 
   closeModal(id: string) {
     this.modalService.close(id);
+  }
+
+  saveNewClientName(newClientName: string) {
+    this.myClient.Name = newClientName;
   }
 }
