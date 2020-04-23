@@ -11,14 +11,18 @@ import { ClientQueryService } from 'src/app/Services/Templates/DataService/Queri
 })
 export class ClientsTableComponent implements OnInit
 {
+
   ClientQuery$: ClientQuery[];
+
+
   headers = ['ID', 'Název', 'MAC', 'Konfigurace', '', ''];
 
   constructor(private dataService: ClientQueryService, router: Router) {
   }
-  OnDelete()
+
+  OnDelete(Id: number)
   {
-    this.dataService.delete().subscribe(data => this.ClientQuery$ = data);
+    this.dataService.delete(Id).subscribe(data => this.ClientQuery$ = data);
   }
 
   ngOnInit() {
@@ -26,4 +30,5 @@ export class ClientsTableComponent implements OnInit
       .subscribe(data => this.ClientQuery$ = data);
 
   }
+
 }

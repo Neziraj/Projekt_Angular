@@ -16,8 +16,8 @@ export class TemplateDataService<T extends ModelTemplate> {
     return this.http.get<[]>(this.URL);
   }
 
-  delete() {
-    return this.http.delete<[]>(this.URL);
+  delete(index) {
+    return this.http.delete<[]>(this.URL + index);
   }
 }
 

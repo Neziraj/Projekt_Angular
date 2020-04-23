@@ -1,4 +1,7 @@
 export class ModelTemplate
 {
-    Id: number;
+  constructor(ID) {
+    this.Id = ID;
+  }
+    public Id: number;
 }
