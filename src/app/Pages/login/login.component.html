@@ -1,25 +1,35 @@
 <div *ngIf="error" class="alert alert-danger">{{error}}</div>
-<h2>Přihlášení</h2>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
+<h2 class="LoginTitle" >Přihlášení</h2>
+
+<form   [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+  <div class="form-group ">
     <label for="username">Email</label>
-    <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+    <input type="text" formControlName="username" class="form-control shadow" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
     <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
       <div *ngIf="f.username.errors.required">Username is required</div>
     </div>
   </div>
+
   <div class="form-group">
     <label>Heslo</label>
-    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+    <input type="password" formControlName="password" class="form-control shadow" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
       <div *ngIf="f.password.errors.required">Password is required</div>
     </div>
   </div>
 
-  <div class="form-group">
-    <button [disabled]="loading" class="btn btn-primary">
+  <div class="form-group ">
+    <button [disabled]="loading" class="btn btn-primary shadow">
       <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
       Přihlásit se
     </button>
   </div>
+
+<div2>
+  <button class="btn shadow-lg">
+    Nemáte účet? Zaregistrujte se
+  </button>
+</div2>
+
 </form>
