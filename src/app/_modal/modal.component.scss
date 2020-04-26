@@ -3,7 +3,6 @@
 jw-modal {
   /* modals are hidden by default */
   display: none;
-
   .jw-modal {
     /* modal container fixed across whole screen */
     position: fixed;
@@ -11,6 +10,7 @@ jw-modal {
     right: 0;
     bottom: 0;
     left: 0;
+    border: 10px solid black;
 
     /* z-index must be higher than .jw-modal-background */
     z-index: 1000;
@@ -21,9 +21,11 @@ jw-modal {
     .jw-modal-body {
       padding: 20px;
       background: #fff;
+      border: 0.2px solid black;
+      border-radius: 10px;
 
       /* margin exposes part of the modal background */
-      margin: 40px;
+      margin: 30vh;
     }
   }
 
@@ -37,7 +39,7 @@ jw-modal {
 
     /* semi-transparent black  */
     background-color: #000;
-    opacity: 0.75;
+    opacity: 0.80;
 
     /* z-index must be below .jw-modal and above everything else  */
     z-index: 900;

@@ -19,7 +19,7 @@ export class TemplateDataService<T extends ModelTemplate> {
     return this.http.delete<[]>(this.URL + index);
   }
 
-  put(item: T) 
+  put(item: T)
   {
     return this.http.put<T>(this.URL, item);
   }
