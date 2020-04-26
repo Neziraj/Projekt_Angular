@@ -8,7 +8,7 @@
   <tr class="Row" *ngFor='let query of NewClientsQuery$'>
     <td>{{ query.Name }}</td>
     <td class="Row">
-      <button type="button" (click)="openModal('edit-client-modal', query)">Přijmout</button>
+      <button type="button" (click)="openModal('edit-client-modal', query)"class="btn btn-success">Přijmout</button>
     </td>
     <td class="Row">
       <button type="button" (click)="Deny(query)" class="btn btn-danger">Odmítnout</button>
@@ -17,9 +17,9 @@
   </tbody>
 </table>
 
-<jw-modal id="edit-client-modal">
+<jw-modal class="NewClientsModal" id="edit-client-modal">
   <h1>Nový klient</h1>
-  <p>Název klienta: <input #myInput type="text"/></p>
-  <button (click)="closeModal('edit-client-modal'); saveNewClientName(myInput.value)">Save</button>
-  <button (click)="closeModal('edit-client-modal');">Close</button>
+  <input class="form-control" #myInput  type="text" placeholder="Název Klienta" />
+  <button (click)="closeModal('edit-client-modal'); saveNewClientName(myInput.value)" class="btn btn-success">Save</button>
+  <button (click)="closeModal('edit-client-modal');" class="btn btn-danger">Close</button>
 </jw-modal>

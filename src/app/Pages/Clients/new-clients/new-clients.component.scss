@@ -1,0 +1,31 @@
+.NewClientsModal
+{
+  place-items: center;
+  text-align: center;
+
+  .btn
+  {
+    margin: 20px;
+    font-size: 2vh;
+    height: 5vh;
+  }
+  .form-control
+  {
+    margin: auto;
+    width: 20vw;
+    align-items: center;
+    -webkit-appearance:none;
+  }
+  .form-control:focus
+  {
+    outline: none;
+    box-shadow:none ;
+    border:1px solid #000c18;
+  }
+
+
+}
+
+
+
+

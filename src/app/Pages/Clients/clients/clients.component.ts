@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ClientQuery } from '../../../Models/Queries/ClientQuery';
 import { ClientQueryService } from 'src/app/Services/Templates/DataService/Queries/ClientQueryService';
 import {LoggedClientsQuery} from '../../../Models/Queries/LoggedClientsQuery';
-import {LoggedClientsQueryService} from "../../../Services/Templates/DataService/Queries/LoggedClientsQueryService";
+import {LoggedClientsQueryService} from '../../../Services/Templates/DataService/Queries/LoggedClientsQueryService';
 import { ClientService } from 'src/app/Services/Templates/DataService/ClientService';
 
 
