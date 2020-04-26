@@ -1,9 +1,55 @@
 <header>
   <div class="page-header">
     <ul class="middle">
-      <li><a class="button btn1" href="">Vytvořit novou konfiguraci</a></li>
+      <li><a class="button btn1" (click)="openModal('new-configuration-modal')">Vytvořit novou konfiguraci</a></li>
     </ul>
   </div>
 </header>
 
 <app-configuration-table></app-configuration-table>
+
+
+<jw-modal id="new-configuration-modal">
+  <h1>Vytvoření konfigurace</h1>
+  <p>Název konfigurace: <input #inputConfigurationName type="text"/></p>
+
+  <br><p for="singleSelect">Typ zálohy
+    <select name="Backup" ng-model="data.singleSelect">
+      <option value="full">Plná</option>
+      <option value="differential">Rozdílová</option>
+      <option value="incremental">Inkrementální</option>
+    </select>
+  </p>
+
+  <br><p for="fileType">Typ souboru
+    <select name="fileType" ng-model="data.singleSelect">
+      <option value="plain">Plain</option>
+      <option value="zip">ZIP</option>
+    </select>
+  </p>
+
+  <br><p>Popis: <input #inputDescription type="text"/></p>
+
+    <br><p>Popis: <input #inputDescription type="text"/></p>
+
+    <br><p><input type="checkbox">Lokální uložení</p>
+    <label>Cesta: <input #inputPathDestinationLocal type="text"/></label>
+  
+
+    <br><p><input type="checkbox">FTP</p>
+    <label>Site: <input #inputSiteDestinationFtp type="text"/></label>
+    <label>Uživatel: <input #inputLoginDestinationFtp type="text"/></label>
+    <label>Heslo: <input #inputPasswordDestinationFtp type="text"/></label>
+    <label>Port: <input #inputPortDestinationFtp type="text"/></label>
+
+    <br><p><input type="checkbox">Google Drive</p>
+    <label>Gmail: <input #inputGmailDestinationGoogleDrive type="text"/></label>
+    <label>Heslo: <input #inputPasswordDestinationGoogleDrive type="text"/></label>
+
+    <br><p><input type="checkbox">Zdroje</p>
+    <label>Cesta: <input #inputPathSource type="text"/></label>
+
+    <br>
+  <button (click)="closeModal('new-configuration-modal')">Save</button>
+  <button (click)="closeModal('new-configuration-modal')">Close</button>
+</jw-modal>
