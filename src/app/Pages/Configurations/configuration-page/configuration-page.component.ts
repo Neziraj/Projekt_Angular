@@ -3,6 +3,8 @@ import { ConfigurationService } from '../../../Services/Templates/DataService/Co
 import { Configuration } from '../../../Models/Configuration.model'
 /* Dialogy */
 import { ModalService } from 'src/app/_modal';
+import { FormGroup, Validators, FormBuilder } from  '@angular/forms';
+
 
 @Component({
   selector: 'app-configuration-page',

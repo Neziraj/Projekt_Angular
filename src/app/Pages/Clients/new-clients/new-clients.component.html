@@ -8,18 +8,23 @@
   <tr class="Row" *ngFor='let query of NewClientsQuery$'>
     <td>{{ query.Name }}</td>
     <td class="Row">
-      <button type="button" (click)="openModal('edit-client-modal', query)"class="btn btn-success">Přijmout</button>
+      <button type="button" (click)="openModal('client-new-name-modal', query)"class="btn btn-success">Přijmout</button>
     </td>
     <td class="Row">
-      <button type="button" (click)="Deny(query)" class="btn btn-danger">Odmítnout</button>
+      <button type="button" (click)="deny(query)" class="btn btn-danger">Odmítnout</button>
     </td>
   </tr>
   </tbody>
 </table>
 
-<jw-modal class="NewClientsModal" id="edit-client-modal">
-  <h1>Nový klient</h1>
-  <input class="form-control" #myInput  type="text" placeholder="Název Klienta" />
-  <button (click)="closeModal('edit-client-modal'); saveNewClientName(myInput.value)" class="btn btn-success">Save</button>
-  <button (click)="closeModal('edit-client-modal');" class="btn btn-danger">Close</button>
+<jw-modal class="NewClientsModal" id="client-new-name-modal">
+  <form [formGroup]="newClientForm">
+      <h1>Nový klient</h1>
+      <input type="text" formControlName="ClientName" class="form-control" placeholder="Název Klienta"  [ngClass]="{ 'is-invalid':ncf.myClientName.errors }" />
+      <div *ngIf="ncf.myClientName.errors" class="invalid-feedback">
+        <div *ngIf="ncf.myClientName.errors.required">Jméno je vyžadováno</div>
+      </div>
+    <button (click)="closeModal('client-new-name-modal'); saveNewClientName()" class="btn btn-success">Uložit</button>
+    <button (click)="closeModal('client-new-name-modal')" class="btn btn-danger">Storno</button>
+  </form>
 </jw-modal>
