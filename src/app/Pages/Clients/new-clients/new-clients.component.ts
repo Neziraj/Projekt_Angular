@@ -36,6 +36,7 @@ export class NewClientsComponent implements OnInit {
   openModal(idDialog: string, client: Client) {
     this.modalService.open(idDialog);
     this.myClient = client;
+    this.name = new FormControl(this.myClient.Name);
     this.ncf.ClientName.setValue(this.myClient.Name);
   }
 
