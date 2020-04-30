@@ -58,6 +58,7 @@ export class ConfigurationPageComponent implements OnInit {
 
   closeModal(idDialog: string) {
     this.modalService.close(idDialog);;
+    console.warn(this.ncf.get('configurationBasicSettings.ConfigurationName').value);
   }
 
 }

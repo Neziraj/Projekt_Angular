@@ -16,6 +16,9 @@
 
     <div formGroupName="configurationBasicSettings">
         <input type="text" formControlName="ConfigurationName">
+        <label *ngIf="newConfigurationForm.get('configurationBasicSettings.ConfigurationName').hasError('required')">
+          Vyplňte prosím jméno!
+        </label>
         <input type="text" formControlName="BackupType">
         <input type="text" formControlName="FileType">
         <input type="text" formControlName="MaxBackupsNumber">
