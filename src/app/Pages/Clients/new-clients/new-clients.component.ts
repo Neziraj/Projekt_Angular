@@ -4,7 +4,7 @@ import { ClientService } from 'src/app/Services/Templates/DataService/ClientServ
 import { Client } from '../../../Models/Client.model';
 /* Dialogy */
 import { ModalService } from 'src/app/_modal';
-import { FormGroup, Validators, FormBuilder, FormControl } from  '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from  '@angular/forms';
 
 @Component({
   selector: 'app-new-clients',
@@ -16,16 +16,13 @@ export class NewClientsComponent implements OnInit {
   newClientForm: FormGroup;
   myClient: Client;
 
-  name = new FormControl('');
-
   headers = ['Název', '', ''];
   constructor( private putDataService: ClientService, private dataService: NewClientsQueryService, private modalService: ModalService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.newClientForm  =  this.formBuilder.group({
+    this.newClientForm = this.formBuilder.group({
       ClientName: ['', Validators.required],
-    });
-
+     });
     return this.dataService.get()
       .subscribe(data => this.NewClientsQuery$ = data);
   }
@@ -36,7 +33,6 @@ export class NewClientsComponent implements OnInit {
   openModal(idDialog: string, client: Client) {
     this.modalService.open(idDialog);
     this.myClient = client;
-    this.name = new FormControl(this.myClient.Name);
     this.ncf.ClientName.setValue(this.myClient.Name);
   }
 
@@ -46,7 +42,7 @@ export class NewClientsComponent implements OnInit {
 
   saveNewClientName() {
     this.myClient.DateOfLogin = new Date();
-    this.myClient.Name = this.name.value;
+    this.myClient.Name = this.ncf.ClientName.value;
 
     return this.putDataService.put(this.myClient)
       .subscribe(data => this.myClient = data);
