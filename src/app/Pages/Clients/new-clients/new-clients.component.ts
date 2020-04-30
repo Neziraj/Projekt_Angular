@@ -27,7 +27,7 @@ export class NewClientsComponent implements OnInit {
       .subscribe(data => this.NewClientsQuery$ = data);
   }
 
-   // convenience getter for easy access to form fields
+   // convenience getter for easy access to NewClientForm fields
    get ncf() { return this.newClientForm.controls; }
 
   openModal(idDialog: string, client: Client) {

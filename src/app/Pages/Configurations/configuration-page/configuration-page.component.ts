@@ -12,19 +12,52 @@ import { FormGroup, Validators, FormBuilder } from  '@angular/forms';
   styleUrls: ['./configuration-page.component.scss']
 })
 export class ConfigurationPageComponent implements OnInit {
+  newConfigurationForm: FormGroup;
   myConfiguration: Configuration;
 
-  constructor(private dataService: ConfigurationService, private modalService: ModalService) { }
+  constructor(private dataService: ConfigurationService, private modalService: ModalService, private formBuilder: FormBuilder) { }
 
   ngOnInit(){
+    this.newConfigurationForm = this.formBuilder.group({
+
+      configurationBasicSettings: this.formBuilder.group({
+        ConfigurationName: ['', Validators.required],
+        BackupType: ['', Validators.required],
+        FileType: ['', Validators.required],
+        MaxBackupsNumber: ['', Validators.required],
+        Description: ['', Validators.required],
+      }),
+
+      localDestination: this.formBuilder.group({
+        Path: ['', Validators.required],
+      }),
+
+      ftpDestination: this.formBuilder.group({
+        Path: ['', Validators.required],
+        Site: ['', Validators.required],
+        Password: ['', Validators.required],
+        Login: ['', Validators.required],
+        Port: ['', Validators.required],
+      }),
+
+      source: this.formBuilder.group({
+        Path: ['', Validators.required],
+      })
+    })
   }
+
+  // convenience getter for easy access to NewConfigurationForm fields
+  get ncf() { return this.newConfigurationForm; }
 
   openModal(idDialog: string) {
     this.modalService.open(idDialog);
+    //set value works
+    this.ncf.get('configurationBasicSettings.ConfigurationName').setValue('set value works')
+    
   }
 
   closeModal(idDialog: string) {
-    this.modalService.close(idDialog);
+    this.modalService.close(idDialog);;
   }
 
 }

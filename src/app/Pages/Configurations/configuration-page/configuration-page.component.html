@@ -1,7 +1,7 @@
 <header>
   <div class="page-header">
     <ul class="middle">
-      <li><a (click)="openModal('new-configuration-modal')" class="button btn1">Vytvořit novou konfiguraci</a></li>
+      <li><a (click)="openModal('configuration-new-modal')" class="button btn1">Vytvořit novou konfiguraci</a></li>
     </ul>
   </div>
 </header>
@@ -9,47 +9,37 @@
 <app-configuration-table></app-configuration-table>
 
 
-<jw-modal id="new-configuration-modal">
-  <h1>Vytvoření konfigurace</h1>
-  <p>Název konfigurace: <input #inputConfigurationName type="text"/></p>
+<jw-modal id="configuration-new-modal">
+  <form [formGroup]="newConfigurationForm">
 
-  <br><p for="singleSelect">Typ zálohy
-    <select name="Backup" ng-model="data.singleSelect">
-      <option value="full">Plná</option>
-      <option value="differential">Rozdílová</option>
-      <option value="incremental">Inkrementální</option>
-    </select>
-  </p>
+    <h1>Nová konfigurace</h1>
 
-  <br><p for="fileType">Typ souboru
-    <select name="fileType" ng-model="data.singleSelect">
-      <option value="plain">Plain</option>
-      <option value="zip">ZIP</option>
-    </select>
-  </p>
+    <div formGroupName="configurationBasicSettings">
+        <input type="text" formControlName="ConfigurationName">
+        <input type="text" formControlName="BackupType">
+        <input type="text" formControlName="FileType">
+        <input type="text" formControlName="MaxBackupsNumber">
+        <input type="text" formControlName="Description">
+    </div>
 
-  <br><p>Popis: <input #inputDescription type="text"/></p>
+    <div formGroupName="localDestination">
+      <input type="text" formControlName="Path">
+    </div>
 
-    <br><p>Popis: <input #inputDescription type="text"/></p>
+    <div formGroupName="ftpDestination">
+      <input type="text" formControlName="Path">
+      <input type="text" formControlName="Site">
+      <input type="text" formControlName="Password">
+      <input type="text" formControlName="Login">
+      <input type="text" formControlName="Port">
+    </div>
 
-    <br><p><input type="checkbox">Lokální uložení</p>
-    <label>Cesta: <input #inputPathDestinationLocal type="text"/></label>
-  
+    <div formGroupName="source">
+      <input type="text" formControlName="Path">
+    </div>
 
-    <br><p><input type="checkbox">FTP</p>
-    <label>Site: <input #inputSiteDestinationFtp type="text"/></label>
-    <label>Uživatel: <input #inputLoginDestinationFtp type="text"/></label>
-    <label>Heslo: <input #inputPasswordDestinationFtp type="text"/></label>
-    <label>Port: <input #inputPortDestinationFtp type="text"/></label>
+    <button (click)="closeModal('configuration-new-modal')" class="btn btn-success">Uložit</button>
+    <button (click)="closeModal('configuration-new-modal')" class="btn btn-danger">Storno</button>
 
-    <br><p><input type="checkbox">Google Drive</p>
-    <label>Gmail: <input #inputGmailDestinationGoogleDrive type="text"/></label>
-    <label>Heslo: <input #inputPasswordDestinationGoogleDrive type="text"/></label>
-
-    <br><p><input type="checkbox">Zdroje</p>
-    <label>Cesta: <input #inputPathSource type="text"/></label>
-
-    <br>
-  <button (click)="closeModal('new-configuration-modal')">Save</button>
-  <button (click)="closeModal('new-configuration-modal')">Close</button>
+  </form>
 </jw-modal>
