@@ -14,33 +14,65 @@
   <h1>Nová konfigurace</h1>
 
   <form [formGroup]="newConfigurationForm">
-    
-    <div formGroupName="configurationBasicSettings">
-        <input type="text" formControlName="ConfigurationName">
+
+    <div class="test">
+    <div formGroupName="configurationBasicSettings" class="ConfigModal">
+
+      <label class="LabelClass">
+        Název Konfigurace
+        <input type="text" class="form-control" formControlName="ConfigurationName">
+      </label>
+
         <label *ngIf="newConfigurationForm.get('configurationBasicSettings.ConfigurationName').hasError('required')">
           Vyplňte prosím jméno!
         </label>
-        <input type="text" formControlName="BackupType">
-        <input type="text" formControlName="FileType">
-        <input type="number" formControlName="MaxBackupsNumber">
-        <input type="text" formControlName="Description">
+
+      <label class="LabelClass">
+        Backup Type
+        <input type="text" class="form-control" formControlName="BackupType">
+      </label>
+
+      <label class="LabelClass">
+        File Type
+        <input type="text" class="form-control" formControlName="FileType">
+      </label>
     </div>
 
-    <div formGroupName="recurrencePicker">
-      <input type="date" formControlName="StartDate">
-      <input type="time" formControlName="Time">
 
-      <input type="number" formControlName="Interval" min=1>
-      <select formControlName="IntervalUnits">
-        <option value="day">den</option>
-        <option value="week">týden</option>
-        <option value="month">měsíc</option>
-        <option value="year">rok</option>
-      </select>
+    <div formGroupName="recurrencePicker" class="ConfigModal">
 
-      <div formGroupName="WeekInterval" 
+      <label class="LabelClass">
+        Datum
+        <input type="date" class="form-control" formControlName="StartDate">
+
+      </label>
+
+      <label class="LabelClass">
+        Čas
+        <input type="time" class="form-control" style="width:12vh" formControlName="Time">
+      </label>
+
+
+      <label class="LabelClass">
+        <input type="number" class="form-control"  formControlName="Interval" min=1>
+        <select formControlName="IntervalUnits" class="form-control">
+          <option value="day">den</option>
+          <option value="week">týden</option>
+          <option value="month">měsíc</option>
+          <option value="year">rok</option>
+        </select>
+      </label>
+
+
+
+      <div formGroupName="WeekInterval" class="ConfigModal"
         *ngIf="newConfigurationForm.get('recurrencePicker.IntervalUnits').value=='week'">
-        <input type="checkbox" formControlName="Monday">
+
+        <label class="checkbox-inline CheckBoxClass">
+          Monday
+          <input type="checkbox"  formControlName="Monday">
+          </label>
+
         <input type="checkbox" formControlName="Tuesday">
         <input type="checkbox" formControlName="Wednesday">
         <input type="checkbox" formControlName="Thursday">
@@ -49,7 +81,7 @@
         <input type="checkbox" formControlName="Sunday">
       </div>
 
-      <div formGroupName="MonthInterval" 
+      <div formGroupName="MonthInterval"
         *ngIf="newConfigurationForm.get('recurrencePicker.IntervalUnits').value=='month'">
         <select formControlName="SpecifiedDay">
           <option value="day">1. den</option>
@@ -58,40 +90,122 @@
       </div>
     </div>
 
-    <div formGroupName="localDestination">
+      <div formGroupName="configurationBasicSettings" class="ConfigModal">
+        <label class="LabelClass">
+          Max. počet záloh
+          <input type="number" class="form-control" formControlName="MaxBackupsNumber">
+        </label>
+      </div>
+
+
+      <div class="form-group ConfigModal">
+        <label class="LabelClass" style="margin: 1vh">
+          Popisek
+          <textarea class="form-control" style="width:80vh;margin:2vh" rows="8" ></textarea>
+        </label>
+
+      </div>
+
+
+
+    </div>
+
+
+
+    <div formGroupName="localDestination" class="Local">
+      <label class="LabelClass">
+        Local Path
       <input type="checkbox" formControlName="Bool">
 
       <select formControlName="SelectedLocalDest">
-          <option formArrayName="arrayLocalDest" 
+          <option formArrayName="arrayLocalDest"
           *ngFor="let item of ald['controls']; let i = index;">{{ i }}</option>
       </select>
 
-        <div formArrayName="arrayLocalDest" 
+        <div formArrayName="arrayLocalDest"
         *ngFor="let item of ald['controls']; let i = index;">
+
           <div formGroupName="i">
-            <input type="text" formControlName="Path">
+              <input type="text" class="form-control" formControlName="Path">
           </div>
         </div>
 
       <button (click)="addLocalDest()" class="btn btn-success">Přidat</button>
       <button (click)="removeAtLocalDest()" class="btn btn-danger">Odebrat</button>
+        </label>
+
     </div>
 
-    <div formGroupName="ftpDestination">
-      <input type="checkbox" formControlName="Bool">
-      <input type="text" formControlName="Path">
-      <input type="text" formControlName="Site">
-      <input type="text" formControlName="Password">
-      <input type="text" formControlName="Login">
-      <input type="text" formControlName="Port">
+
+
+
+
+    <div formGroupName="ftpDestination" class="FTP">
+        <input type="checkbox"  formControlName="Bool">
+
+      <label class="LabelClass">
+        Path
+        <input type="text" class="form-control" formControlName="Path" style="width: 50vh">
+      </label>
+
+      <label class="LabelClass">
+        Site
+        <input type="text" class="form-control" formControlName="Site">
+      </label>
+
+      <label class="LabelClass">
+        Password
+        <input type="text" class="form-control" formControlName="Password">
+      </label>
+
+      <label class="LabelClass">
+        Login
+        <input type="text" class="form-control" formControlName="Login">
+      </label>
+
+      <label class="LabelClass">
+        Port
+        <input type="text" class="form-control" formControlName="Port">
+      </label>
+
+      <button class="btn btn-success">Přidat</button>
+      <button class="btn btn-danger">Odebrat</button>
+
     </div>
 
-    <div formGroupName="source">
-      <input type="text" formControlName="Path">
+    <div formGroupName="ftpDestination" class="Google">
+      <input type="checkbox"  formControlName="Bool">
+
+      <label class="LabelClass">
+        Gmail
+        <input type="text" class="form-control" formControlName="Gmail">
+      </label>
+
+      <label class="LabelClass">
+        Heslo
+        <input type="text" class="form-control" formControlName="GPassword">
+      </label>
+
+      <button class="btn btn-success">Přidat</button>
+      <button class="btn btn-danger">Odebrat</button>
+
     </div>
 
-    <button (click)="closeModal('configuration-new-modal')" class="btn btn-success">Uložit</button>
-    <button (click)="closeModal('configuration-new-modal')" class="btn btn-danger">Storno</button>
+
+    <div formGroupName="source" class="Local">
+      <label class="LabelClass">
+        Source
+        <input type="text" class="form-control" formControlName="Path">
+        <button class="btn btn-success">Přidat</button>
+        <button class="btn btn-danger">Odebrat</button>
+      </label>
+    </div>
+
+    <div class="test2">
+      <button (click)="closeModal('configuration-new-modal')"  class="btn btn-outline-success">Uložit</button>
+      <button (click)="closeModal('configuration-new-modal')"  class="btn btn-outline-danger">Storno</button>
+    </div>
+
 
   </form>
 </jw-modal>
