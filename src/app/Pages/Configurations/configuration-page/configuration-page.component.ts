@@ -3,7 +3,7 @@ import { ConfigurationService } from '../../../Services/Templates/DataService/Co
 import { Configuration } from '../../../Models/Configuration.model'
 /* Dialogy */
 import { ModalService } from 'src/app/_modal';
-import { FormGroup, Validators, FormBuilder } from  '@angular/forms';
+import { FormGroup, Validators, FormBuilder, FormArray  } from  '@angular/forms';
 
 
 @Component({
@@ -13,14 +13,18 @@ import { FormGroup, Validators, FormBuilder } from  '@angular/forms';
 })
 export class ConfigurationPageComponent implements OnInit {
   newConfigurationForm: FormGroup;
+  arrayLocalDest: FormArray;
+  arrayFtpDest: FormArray;
+  arraySource: FormArray;
+
   myConfiguration: Configuration;
 
-  constructor(private dataService: ConfigurationService, private modalService: ModalService, private formBuilder: FormBuilder) { }
+  constructor(private dataService: ConfigurationService, private modalService: ModalService, private fb: FormBuilder) { }
 
   ngOnInit(){
-    this.newConfigurationForm = this.formBuilder.group({
+    this.newConfigurationForm = this.fb.group({
 
-      configurationBasicSettings: this.formBuilder.group({
+      configurationBasicSettings: this.fb.group({
         ConfigurationName: ['', Validators.required],
         BackupType: ['', Validators.required],
         FileType: ['', Validators.required],
@@ -28,11 +32,36 @@ export class ConfigurationPageComponent implements OnInit {
         Description: ['', Validators.required],
       }),
 
-      localDestination: this.formBuilder.group({
-        Path: ['', Validators.required],
+      recurrencePicker: this.fb.group({
+        StartDate: ['', Validators.required],
+        Time: ['', Validators.required],
+        Interval: ['', Validators.required],
+        IntervalUnits: ['', Validators.required],
+
+        WeekInterval: this.fb.group({
+          Monday: ['', Validators.required],
+          Tuesday: ['', Validators.required],
+          Wednesday: ['', Validators.required],
+          Thursday: ['', Validators.required],
+          Friday: ['', Validators.required],
+          Saturday: ['', Validators.required],
+          Sunday: ['', Validators.required],
+        }),
+
+        MonthInterval: this.fb.group({
+          SpecifiedDay: ['', Validators.required],
+        })
       }),
 
-      ftpDestination: this.formBuilder.group({
+      localDestination: this.fb.group({
+        Bool: ['', Validators.required],
+        SelectedLocalDest: ['', Validators.required],
+        arrayLocalDest: this.fb.array([ this.createLocalDest() ])
+      }),
+
+      ftpDestination: this.fb.group({
+        Bool: ['', Validators.required],
+        SelectedFtpDest: ['', Validators.required],
         Path: ['', Validators.required],
         Site: ['', Validators.required],
         Password: ['', Validators.required],
@@ -40,7 +69,7 @@ export class ConfigurationPageComponent implements OnInit {
         Port: ['', Validators.required],
       }),
 
-      source: this.formBuilder.group({
+      source: this.fb.group({
         Path: ['', Validators.required],
       })
     })
@@ -48,6 +77,12 @@ export class ConfigurationPageComponent implements OnInit {
 
   // convenience getter for easy access to NewConfigurationForm fields
   get ncf() { return this.newConfigurationForm; }
+
+  // convenience getter for easy access to ArrayLocalDest
+  get ald() { return this.ncf.get('localDestination.arrayLocalDest') }
+
+  // convenience getter for easy access to ArrayLocalDest at selected index
+  get aldAt() { return this.ncf.get('localDestination.arrayLocalDest').get(this.ncf.get('configurationBasicSettings.ConfigurationName').value) }
 
   openModal(idDialog: string) {
     this.modalService.open(idDialog);
@@ -61,4 +96,30 @@ export class ConfigurationPageComponent implements OnInit {
     console.warn(this.ncf.get('configurationBasicSettings.ConfigurationName').value);
   }
 
+  /*-----------------*/
+  /*methods for array*/
+  /*-----------------*/
+  
+  // form array returns localDest
+  createLocalDest(): FormGroup {
+    return this.fb.group({
+      Path: '',
+    });
+  }
+
+  // form array add localDest
+  addLocalDest(): void {
+    this.arrayLocalDest = this.ncf.get('localDestination.arrayLocalDest') as FormArray;
+    this.arrayLocalDest.push(this.createLocalDest());
+  }
+
+  // form array remove localDest
+  removeAtLocalDest(): void {
+    this.arrayLocalDest = this.ncf.get('localDestination.arrayLocalDest') as FormArray;
+
+    this.arrayLocalDest.removeAt(this.ncf.get('localDestination.SelectedLocalDest').value);
+
+    this.ncf.get('localDestination.SelectedLocalDest').setValue(this.ncf.get('localDestination.SelectedLocalDest').value - 1)
+    
+  }
 }

@@ -11,7 +11,7 @@
             <td>{{ client.MAC }}</td>
             <td>{{ client.Configuration }}</td>
           <td class="Row">
-            <button type="button" class="btn btn-outline-secondary " >Nastavení</button>
+            <button type="button" class="btn btn-outline-secondary" (click)="openModal('client-edit-modal', client)">Nastavení</button>
           </td>
           <td class="Row">
           <button type="button" class="btn btn-outline-danger" (click)="OnDelete(client.Id)">Smazat</button>
@@ -20,3 +20,20 @@
     </tbody>
 
 </table>
+
+
+
+<jw-modal id="client-edit-modal">
+
+  <h1>Nová konfigurace</h1>
+
+  <form [formGroup]="editClientForm">
+
+    <label> {{ editClientForm.get('ClientName').value }} </label>
+
+    <button (click)="closeModal('client-edit-modal')" class="btn btn-success">Uložit</button>
+    <button (click)="closeModal('client-edit-modal')" class="btn btn-danger">Storno</button>
+
+  </form>
+
+</jw-modal>
