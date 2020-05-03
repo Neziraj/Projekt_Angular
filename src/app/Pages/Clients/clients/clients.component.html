@@ -25,11 +25,19 @@
 
 <jw-modal id="client-edit-modal">
 
-  <h1>Nová konfigurace</h1>
+  <h1>Nastavení klienta</h1>
 
   <form [formGroup]="editClientForm">
 
     <label> {{ editClientForm.get('ClientName').value }} </label>
+
+    <div formArrayName="arrayConfClient" 
+        *ngFor="let item of acc['controls']; let i = index;">
+        <div formGroupName="i">
+          <input type="checkbox" formControlName="Bool">
+          <label formControlName="Name"></label>
+        </div>
+    </div>
 
     <button (click)="closeModal('client-edit-modal')" class="btn btn-success">Uložit</button>
     <button (click)="closeModal('client-edit-modal')" class="btn btn-danger">Storno</button>
