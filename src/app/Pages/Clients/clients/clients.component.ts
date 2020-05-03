@@ -27,15 +27,15 @@ export class ClientsTableComponent implements OnInit
 
   constructor(private tableDataService: ClientService, private dataService: LoggedClientsQueryService, router: Router, private modalService: ModalService, private fb: FormBuilder) {
   }
-  
+
   ngOnInit() {
     this.editClientForm = this.fb.group({
       ClientName: [''],
-    })
+      arrayConfClient: this.fb.array([this.createClientConfiguration()])
+    });
 
     return this.dataService.get()
       .subscribe(data => this.LoggedClientsQuery$ = data);
-
   }
 
   OnDelete(Id: number)
@@ -46,13 +46,43 @@ export class ClientsTableComponent implements OnInit
   // convenience getter for easy access to NewConfigurationForm fields
   get ecf() { return this.editClientForm; }
 
+  // convenience getter for easy access to arrayConfClient
+  get acc() { return this.ecf.get('arrayConfClient'); }
+
   openModal(idDialog: string, client: Client) {
     this.modalService.open(idDialog);
     this.myClient = client;
     this.ecf.get('ClientName').setValue(this.myClient.Name);
+
+    this.addClientConfiguration();
+    this.addClientConfiguration();
+    this.addClientConfiguration();
+    this.addClientConfiguration();
   }
 
   closeModal(idDialog: string) {
     this.modalService.close(idDialog);
+  }
+
+  // form array returns localDest
+  createClientConfiguration(): FormGroup {
+    return this.fb.group({
+      Bool: false,
+    });
+  }
+
+  // form array add localDest
+  addClientConfiguration(): void {
+      this.arrayConfClient = this.acc as FormArray;
+      this.arrayConfClient.push(this.createClientConfiguration());
+  }
+
+  // edit client name
+  saveNewClientName() {
+    this.myClient.DateOfLogin = new Date();
+    this.myClient.Name = this.ecf.get('ClientName').value;
+
+    return this.tableDataService.put(this.myClient)
+      .subscribe(data => this.myClient = data);
   }
 }

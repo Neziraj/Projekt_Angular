@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewClientsQueryService } from '../../../Services/Templates/DataService/Queries/NewClientsQueryService';
 import { ClientService } from 'src/app/Services/Templates/DataService/ClientService';
 import { Client } from '../../../Models/Client.model';
+
 /* Dialogy */
 import { ModalService } from 'src/app/_modal';
 import { FormGroup, Validators, FormBuilder } from  '@angular/forms';
