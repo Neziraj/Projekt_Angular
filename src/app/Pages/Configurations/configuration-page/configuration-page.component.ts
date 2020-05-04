@@ -88,7 +88,7 @@ export class ConfigurationPageComponent implements OnInit {
     this.modalService.open(idDialog);
     //set value works
     this.ncf.get('configurationBasicSettings.ConfigurationName').setValue('set value works')
-    
+
   }
 
   closeModal(idDialog: string) {
@@ -99,7 +99,7 @@ export class ConfigurationPageComponent implements OnInit {
   /*-----------------*/
   /*methods for array*/
   /*-----------------*/
-  
+
   // form array returns localDest
   createLocalDest(): FormGroup {
     return this.fb.group({
@@ -120,6 +120,12 @@ export class ConfigurationPageComponent implements OnInit {
     this.arrayLocalDest.removeAt(this.ncf.get('localDestination.SelectedLocalDest').value);
 
     this.ncf.get('localDestination.SelectedLocalDest').setValue(this.ncf.get('localDestination.SelectedLocalDest').value - 1)
-    
+
   }
+
+  Reload()
+  {
+    location.reload();
+  }
+
 }

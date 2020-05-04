@@ -53,24 +53,26 @@
       </label>
 
 
-      <label class="LabelClass">
-        <input type="number" class="form-control"  formControlName="Interval" min=1>
-        <select formControlName="IntervalUnits" class="form-control">
-          <option value="day">den</option>
-          <option value="week">týden</option>
-          <option value="month">měsíc</option>
-          <option value="year">rok</option>
-        </select>
-      </label>
+      <label class="LabelClass" >
+        Interval zálohy
+        <input type="number" class="form-control"  formControlName="Interval" min=1 style="width: 15vh">
+        </label>
+        <label class="LabelClass" style="margin-left: -3vh" >
+          <select formControlName="IntervalUnits" class="form-control" style="width:10vh">
+            <option value="day">den</option>
+            <option value="week">týden</option>
+            <option value="month">měsíc</option>
+            <option value="year">rok</option>
+          </select>
+        </label>
 
 
-
-      <div formGroupName="WeekInterval" class="ConfigModal"
+      <div formGroupName="WeekInterval" class="ConfigModal" style="margin: 0"
         *ngIf="newConfigurationForm.get('recurrencePicker.IntervalUnits').value=='week'">
 
-        <label class="checkbox-inline CheckBoxClass">
-          Monday
-          <input type="checkbox"  formControlName="Monday">
+          <label class="checkbox-inline CheckBoxClass" style="margin: 0">
+            Monday
+            <input type="checkbox"  formControlName="Monday">
           </label>
 
         <input type="checkbox" formControlName="Tuesday">
@@ -81,13 +83,17 @@
         <input type="checkbox" formControlName="Sunday">
       </div>
 
-      <div formGroupName="MonthInterval"
+      <div formGroupName="MonthInterval" class="ConfigModal"
         *ngIf="newConfigurationForm.get('recurrencePicker.IntervalUnits').value=='month'">
-        <select formControlName="SpecifiedDay">
-          <option value="day">1. den</option>
-          <option value="dayOfWeek">první sobota</option>
-        </select>
+        <label class="LabelClass" style="margin: 0">
+          <select formControlName="SpecifiedDay" class="form-control">
+            <option value="day">1. den</option>
+            <option value="dayOfWeek">první sobota</option>
+          </select>
+        </label>
+
       </div>
+
     </div>
 
       <div formGroupName="configurationBasicSettings" class="ConfigModal">
@@ -101,7 +107,7 @@
       <div class="form-group ConfigModal">
         <label class="LabelClass" style="margin: 1vh">
           Popisek
-          <textarea class="form-control" style="width:80vh;margin:2vh" rows="6" ></textarea>
+          <textarea class="form-control" style="width:80vh;margin:2vh" rows="5" ></textarea>
         </label>
 
       </div>

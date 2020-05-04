@@ -36,6 +36,7 @@ export class ClientsTableComponent implements OnInit
 
     return this.dataService.get()
       .subscribe(data => this.LoggedClientsQuery$ = data);
+
   }
 
   OnDelete(Id: number)
@@ -85,4 +86,5 @@ export class ClientsTableComponent implements OnInit
     return this.tableDataService.put(this.myClient)
       .subscribe(data => this.myClient = data);
   }
+
 }

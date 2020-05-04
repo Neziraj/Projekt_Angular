@@ -32,12 +32,18 @@
     align-items: center;
     display: inline-block;
   }
+
   .CheckBoxClass
   {
     margin: 2.5vh;
     text-align: center;
     align-items: center;
     display: inline-block;
+
+    .container {
+      margin: 0 auto;
+    }
+
   }
   .form-group
   {
@@ -60,6 +66,8 @@
   }
 
 }
+
+
 .FTP {
   text-align: center;
   align-items: center;
@@ -80,30 +88,5 @@
     margin: 15px;
   }
 }
-
-.Google
-{
-  text-align: center;
-  align-items: center;
-
-  .form-control {
-    width: 20vh;
-  }
-
-  .LabelClass
-  {
-    margin-left: 2vh;
-    margin-right: 3vh;
-    text-align: center;
-    align-items: center;
-  }
-  .btn
-  {
-    margin: 15px;
-  }
-}
-
-
-
 
 

@@ -8,10 +8,10 @@
   <tr class="Row" *ngFor='let query of NewClientsQuery$'>
     <td>{{ query.Name }}</td>
     <td class="Row">
-      <button type="button" (click)="openModal('client-new-name-modal', query)"class="btn btn-success">Přijmout</button>
+      <button type="button" (click)="openModal('client-new-name-modal', query)" class="btn btn-success">Přijmout</button>
     </td>
     <td class="Row">
-      <button type="button" (click)="deny(query)" class="btn btn-danger">Odmítnout</button>
+      <button type="button" (click)=" deny(query)" class="btn btn-danger">Odmítnout</button>
     </td>
   </tr>
   </tbody>
@@ -22,14 +22,14 @@
   <form [formGroup]="newClientForm">
 
       <h1>Nový klient</h1>
-      
+
         <input type="text" formControlName="ClientName" class="form-control" placeholder="Název Klienta"/>
         <div *ngIf="newClientForm.get('ClientName').hasError('required')">
           Vyplňte prosím jméno!
         </div>
 
-    <button (click)="closeModal('client-new-name-modal'); saveNewClientName()" class="btn btn-success">Uložit</button>
+    <button (click)="closeModal('client-new-name-modal'); saveNewClientName(); Reload()" class="btn btn-success">Uložit</button>
     <button (click)="closeModal('client-new-name-modal')" class="btn btn-danger">Storno</button>
-  
+
   </form>
 </jw-modal>
