@@ -9,6 +9,9 @@ import { ClientService } from 'src/app/Services/Templates/DataService/ClientServ
 import { ModalService } from 'src/app/_modal';
 import { FormGroup, Validators, FormBuilder, FormArray  } from  '@angular/forms';
 import { Client } from 'src/app/Models/Client.model';
+import {Configuration} from '../../../Models/Configuration.model';
+import {ConfigurationService} from '../../../Services/Templates/DataService/ConfigurationService';
+import {element} from 'protractor';
 
 @Component({
   selector: 'app-clients-table',
@@ -17,15 +20,19 @@ import { Client } from 'src/app/Models/Client.model';
 })
 export class ClientsTableComponent implements OnInit
 {
+  Name: string;
+  Id: number;
+
   editClientForm: FormGroup;
   arrayConfClient: FormArray;
   myClient: Client;
   LoggedClientsQuery$: LoggedClientsQuery[];
+  Config: Configuration[];
 
 
   headers = ['ID', 'Název', 'MAC', 'Konfigurace', '', ''];
 
-  constructor(private tableDataService: ClientService, private dataService: LoggedClientsQueryService, router: Router, private modalService: ModalService, private fb: FormBuilder) {
+  constructor( private ConfigData: ConfigurationService, private tableDataService: ClientService, private dataService: LoggedClientsQueryService, router: Router, private modalService: ModalService, private fb: FormBuilder) {
   }
 
   ngOnInit() {
@@ -34,7 +41,8 @@ export class ClientsTableComponent implements OnInit
       arrayConfClient: this.fb.array([this.createClientConfiguration()])
     });
 
-    return this.dataService.get()
+
+    return  this.dataService.get()
       .subscribe(data => this.LoggedClientsQuery$ = data);
 
   }
@@ -55,10 +63,12 @@ export class ClientsTableComponent implements OnInit
     this.myClient = client;
     this.ecf.get('ClientName').setValue(this.myClient.Name);
 
-    this.addClientConfiguration();
-    this.addClientConfiguration();
-    this.addClientConfiguration();
-    this.addClientConfiguration();
+    // tslint:disable-next-line:no-shadowed-variable
+    this.ConfigData.get()[''].forEach(element => {
+      this.Id = element.Id;
+      this.Name = element.Name;
+      this.addClientConfiguration();
+    });
   }
 
   closeModal(idDialog: string) {
@@ -69,6 +79,8 @@ export class ClientsTableComponent implements OnInit
   createClientConfiguration(): FormGroup {
     return this.fb.group({
       Bool: false,
+      Name: this.Name,
+      Id: this.Id
     });
   }
 

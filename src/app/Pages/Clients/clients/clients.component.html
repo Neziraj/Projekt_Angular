@@ -8,7 +8,7 @@
         <tr class="Row" *ngFor='let client of LoggedClientsQuery$'>
             <td>{{ client.Id }}</td>
             <td>{{ client.Name }}</td>
-            <td>{{ client.MAC }}</td>
+            <td>{{ client.MAC}}</td>
             <td>{{ client.Configuration }}</td>
           <td class="Row">
             <button type="button" class="btn btn-outline-secondary" (click)="openModal('client-edit-modal', client)">Nastavení</button>
@@ -22,20 +22,19 @@
 </table>
 
 
-
 <jw-modal id="client-edit-modal">
 
   <h1>Nastavení klienta</h1>
 
-  <form [formGroup]="editClientForm">
+  <form [formGroup]="editClientForm" >
 
     <label> {{ ecf.get('ClientName').value }} </label>
     <input type="text" formControlName="ClientName">
-
     <div formArrayName="arrayConfClient"
          *ngFor="let item of acc['controls']; let i = index;">
       <div formGroupName="i">
-        <input type="checkbox" formControlName="Bool">
+        <input type="checkbox" formControlName="Bool" >
+
       </div>
     </div>
 
