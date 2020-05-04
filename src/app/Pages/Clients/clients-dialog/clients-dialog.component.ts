@@ -14,23 +14,20 @@ import { FormGroup, Validators, FormBuilder, FormArray, FormControl  } from  '@a
 import { Client } from 'src/app/Models/Client.model';
 
 @Component({
-  selector: 'app-clients-table',
-  templateUrl: './clients.component.html',
-  styleUrls: ['./clients.component.scss']
+  selector: 'app-clients-dialog',
+  templateUrl: './clients-dialog.component.html',
+  styleUrls: ['./clients-dialog.component.scss']
 })
-export class ClientsTableComponent implements OnInit
+
+export class ClientsDialogComponent implements OnInit
 {
   editClientForm: FormGroup;
   arrayConfClient: FormArray;
   Configs: Configuration[];
   myClient: Client;
-  LoggedClientsQuery$: LoggedClientsQuery[];
 
 
-  headers = ['ID', 'Název', 'MAC', 'Konfigurace', '', ''];
-
-  // tslint:disable-next-line:max-line-length
-  constructor( private ConfigData: ConfigurationService, private tableDataService: ClientService, private dataService: LoggedClientsQueryService, router: Router, private modalService: ModalService, private fb: FormBuilder)
+  constructor( private ConfigData: ConfigurationService, private tableDataService: ClientService, private dataService: LoggedClientsQueryService, private modalService: ModalService, private fb: FormBuilder)
   {
     this.editClientForm = this.fb.group({
       ClientName: [''],
@@ -43,25 +40,15 @@ export class ClientsTableComponent implements OnInit
     this.ConfigData.get()
       .subscribe(data => this.Configs = data);
 
-    this.dataService.get()
-      .subscribe(data => this.LoggedClientsQuery$ = data);
   }
-
-  OnDelete(Id: number)
-  {
-    this.tableDataService.delete(Id).subscribe(data => this.LoggedClientsQuery$ = data);
-  }
-
-  // convenience getter for easy access to NewConfigurationForm fields
-  get ecf() { return this.editClientForm; }
 
   // convenience getter for easy access to arrayConfClient
-  get getArrayConfig() { return this.ecf.get('arrayConfClient') as FormArray; }
+  get getArrayConfig() { return this.editClientForm.get('arrayConfClient') as FormArray; }
 
   openModal(idDialog: string, client: Client) {
     this.modalService.open(idDialog);
     this.myClient = client;
-    this.ecf.get('ClientName').setValue(this.myClient.Name);
+    this.editClientForm.get('ClientName').setValue(this.myClient.Name);
 
 
     this.editClientForm.patchValue({
@@ -76,6 +63,9 @@ export class ClientsTableComponent implements OnInit
     return arr as FormArray;
   }
 
+  closeModal(idDialog: string) {
+    this.modalService.close(idDialog);
+  }
 
   // form array returns localDest
   createClientConfiguration(): FormGroup {
@@ -84,5 +74,19 @@ export class ClientsTableComponent implements OnInit
     });
   }
 
+  // form array add localDest
+  addClientConfiguration(): void {
+    this.arrayConfClient = this.getArrayConfig as FormArray;
+    this.arrayConfClient.push(this.createClientConfiguration());
+  }
+
+  // edit client name
+  saveNewClientName() {
+    this.myClient.DateOfLogin = new Date();
+    this.myClient.Name = this.editClientForm.get('ClientName').value;
+
+    return this.tableDataService.put(this.myClient)
+      .subscribe(data => this.myClient = data);
+  }
 
 }

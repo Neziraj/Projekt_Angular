@@ -21,26 +21,4 @@
 
 </table>
 
-
-<jw-modal id="client-edit-modal">
-
-  <h1>Nastavení klienta</h1>
-
-  <form [formGroup]="editClientForm" >
-
-    <label> {{ ecf.get('ClientName').value }} </label>
-    <input type="text" formControlName="ClientName">
-    <div formArrayName="arrayConfClient"
-         *ngFor="let item of acc['controls']; let i = index;">
-      <div formGroupName="i">
-        <input type="checkbox" formControlName="Bool" >
-
-      </div>
-    </div>
-
-    <button (click)="closeModal('client-edit-modal'); saveNewClientName()" class="btn btn-success">Uložit</button>
-    <button (click)="closeModal('client-edit-modal')" class="btn btn-danger">Storno</button>
-
-  </form>
-
-</jw-modal>
+<app-clients-dialog></app-clients-dialog>

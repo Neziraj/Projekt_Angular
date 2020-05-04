@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NewClientsQueryService } from '../../../Services/Templates/DataService/Queries/NewClientsQueryService';
 import { ClientService } from 'src/app/Services/Templates/DataService/ClientService';
 import { Client } from '../../../Models/Client.model';
-import {AppComponent} from '../../../app.component';
 
 /* Dialogy */
 import { ModalService } from 'src/app/_modal';
@@ -38,30 +37,11 @@ export class NewClientsComponent implements OnInit {
     this.ncf.ClientName.setValue(this.myClient.Name);
   }
 
-  closeModal(idDialog: string) {
-    this.modalService.close(idDialog);
-  }
-
-  saveNewClientName() {
-    this.myClient.DateOfLogin = new Date();
-    this.myClient.Name = this.ncf.ClientName.value;
-
-    return this.putDataService.put(this.myClient)
-      .subscribe(data => this.myClient = data);
-  }
-
   deny(client: Client)
   {
     return this.putDataService.delete(client.Id)
       .subscribe();
   }
-
-  Reload()
-  {
-    location.reload();
-  }
-
-
 
 }
 

@@ -12,7 +12,7 @@ export class TemplateDataService<T extends ModelTemplate> {
   URL = 'http://localhost:49497/api/';
 
   get() {
-    return this.http.get<[]>(this.URL);
+    return this.http.get<T[]>(this.URL);
   }
 
   delete(index) {

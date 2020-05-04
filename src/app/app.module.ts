@@ -19,6 +19,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { fakeBackendProvider } from './_helpers';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { ModalModule } from './_modal';
+import { ClientsDialogComponent } from './Pages/Clients/clients-dialog/clients-dialog.component';
+import { ConfigurationDialogComponent } from './Pages/Configurations/configuration-dialog/configuration-dialog.component';
+import { NewClientsDialogComponent } from './Pages/Clients/new-clients-dialog/new-clients-dialog.component';
 
 
 
@@ -37,6 +40,9 @@ const appRoutes: Routes = [
     NewClientsComponent,
     RoutingComponents,
     LoginComponent,
+    ClientsDialogComponent,
+    ConfigurationDialogComponent,
+    NewClientsDialogComponent,
   ],
   imports: [
     BrowserModule,
