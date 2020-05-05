@@ -4,17 +4,17 @@
         <tr class= "TableHeader">
             <td *ngFor="let head of headers">{{ head }}</td>
         </tr>
-
     </thead>
 
     <tbody>
-        <tr *ngFor='let config of Config$'>
+        <tr *ngFor='let config of Config'>
             <td>{{ config.Id }}</td>
             <td>{{ config.Name }}</td>
             <td>{{ config.Description }} </td>
           <td class="Row">
             <button class="btn btn-outline-secondary">Nastavení</button>
           </td>
+
           <td class="Row">
             <button type="button" class="btn btn-outline-danger" (click)="OnDelete(config.Id)">Smazat</button>
           </td>

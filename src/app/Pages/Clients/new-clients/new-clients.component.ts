@@ -37,18 +37,6 @@ export class NewClientsComponent implements OnInit {
     this.ncf.ClientName.setValue(this.myClient.Name);
   }
 
-  closeModal(idDialog: string) {
-    this.modalService.close(idDialog);
-  }
-
-  saveNewClientName() {
-    this.myClient.DateOfLogin = new Date();
-    this.myClient.Name = this.ncf.ClientName.value;
-
-    return this.putDataService.put(this.myClient)
-      .subscribe(data => this.myClient = data);
-  }
-
   deny(client: Client)
   {
     return this.putDataService.delete(client.Id)
@@ -56,3 +44,4 @@ export class NewClientsComponent implements OnInit {
   }
 
 }
+

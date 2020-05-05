@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Configuration} from '../../../Models/Configuration.model';
 import {ConfigurationService} from '../../../Services/Templates/DataService/ConfigurationService';
-import {TemplateDataService} from '../../../Services/Template.data.service';
 
 @Component({
   selector: 'app-configuration-table',
@@ -11,13 +10,13 @@ import {TemplateDataService} from '../../../Services/Template.data.service';
 
 export class ConfigurationTableComponent implements OnInit {
   headers = ['ID', 'Název', 'Popis', '', ''];
-  Config$: Configuration[];
+  Config: Configuration[];
 
   constructor(private dataService: ConfigurationService) { }
 
   ngOnInit(){
     return this.dataService.get()
-      .subscribe(data => this.Config$ = data);
+      .subscribe(data => this.Config = data);
   }
 
 

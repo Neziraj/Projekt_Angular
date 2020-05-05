@@ -9,7 +9,7 @@ import { ConfigurationService } from 'src/app/Services/Templates/DataService/Con
 
 /* Dialogy */
 import { ModalService } from 'src/app/_modal';
-import { FormGroup, Validators, FormBuilder, FormArray  } from  '@angular/forms';
+import { FormGroup, Validators, FormBuilder, FormArray, FormControl  } from  '@angular/forms';
 import { Client } from 'src/app/Models/Client.model';
 import {Configuration} from '../../../Models/Configuration.model';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
@@ -23,6 +23,7 @@ export class ClientsTableComponent implements OnInit
 {
   editClientForm: FormGroup;
   arrayConfClient: FormArray;
+  Configs: Configuration[];
   myClient: Client;
   Configs: Configuration[];
   ConfigID: number;
@@ -58,7 +59,7 @@ export class ClientsTableComponent implements OnInit
   get ecf() { return this.editClientForm; }
 
   // convenience getter for easy access to arrayConfClient
-  get acc() { return this.ecf.get('arrayConfClient'); }
+  get getArrayConfig() { return this.ecf.get('arrayConfClient') as FormArray; }
 
   openModal(idDialog: string, client: Client) {
 
@@ -69,8 +70,9 @@ export class ClientsTableComponent implements OnInit
     this.fillClientConfiguration();
   }
 
-  closeModal(idDialog: string) {
-    this.modalService.close(idDialog);
+  createConfigFormArray(): FormArray {
+    const arr = new FormArray([]);
+    return arr as FormArray;
   }
 
   /*createConfigFormArray(): FormArray {
@@ -106,7 +108,4 @@ export class ClientsTableComponent implements OnInit
     this.myClient.DateOfLogin = new Date();
     this.myClient.Name = this.ecf.get('ClientName').value;
 
-    return this.tableDataService.put(this.myClient)
-      .subscribe(data => this.myClient = data);
-  }
 }
