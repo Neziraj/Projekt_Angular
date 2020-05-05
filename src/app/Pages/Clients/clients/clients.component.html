@@ -11,7 +11,7 @@
             <td>{{ client.MAC}}</td>
             <td>{{ client.Configuration }}</td>
           <td class="Row">
-            <button type="button" class="btn btn-outline-secondary" (click)="openModal('client-edit-modal', client)">Nastavení</button>
+            <button type="button" class="btn btn-outline-secondary" (click)="openModal('client-edit-modal', client)" >Nastavení</button>
           </td>
           <td class="Row">
           <button type="button" class="btn btn-outline-danger" (click)="OnDelete(client.Id)">Smazat</button>
@@ -30,15 +30,12 @@
   <form [formGroup]="editClientForm">
 
     <label> {{ ecf.get('ClientName').value }} </label>
-    <input type="text" formControlName="ClientName">
+    <input type="text" formControlName="ClientName" >
 
     <div formArrayName="arrayConfClient"
-         *ngFor="let item of acc['controls']; let i = index;">
-      <div formGroupName="i">
-        <input type="checkbox" formControlName="Bool">{{Configs[i].Name}}
-      </div>
+         *ngFor="let a of acc['controls']; let i = index;">
+        <input type="checkbox" >{{Configs[i].Name}}
     </div>
-
     <button (click)="closeModal('client-edit-modal'); saveNewClientName()" class="btn btn-success">Uložit</button>
     <button (click)="closeModal('client-edit-modal')" class="btn btn-danger">Storno</button>
 

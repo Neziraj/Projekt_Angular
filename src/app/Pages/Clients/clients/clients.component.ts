@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientQuery } from '../../../Models/Queries/ClientQuery';
 import { ClientQueryService } from 'src/app/Services/Templates/DataService/Queries/ClientQueryService';
@@ -18,45 +18,43 @@ import {Configuration} from '../../../Models/Configuration.model';
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.scss']
 })
-export class ClientsTableComponent implements OnInit
-{
+export class ClientsTableComponent implements OnInit{
   editClientForm: FormGroup;
   arrayConfClient: FormArray;
   Configs: Configuration[];
   myClient: Client;
-  ConfigID: number;
-  ConfigName: string;
   LoggedClientsQuery$: LoggedClientsQuery[];
-
 
 
   headers = ['ID', 'Název', 'MAC', 'Konfigurace', '', ''];
 
-  constructor(private tableDataService: ClientService, private configurationService: ConfigurationService, private dataService: LoggedClientsQueryService, router: Router, private modalService: ModalService, private fb: FormBuilder)
-  {
+  constructor(private tableDataService: ClientService, private configurationService: ConfigurationService, private dataService: LoggedClientsQueryService, router: Router, private modalService: ModalService, private fb: FormBuilder) {
     this.editClientForm = this.fb.group({
       ClientName: [''],
       arrayConfClient: this.fb.array([])
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
     this.dataService.get()
       .subscribe(data => this.LoggedClientsQuery$ = data);
+
     this.configurationService.get()
       .subscribe(data => this.Configs = data);
-    }
+  }
 
-  OnDelete(Id: number)
-  {
+
+  OnDelete(Id: number) {
     this.tableDataService.delete(Id).subscribe(data => this.LoggedClientsQuery$ = data);
   }
+
 
   // convenience getter for easy access to NewConfigurationForm fields
   get ecf() { return this.editClientForm; }
 
   // convenience getter for easy access to arrayConfClient
-  get acc() { return this.ecf.get('arrayConfClient') as FormArray; }
+  get acc() { return this.ecf.get('arrayConfClient'); }
 
   openModal(idDialog: string, client: Client) {
 
@@ -65,7 +63,9 @@ export class ClientsTableComponent implements OnInit
     this.ecf.get('ClientName').setValue(this.myClient.Name);
 
     this.fillClientConfiguration();
+
   }
+
 
   createConfigFormArray(): FormArray {
     const arr = new FormArray([]);
@@ -87,7 +87,7 @@ export class ClientsTableComponent implements OnInit
   }
 
   // form array add localDest
-  fillClientConfiguration(): void {
+  fillClientConfiguration(){
     // this.arrayConfClient.clear();
     this.arrayConfClient = this.acc as FormArray;
 
@@ -104,4 +104,7 @@ export class ClientsTableComponent implements OnInit
     this.myClient.DateOfLogin = new Date();
     this.myClient.Name = this.ecf.get('ClientName').value;
   }
+  closeModal(idDialog: string) {
+  this.modalService.close(idDialog);
+}
 }
