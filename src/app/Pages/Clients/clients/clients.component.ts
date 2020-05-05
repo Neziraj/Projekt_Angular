@@ -12,7 +12,6 @@ import { ModalService } from 'src/app/_modal';
 import { FormGroup, Validators, FormBuilder, FormArray, FormControl  } from  '@angular/forms';
 import { Client } from 'src/app/Models/Client.model';
 import {Configuration} from '../../../Models/Configuration.model';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-clients-table',
@@ -25,7 +24,6 @@ export class ClientsTableComponent implements OnInit
   arrayConfClient: FormArray;
   Configs: Configuration[];
   myClient: Client;
-  Configs: Configuration[];
   ConfigID: number;
   ConfigName: string;
   LoggedClientsQuery$: LoggedClientsQuery[];
@@ -34,7 +32,7 @@ export class ClientsTableComponent implements OnInit
 
   headers = ['ID', 'Název', 'MAC', 'Konfigurace', '', ''];
 
-  constructor(private tableDataService: ClientService, private configurationService: ConfigurationService, private dataService: LoggedClientsQueryService, router: Router, private modalService: ModalService, private fb: FormBuilder) 
+  constructor(private tableDataService: ClientService, private configurationService: ConfigurationService, private dataService: LoggedClientsQueryService, router: Router, private modalService: ModalService, private fb: FormBuilder)
   {
     this.editClientForm = this.fb.group({
       ClientName: [''],
@@ -45,7 +43,6 @@ export class ClientsTableComponent implements OnInit
   ngOnInit(): void {
     this.dataService.get()
       .subscribe(data => this.LoggedClientsQuery$ = data);
-    
     this.configurationService.get()
       .subscribe(data => this.Configs = data);
     }
@@ -59,7 +56,7 @@ export class ClientsTableComponent implements OnInit
   get ecf() { return this.editClientForm; }
 
   // convenience getter for easy access to arrayConfClient
-  get getArrayConfig() { return this.ecf.get('arrayConfClient') as FormArray; }
+  get acc() { return this.ecf.get('arrayConfClient') as FormArray; }
 
   openModal(idDialog: string, client: Client) {
 
@@ -86,18 +83,17 @@ export class ClientsTableComponent implements OnInit
   // form array returns localDest
   createClientConfiguration(): FormGroup {
     return this.fb.group({
-      
     });
   }
 
   // form array add localDest
   fillClientConfiguration(): void {
-    //this.arrayConfClient.clear();
+    // this.arrayConfClient.clear();
     this.arrayConfClient = this.acc as FormArray;
 
-    this.Configs.forEach(element =>{
+    this.Configs.forEach(element => {
       this.arrayConfClient.push(this.createClientConfiguration());
-    })
+    });
 
       /*this.arrayConfClient = this.acc as FormArray;
       this.arrayConfClient.push(this.createClientConfiguration());*/
@@ -107,5 +103,5 @@ export class ClientsTableComponent implements OnInit
   saveNewClientName() {
     this.myClient.DateOfLogin = new Date();
     this.myClient.Name = this.ecf.get('ClientName').value;
-
+  }
 }

@@ -23,7 +23,7 @@ export class NewClientsComponent implements OnInit {
   ngOnInit() {
     this.newClientForm = this.formBuilder.group({
       ClientName: ['', Validators.required],
-     });
+    });
     return this.dataService.get()
       .subscribe(data => this.NewClientsQuery$ = data);
   }
@@ -43,5 +43,18 @@ export class NewClientsComponent implements OnInit {
       .subscribe();
   }
 
+  // convenience getter for easy access to NewClientForm fields
+
+  closeModal(idDialog: string) {
+    this.modalService.close(idDialog);
+  }
+
+  saveNewClientName() {
+    this.myClient.DateOfLogin = new Date();
+    this.myClient.Name = this.ncf.ClientName.value;
+
+    return this.putDataService.put(this.myClient)
+      .subscribe(data => this.myClient = data);
+  }
 }
 
