@@ -35,7 +35,7 @@
     <div formArrayName="arrayConfClient"
          *ngFor="let item of acc['controls']; let i = index;">
       <div formGroupName="i">
-        <input type="checkbox" formControlName="Bool">
+        <input type="checkbox" formControlName="Bool">{{Configs[i].Name}}
       </div>
     </div>
 

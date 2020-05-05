@@ -19,4 +19,10 @@ export class ConfigurationTableComponent implements OnInit {
     return this.dataService.get()
       .subscribe(data => this.Config$ = data);
   }
+
+
+  OnDelete(configId: number)
+  {
+    this.dataService.delete(configId).subscribe();
+  }
 }

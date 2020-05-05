@@ -96,6 +96,7 @@ export class ConfigurationPageComponent implements OnInit {
     console.warn(this.ncf.get('configurationBasicSettings.ConfigurationName').value);
   }
 
+
   /*-----------------*/
   /*methods for array*/
   /*-----------------*/
@@ -109,13 +110,13 @@ export class ConfigurationPageComponent implements OnInit {
 
   // form array add localDest
   addLocalDest(): void {
-    this.arrayLocalDest = this.ncf.get('localDestination.arrayLocalDest') as FormArray;
+    this.arrayLocalDest = this.ald as FormArray;
     this.arrayLocalDest.push(this.createLocalDest());
   }
 
   // form array remove localDest
   removeAtLocalDest(): void {
-    this.arrayLocalDest = this.ncf.get('localDestination.arrayLocalDest') as FormArray;
+    this.arrayLocalDest = this.ald as FormArray;
 
     this.arrayLocalDest.removeAt(this.ncf.get('localDestination.SelectedLocalDest').value);
 

@@ -5,10 +5,14 @@ import { ClientQueryService } from 'src/app/Services/Templates/DataService/Queri
 import {LoggedClientsQuery} from '../../../Models/Queries/LoggedClientsQuery';
 import {LoggedClientsQueryService} from '../../../Services/Templates/DataService/Queries/LoggedClientsQueryService';
 import { ClientService } from 'src/app/Services/Templates/DataService/ClientService';
+import { ConfigurationService } from 'src/app/Services/Templates/DataService/ConfigurationService';
+
 /* Dialogy */
 import { ModalService } from 'src/app/_modal';
 import { FormGroup, Validators, FormBuilder, FormArray  } from  '@angular/forms';
 import { Client } from 'src/app/Models/Client.model';
+import {Configuration} from '../../../Models/Configuration.model';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-clients-table',
@@ -20,23 +24,30 @@ export class ClientsTableComponent implements OnInit
   editClientForm: FormGroup;
   arrayConfClient: FormArray;
   myClient: Client;
+  Configs: Configuration[];
+  ConfigID: number;
+  ConfigName: string;
   LoggedClientsQuery$: LoggedClientsQuery[];
+
 
 
   headers = ['ID', 'Název', 'MAC', 'Konfigurace', '', ''];
 
-  constructor(private tableDataService: ClientService, private dataService: LoggedClientsQueryService, router: Router, private modalService: ModalService, private fb: FormBuilder) {
-  }
-
-  ngOnInit() {
+  constructor(private tableDataService: ClientService, private configurationService: ConfigurationService, private dataService: LoggedClientsQueryService, router: Router, private modalService: ModalService, private fb: FormBuilder) 
+  {
     this.editClientForm = this.fb.group({
       ClientName: [''],
-      arrayConfClient: this.fb.array([this.createClientConfiguration()])
+      arrayConfClient: this.fb.array([])
     });
-
-    return this.dataService.get()
-      .subscribe(data => this.LoggedClientsQuery$ = data);
   }
+
+  ngOnInit(): void {
+    this.dataService.get()
+      .subscribe(data => this.LoggedClientsQuery$ = data);
+    
+    this.configurationService.get()
+      .subscribe(data => this.Configs = data);
+    }
 
   OnDelete(Id: number)
   {
@@ -50,31 +61,44 @@ export class ClientsTableComponent implements OnInit
   get acc() { return this.ecf.get('arrayConfClient'); }
 
   openModal(idDialog: string, client: Client) {
+
     this.modalService.open(idDialog);
     this.myClient = client;
     this.ecf.get('ClientName').setValue(this.myClient.Name);
 
-    this.addClientConfiguration();
-    this.addClientConfiguration();
-    this.addClientConfiguration();
-    this.addClientConfiguration();
+    this.fillClientConfiguration();
   }
 
   closeModal(idDialog: string) {
     this.modalService.close(idDialog);
   }
 
+  /*createConfigFormArray(): FormArray {
+    let arr = new FormArray([]);
+    this.Configs.forEach(element => {
+      arr.push(new FormControl(false));
+    });
+    return arr as FormArray;
+  }*/
+
   // form array returns localDest
   createClientConfiguration(): FormGroup {
     return this.fb.group({
-      Bool: false,
+      
     });
   }
 
   // form array add localDest
-  addClientConfiguration(): void {
-      this.arrayConfClient = this.acc as FormArray;
+  fillClientConfiguration(): void {
+    //this.arrayConfClient.clear();
+    this.arrayConfClient = this.acc as FormArray;
+
+    this.Configs.forEach(element =>{
       this.arrayConfClient.push(this.createClientConfiguration());
+    })
+
+      /*this.arrayConfClient = this.acc as FormArray;
+      this.arrayConfClient.push(this.createClientConfiguration());*/
   }
 
   // edit client name
