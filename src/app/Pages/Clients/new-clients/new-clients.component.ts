@@ -39,22 +39,28 @@ export class NewClientsComponent implements OnInit {
 
   deny(client: Client)
   {
-    return this.putDataService.delete(client.Id)
+
+     this.putDataService.delete(client.Id)
       .subscribe();
+     this.dataService.get()
+      .subscribe();
+
   }
 
   // convenience getter for easy access to NewClientForm fields
 
   closeModal(idDialog: string) {
     this.modalService.close(idDialog);
+
   }
 
   saveNewClientName() {
     this.myClient.DateOfLogin = new Date();
     this.myClient.Name = this.ncf.ClientName.value;
 
-    return this.putDataService.put(this.myClient)
+    this.putDataService.put(this.myClient)
       .subscribe(data => this.myClient = data);
+    location.reload();
   }
 }
 

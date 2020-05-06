@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Configuration} from '../../../Models/Configuration.model';
-import {ConfigurationService} from '../../../Services/Templates/DataService/ConfigurationService';
+import { ConfigurationService } from '../../../Services/Templates/DataService/ConfigurationService';
 
 @Component({
   selector: 'app-configuration-table',
@@ -15,13 +15,13 @@ export class ConfigurationTableComponent implements OnInit {
   constructor(private dataService: ConfigurationService) { }
 
   ngOnInit(){
-    return this.dataService.get()
+    this.dataService.get()
       .subscribe(data => this.Config = data);
   }
 
 
-  OnDelete(configId: number)
+  OnDelete(Id: number)
   {
-    this.dataService.delete(configId).subscribe();
+    this.dataService.delete(Id).subscribe( data => this.Config = data );
   }
 }

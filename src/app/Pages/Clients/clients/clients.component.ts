@@ -1,7 +1,5 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { Router } from '@angular/router';
-import { ClientQuery } from '../../../Models/Queries/ClientQuery';
-import { ClientQueryService } from 'src/app/Services/Templates/DataService/Queries/ClientQueryService';
 import {LoggedClientsQuery} from '../../../Models/Queries/LoggedClientsQuery';
 import {LoggedClientsQueryService} from '../../../Services/Templates/DataService/Queries/LoggedClientsQueryService';
 import { ClientService } from 'src/app/Services/Templates/DataService/ClientService';
@@ -9,7 +7,8 @@ import { ConfigurationService } from 'src/app/Services/Templates/DataService/Con
 
 /* Dialogy */
 import { ModalService } from 'src/app/_modal';
-import { FormGroup, Validators, FormBuilder, FormArray, FormControl  } from  '@angular/forms';
+
+import { FormGroup, Validators, FormBuilder, FormArray, FormControl } from  '@angular/forms';
 import { Client } from 'src/app/Models/Client.model';
 import {Configuration} from '../../../Models/Configuration.model';
 
@@ -35,7 +34,7 @@ export class ClientsTableComponent implements OnInit{
     });
   }
 
-  ngOnInit() {
+  ngOnInit(){
 
     this.dataService.get()
       .subscribe(data => this.LoggedClientsQuery$ = data);
@@ -87,7 +86,7 @@ export class ClientsTableComponent implements OnInit{
   }
 
   // form array add localDest
-  fillClientConfiguration(){
+  fillClientConfiguration(): void {
     // this.arrayConfClient.clear();
     this.arrayConfClient = this.acc as FormArray;
 
@@ -103,8 +102,14 @@ export class ClientsTableComponent implements OnInit{
   saveNewClientName() {
     this.myClient.DateOfLogin = new Date();
     this.myClient.Name = this.ecf.get('ClientName').value;
+
+    this.tableDataService.put(this.myClient)
+      .subscribe(data => this.myClient = data);
+    location.reload();
   }
   closeModal(idDialog: string) {
-  this.modalService.close(idDialog);
-}
+    this.modalService.close(idDialog);
+    location.reload();
+  }
+
 }

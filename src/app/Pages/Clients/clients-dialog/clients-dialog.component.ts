@@ -25,10 +25,10 @@ export class ClientsDialogComponent implements OnInit
   arrayConfClient: FormArray;
   Configs: Configuration[];
   myClient: Client;
+  LoggedClientsQuery$: LoggedClientsQuery[];
 
 
-  constructor( private ConfigData: ConfigurationService, private tableDataService: ClientService, private dataService: LoggedClientsQueryService, private modalService: ModalService, private fb: FormBuilder)
-  {
+  constructor(private tableDataService: ClientService, private configurationService: ConfigurationService, private dataService: LoggedClientsQueryService, router: Router, private modalService: ModalService, private fb: FormBuilder) {
     this.editClientForm = this.fb.group({
       ClientName: [''],
       arrayConfClient: this.fb.array([])
@@ -37,56 +37,71 @@ export class ClientsDialogComponent implements OnInit
 
   ngOnInit() {
 
-    this.ConfigData.get()
-      .subscribe(data => this.Configs = data);
+    this.dataService.get()
+      .subscribe(data => this.LoggedClientsQuery$ = data);
 
+    this.configurationService.get()
+      .subscribe(data => this.Configs = data);
   }
+
+
+
+
+  // convenience getter for easy access to NewConfigurationForm fields
+  get ecf() { return this.editClientForm; }
 
   // convenience getter for easy access to arrayConfClient
-  get getArrayConfig() { return this.editClientForm.get('arrayConfClient') as FormArray; }
+  get acc() { return this.ecf.get('arrayConfClient'); }
 
   openModal(idDialog: string, client: Client) {
-    this.modalService.open(idDialog);
+
     this.myClient = client;
-    this.editClientForm.get('ClientName').setValue(this.myClient.Name);
+    this.ecf.get('ClientName').setValue(this.myClient.Name);
 
-
-    this.editClientForm.patchValue({
-      Name: this.myClient.Name,
-      arrayConfClient: new FormArray([this.createConfigFormArray()])
-    });
+    this.fillClientConfiguration();
 
   }
+
 
   createConfigFormArray(): FormArray {
     const arr = new FormArray([]);
     return arr as FormArray;
   }
 
-  closeModal(idDialog: string) {
-    this.modalService.close(idDialog);
-  }
+  /*createConfigFormArray(): FormArray {
+    let arr = new FormArray([]);
+    this.Configs.forEach(element => {
+      arr.push(new FormControl(false));
+    });
+    return arr as FormArray;
+  }*/
 
   // form array returns localDest
   createClientConfiguration(): FormGroup {
     return this.fb.group({
-      Bool: false
     });
   }
 
   // form array add localDest
-  addClientConfiguration(): void {
-    this.arrayConfClient = this.getArrayConfig as FormArray;
-    this.arrayConfClient.push(this.createClientConfiguration());
+  fillClientConfiguration(): void {
+    // this.arrayConfClient.clear();
+    this.arrayConfClient = this.acc as FormArray;
+
+    this.Configs.forEach(element => {
+      this.arrayConfClient.push(this.createClientConfiguration());
+    });
+
+    /*this.arrayConfClient = this.acc as FormArray;
+    this.arrayConfClient.push(this.createClientConfiguration());*/
   }
 
   // edit client name
   saveNewClientName() {
     this.myClient.DateOfLogin = new Date();
-    this.myClient.Name = this.editClientForm.get('ClientName').value;
-
-    return this.tableDataService.put(this.myClient)
-      .subscribe(data => this.myClient = data);
+    this.myClient.Name = this.ecf.get('ClientName').value;
+  }
+  closeModal(idDialog: string) {
+    this.modalService.close(idDialog);
   }
 
 }

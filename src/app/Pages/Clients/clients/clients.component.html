@@ -4,6 +4,7 @@
             <td *ngFor="let head of headers">{{ head }}</td>
         </tr>
     </thead>
+
     <tbody class="TableBox">
         <tr class="Row" *ngFor='let client of LoggedClientsQuery$'>
             <td>{{ client.Id }}</td>
@@ -11,7 +12,7 @@
             <td>{{ client.MAC}}</td>
             <td>{{ client.Configuration }}</td>
           <td class="Row">
-            <button type="button" class="btn btn-outline-secondary" (click)="openModal('client-edit-modal', client)" >Nastavení</button>
+            <button type="button" class="btn btn-outline-secondary" (click)="openModal('client-edit-modal', client) " >Nastavení</button>
           </td>
           <td class="Row">
           <button type="button" class="btn btn-outline-danger" (click)="OnDelete(client.Id)">Smazat</button>
@@ -21,24 +22,20 @@
 
 </table>
 
+<jw-modal id="client-edit-modal" class="ClientsModal">
 
-
-<jw-modal id="client-edit-modal">
-
-  <h1>Nastavení klienta</h1>
+  <h1 style="">Nastavení klienta</h1>
 
   <form [formGroup]="editClientForm">
 
-    <label> {{ ecf.get('ClientName').value }} </label>
-    <input type="text" formControlName="ClientName" >
+    <input type="text" formControlName="ClientName" class="form-control" >
 
     <div formArrayName="arrayConfClient"
          *ngFor="let a of acc['controls']; let i = index;">
-        <input type="checkbox" >{{Configs[i].Name}}
+      <input type="checkbox" class="form-check" > {{Configs[i].Name}}
     </div>
     <button (click)="closeModal('client-edit-modal'); saveNewClientName()" class="btn btn-success">Uložit</button>
-    <button (click)="closeModal('client-edit-modal')" class="btn btn-danger">Storno</button>
-
+    <button (click)="closeModal('client-edit-modal');" class="btn btn-danger">Storno</button>
   </form>
 
 </jw-modal>

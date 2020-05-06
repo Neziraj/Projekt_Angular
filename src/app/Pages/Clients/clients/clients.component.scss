@@ -2,3 +2,37 @@
 {
   margin-top: 10vh;
 }
+
+
+.ClientsModal
+{
+  place-items: center;
+  text-align: center;
+
+  .btn
+  {
+    margin: 20px;
+    font-size: 2vh;
+    height: 5vh;
+  }
+  .form-control
+  {
+    margin: auto auto 1vh;
+    width: 20vw;
+    align-items: center;
+    -webkit-appearance:none;
+    text-align: center;
+  }
+  .form-control:focus
+  {
+    outline: none;
+    box-shadow:none ;
+    border:1px solid #000c18;
+  }
+  .form-check
+  {
+    margin: 1vh;
+    display: inline;
+  }
+
+}
