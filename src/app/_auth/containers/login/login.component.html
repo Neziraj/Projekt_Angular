@@ -20,7 +20,7 @@
   </div>
 
   <div class="form-group ">
-    <button [disabled]="loading" class="btn btn-primary shadow">
+    <button  class="btn btn-primary shadow" type="submit" [disabled]="!loginForm.valid">
       <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
       Přihlásit se
     </button>

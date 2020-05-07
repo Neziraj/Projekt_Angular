@@ -39,12 +39,8 @@ export class NewClientsComponent implements OnInit {
 
   deny(client: Client)
   {
-
-     this.putDataService.delete(client.Id)
-      .subscribe();
-     this.dataService.get()
-      .subscribe();
-
+    this.putDataService.delete(client.Id)
+    .subscribe();
   }
 
   // convenience getter for easy access to NewClientForm fields

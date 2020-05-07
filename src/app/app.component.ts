@@ -1,9 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-
-
 import { Router } from '@angular/router';
-
-import { AuthenticationService } from 'src/app/Services';
+import { AuthService } from 'src/app/_auth/services/auth.service';
 
 
 @Component({
@@ -15,15 +12,13 @@ export class AppComponent implements OnInit{
   currentUser: any;
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
-  ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-  }
+    private authenticationService: AuthService
+  ) {}
 
-  logout() {
+  /*logout() {
     this.authenticationService.logout();
     this.router.navigate(['/login']);
-  }
+  }*/
 
   ngOnInit()
   {
