@@ -6,6 +6,6 @@ import { DestFtp } from 'src/app/Models/DestFtpServer.model';
   providedIn: 'root'
 })
 export class DestFtpServerService extends TemplateDataService<DestFtp>{
-  URL = this.URL + 'destftpserver';
+  URL = this.URL + 'destftpserver/';
 }
 

@@ -7,5 +7,5 @@ import { Source } from 'src/app/Models/Source.model';
 })
 export class SourceService extends TemplateDataService<Source>
 {
-  URL = this.URL + 'source';
+  URL = this.URL + 'source/';
 }

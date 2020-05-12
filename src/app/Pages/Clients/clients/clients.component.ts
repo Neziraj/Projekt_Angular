@@ -25,14 +25,17 @@ export class ClientsTableComponent implements OnInit{
   arrayConfClient: FormArray;
   Configs: Configuration[];
   myClient: Client;
+  myJob: Job;
+  cliet: Client[];
   Jobs: Job[];
   LoggedClientsQuery$: LoggedClientsQuery[];
+  clientQuery: ClientQuery[];
 
 
   headers = ['ID', 'Název', 'MAC', 'Konfigurace', '', ''];
 
   constructor(private tableDataService: ClientService, private configurationService: ConfigurationService, private dataService: LoggedClientsQueryService, router: Router, private modalService: ModalService, private fb: FormBuilder,
-              private jobService: JobService) {
+              private JobbyService: JobService, private clientQueryService: ClientQueryService) {
     this.editClientForm = this.fb.group({
       ClientName: [''],
       arrayConfClient: this.fb.array([])
@@ -41,7 +44,15 @@ export class ClientsTableComponent implements OnInit{
 
 
 
-  ngOnInit() {
+  ngOnInit(){
+
+
+
+    this.clientQueryService.get()
+      .subscribe(data => this.clientQuery = data);
+
+    this.JobbyService.get()
+      .subscribe(data => this.Jobs = data)
 
     this.dataService.get()
       .subscribe(data => this.LoggedClientsQuery$ = data);
@@ -49,8 +60,7 @@ export class ClientsTableComponent implements OnInit{
     this.configurationService.get()
       .subscribe(data => this.Configs = data);
 
-    this.jobService.get()
-      .subscribe(data => this.Jobs = data)
+
   }
 
 
@@ -83,25 +93,33 @@ export class ClientsTableComponent implements OnInit{
   }
 
   // form array add localDest
-  fillClientConfiguration(){
+  fillClientConfiguration():void{
     // this.arrayConfClient.clear();
+
     this.arrayConfClient = this.acc as FormArray;
 
     this.Configs.forEach(element => {
-      //if(this.Jobs['id'].IdClient === this.myClient.Id){
-          this.arrayConfClient.push(this.createClientConfiguration());
-         // this.acc.patchValue()
-      //}
+
+      this.arrayConfClient.push(this.createClientConfiguration());
+
     });
 
+
+
       /*this.arrayConfClient = this.acc as FormArray;
+            this.ecf.get('arrayConfClient')['Bool'].at(1).patchValue(true)
       this.arrayConfClient.push(this.createClientConfiguration());*/
   }
 
   // edit client name
+
   saveNewClientName() {
     this.myClient.DateOfLogin = new Date();
     this.myClient.Name = this.ecf.get('ClientName').value;
+
+    this.tableDataService.put(this.myClient)
+      .subscribe(data => this.myClient = data);
+    location.reload();
   }
 
   closeModal(idDialog: string) {
@@ -109,8 +127,22 @@ export class ClientsTableComponent implements OnInit{
   location.reload();
   }
 
-  SaveClientConfig()
-  {
+  private i: number;
 
+  saveClientConfig()
+  {
+    this.myJob.IdConfiguration = null;
+    this.myJob.IdClient = null;
+    this.JobbyService.post(this.myJob).subscribe(
+      data => this.Jobs.push(data));
+
+    /*for (this.i=0; this.i <= this.Configs.length; this.i++)
+    {
+      if(this.acc['Bool'].at.value){
+        this.myJob.IdClient = this.myClient.Id;
+        this.myJob.IdConfiguration = this.i;
+        this.jobService.post(this.myJob);
+      }
+    }*/
   }
 }

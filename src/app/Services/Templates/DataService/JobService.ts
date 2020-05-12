@@ -7,6 +7,6 @@ import { Job } from 'src/app/Models/Job.model';
 })
 export class JobService extends TemplateDataService<Job>
 {
-  URL = this.URL + 'job';
+  URL = this.URL + 'job/';
 }
 

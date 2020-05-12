@@ -7,5 +7,5 @@ import { Setting } from 'src/app/Models/Setting.model';
 })
 export class SettingService extends TemplateDataService<Setting>
 {
-  URL = this.URL + 'setting';
+  URL = this.URL + 'setting/';
 }

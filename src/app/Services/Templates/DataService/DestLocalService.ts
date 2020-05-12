@@ -7,5 +7,5 @@ import { DestLocal } from 'src/app/Models/DestLocal.model';
 })
 export class DestLocalService extends TemplateDataService<DestLocal>
 {
-  URL = this.URL + 'destlocal';
+  URL = this.URL + 'destlocal/';
 }
