@@ -96,6 +96,19 @@ export class ConfigurationPageComponent implements OnInit {
     console.warn(this.ncf.get('configurationBasicSettings.ConfigurationName').value);
   }
 
+  saveConfiguration() {
+    this.myConfiguration.Id = 76;
+    this.myConfiguration.Name = this.ncf.get('configurationBasicSettings')['Name'];
+    this.myConfiguration.BackupType = this.ncf.get('configurationBasicSettings')['BackupType'];
+    this.myConfiguration.SavedBackupNumber = this.ncf.get('configurationBasicSettings')['MaxBackupsNumber'];
+    this.myConfiguration.Description = this.ncf.get('configurationBasicSettings')['Description'];
+    this.myConfiguration.RepeatableBackup = true;
+    this.myConfiguration.Cron = 'cron:D';
+
+
+    this.dataService.put(this.myConfiguration);
+  }
+
   /*-----------------*/
   /*methods for array*/
   /*-----------------*/

@@ -12,6 +12,8 @@ import { ModalService } from 'src/app/_modal';
 import { FormGroup, Validators, FormBuilder, FormArray, FormControl  } from  '@angular/forms';
 import { Client } from 'src/app/Models/Client.model';
 import {Configuration} from '../../../Models/Configuration.model';
+import {Job} from "../../../Models/Job.model";
+import {JobService} from "../../../Services/Templates/DataService/JobService";
 
 @Component({
   selector: 'app-clients-table',
@@ -23,17 +25,21 @@ export class ClientsTableComponent implements OnInit{
   arrayConfClient: FormArray;
   Configs: Configuration[];
   myClient: Client;
+  Jobs: Job[];
   LoggedClientsQuery$: LoggedClientsQuery[];
 
 
   headers = ['ID', 'Název', 'MAC', 'Konfigurace', '', ''];
 
-  constructor(private tableDataService: ClientService, private configurationService: ConfigurationService, private dataService: LoggedClientsQueryService, router: Router, private modalService: ModalService, private fb: FormBuilder) {
+  constructor(private tableDataService: ClientService, private configurationService: ConfigurationService, private dataService: LoggedClientsQueryService, router: Router, private modalService: ModalService, private fb: FormBuilder,
+              private jobService: JobService) {
     this.editClientForm = this.fb.group({
       ClientName: [''],
       arrayConfClient: this.fb.array([])
     });
   }
+
+
 
   ngOnInit() {
 
@@ -42,6 +48,9 @@ export class ClientsTableComponent implements OnInit{
 
     this.configurationService.get()
       .subscribe(data => this.Configs = data);
+
+    this.jobService.get()
+      .subscribe(data => this.Jobs = data)
   }
 
 
@@ -52,7 +61,6 @@ export class ClientsTableComponent implements OnInit{
 
   // convenience getter for easy access to NewConfigurationForm fields
   get ecf() { return this.editClientForm; }
-
   // convenience getter for easy access to arrayConfClient
   get acc() { return this.ecf.get('arrayConfClient'); }
 
@@ -60,29 +68,17 @@ export class ClientsTableComponent implements OnInit{
 
     this.modalService.open(idDialog);
     this.myClient = client;
+
     this.ecf.get('ClientName').setValue(this.myClient.Name);
 
     this.fillClientConfiguration();
-
   }
 
-
-  createConfigFormArray(): FormArray {
-    const arr = new FormArray([]);
-    return arr as FormArray;
-  }
-
-  /*createConfigFormArray(): FormArray {
-    let arr = new FormArray([]);
-    this.Configs.forEach(element => {
-      arr.push(new FormControl(false));
-    });
-    return arr as FormArray;
-  }*/
 
   // form array returns localDest
   createClientConfiguration(): FormGroup {
     return this.fb.group({
+      Bool: '',
     });
   }
 
@@ -92,7 +88,10 @@ export class ClientsTableComponent implements OnInit{
     this.arrayConfClient = this.acc as FormArray;
 
     this.Configs.forEach(element => {
-      this.arrayConfClient.push(this.createClientConfiguration());
+      //if(this.Jobs['id'].IdClient === this.myClient.Id){
+          this.arrayConfClient.push(this.createClientConfiguration());
+         // this.acc.patchValue()
+      //}
     });
 
       /*this.arrayConfClient = this.acc as FormArray;
@@ -107,5 +106,11 @@ export class ClientsTableComponent implements OnInit{
 
   closeModal(idDialog: string) {
   this.modalService.close(idDialog);
+  location.reload();
+  }
+
+  SaveClientConfig()
+  {
+
   }
 }

@@ -34,7 +34,7 @@
 
     <div formArrayName="arrayConfClient"
          *ngFor="let a of acc['controls']; let i = index;">
-        <input type="checkbox" >{{Configs[i].Name}}
+        <input type="checkbox" formControlName="Bool">{{Configs[i].Name}}
     </div>
     <button (click)="closeModal('client-edit-modal'); saveNewClientName()" class="btn btn-success">Uložit</button>
     <button (click)="closeModal('client-edit-modal')" class="btn btn-danger">Storno</button>

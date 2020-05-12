@@ -8,25 +8,14 @@ import { UserPageComponent } from './Pages/User/user-page/user-page.component';
 import { CompletedBackupComponent } from './Pages/Backups/completed-backups/completed-backup.component';
 import { IncomingBackupComponent } from './Pages/Backups/incoming-backup/incoming-backup.component';
 // authentication
-import { LoginComponent  } from './_auth/containers/login/login.component';
 import { AuthGuard } from './_auth/guards/auth.guard';
 import { ClientsDialogComponent } from './Pages/Clients/clients-dialog/clients-dialog.component';
 
 const routes: Routes = [
-  /* V AuthGuard V */
-  { path: '', pathMatch: 'full', redirectTo: '/login' },
-  {
-    path: 'login',
-    component: LoginComponent,
-    canActivate: [AuthGuard]
-  },
-  /* A AuthGuard A */
-  ,
+
   {
     path: 'clients',
-    loadChildren: './random/random.module#RandomModule',
-    canActivate: [ClientPageComponent],
-    canLoad: [ClientPageComponent]
+    component: ClientPageComponent
   },
   //{ path: 'clients', component: ClientPageComponent },
   { path: 'configurations', component: ConfigurationPageComponent },
