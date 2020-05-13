@@ -16,6 +16,7 @@
           <td class="Row">
           <button type="button" class="btn btn-outline-danger" (click)="OnDelete(client.Id)">Smazat</button>
         </td>
+
         </tr>
     </tbody>
 
@@ -34,10 +35,11 @@
 
     <div formArrayName="arrayConfClient"
          *ngFor="let a of acc['controls']; let i = index;">
-        <input type="checkbox" formControlName="Bool">{{Configs[i].Name}}
+        <input type="checkbox" formControlName="Bool" >{{Configs[i].Name}}
     </div>
 
     <button (click)="closeModal('client-edit-modal'); saveNewClientName();saveClientConfig()" class="btn btn-success">Uložit</button>
+
     <button (click)="closeModal('client-edit-modal')" class="btn btn-danger">Storno</button>
 
   </form>

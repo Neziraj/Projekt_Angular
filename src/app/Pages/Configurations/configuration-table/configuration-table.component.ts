@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Configuration} from '../../../Models/Configuration.model';
 import { ConfigurationService } from '../../../Services/Templates/DataService/ConfigurationService';
+import {ModalService} from '../../../_modal';
+import {ConfigurationDialogComponent} from '../configuration-dialog/configuration-dialog.component';
 
 @Component({
   selector: 'app-configuration-table',
@@ -12,7 +14,7 @@ export class ConfigurationTableComponent implements OnInit {
   headers = ['ID', 'Název', 'Popis', '', ''];
   Config: Configuration[];
 
-  constructor(private dataService: ConfigurationService) { }
+  constructor(private dataService: ConfigurationService, private modalService: ModalService, private dialogueComponent: ConfigurationDialogComponent) { }
 
   ngOnInit(){
     this.dataService.get()
@@ -24,4 +26,15 @@ export class ConfigurationTableComponent implements OnInit {
   {
     this.dataService.delete(Id).subscribe( data => this.Config = data );
   }
+
+  openModal(idDialog: string, IdConfig: number) {
+
+    this.modalService.open(idDialog);
+
+    this.dataService.get()
+      .subscribe(data => this.Config = data);
+    this.dialogueComponent.fillData();
+  }
+
+
 }

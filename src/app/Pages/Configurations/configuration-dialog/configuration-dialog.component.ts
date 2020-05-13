@@ -80,14 +80,6 @@ export class ConfigurationDialogComponent implements OnInit {
   // convenience getter for easy access to ArrayLocalDest
   get ald() { return this.ncf.get('localDestination.arrayLocalDest'); }
 
-
-  openModal(idDialog: string) {
-    this.modalService.open(idDialog);
-    // set value works
-    this.ncf.get('configurationBasicSettings.ConfigurationName').setValue('set value works');
-
-  }
-
   closeModal(idDialog: string) {
     this.modalService.close(idDialog);
     console.warn(this.ncf.get('configurationBasicSettings.ConfigurationName').value);
@@ -117,6 +109,11 @@ export class ConfigurationDialogComponent implements OnInit {
     this.arrayLocalDest.removeAt(this.ncf.get('localDestination.SelectedLocalDest').value);
 
     this.ncf.get('localDestination.SelectedLocalDest').setValue(this.ncf.get('localDestination.SelectedLocalDest').value - 1);
+
+  }
+  fillData()
+  {
+    this.con
 
   }
 

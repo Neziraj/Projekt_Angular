@@ -12,8 +12,8 @@ import { ModalService } from 'src/app/_modal';
 import { FormGroup, Validators, FormBuilder, FormArray, FormControl  } from  '@angular/forms';
 import { Client } from 'src/app/Models/Client.model';
 import {Configuration} from '../../../Models/Configuration.model';
-import {Job} from "../../../Models/Job.model";
-import {JobService} from "../../../Services/Templates/DataService/JobService";
+import {Job} from '../../../Models/Job.model';
+import {JobService} from '../../../Services/Templates/DataService/JobService';
 
 @Component({
   selector: 'app-clients-table',
@@ -29,7 +29,9 @@ export class ClientsTableComponent implements OnInit{
   cliet: Client[];
   Jobs: Job[];
   LoggedClientsQuery$: LoggedClientsQuery[];
+  log: LoggedClientsQuery;
   clientQuery: ClientQuery[];
+  myConfiguration: Configuration;
 
 
   headers = ['ID', 'Název', 'MAC', 'Konfigurace', '', ''];
@@ -52,7 +54,7 @@ export class ClientsTableComponent implements OnInit{
       .subscribe(data => this.clientQuery = data);
 
     this.JobbyService.get()
-      .subscribe(data => this.Jobs = data)
+      .subscribe(data => this.Jobs = data);
 
     this.dataService.get()
       .subscribe(data => this.LoggedClientsQuery$ = data);
@@ -93,7 +95,7 @@ export class ClientsTableComponent implements OnInit{
   }
 
   // form array add localDest
-  fillClientConfiguration():void{
+  fillClientConfiguration(): void{
     // this.arrayConfClient.clear();
 
     this.arrayConfClient = this.acc as FormArray;
@@ -127,14 +129,16 @@ export class ClientsTableComponent implements OnInit{
   location.reload();
   }
 
-  private i: number;
 
   saveClientConfig()
   {
-    this.myJob.IdConfiguration = null;
-    this.myJob.IdClient = null;
-    this.JobbyService.post(this.myJob).subscribe(
-      data => this.Jobs.push(data));
+
+    this.myClient.Name = 'AHHJ';
+    this.myClient.MAC = 'PEPGA';
+    this.myClient.DateOfLogin = null;
+    this.myClient.Id = 2;
+    return this.tableDataService.post(this.myClient).subscribe(
+      object => this.myClient[''].push(object));
 
     /*for (this.i=0; this.i <= this.Configs.length; this.i++)
     {
@@ -144,5 +148,6 @@ export class ClientsTableComponent implements OnInit{
         this.jobService.post(this.myJob);
       }
     }*/
+
   }
 }
