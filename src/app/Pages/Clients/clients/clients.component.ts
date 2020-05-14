@@ -26,7 +26,7 @@ export class ClientsTableComponent implements OnInit{
   Configs: Configuration[];
   myClient: Client;
   myJob: Job;
-  cliet: Client[];
+
   Jobs: Job[];
   LoggedClientsQuery$: LoggedClientsQuery[];
   log: LoggedClientsQuery;
@@ -37,7 +37,7 @@ export class ClientsTableComponent implements OnInit{
   headers = ['ID', 'Název', 'MAC', 'Konfigurace', '', ''];
 
   constructor(private tableDataService: ClientService, private configurationService: ConfigurationService, private dataService: LoggedClientsQueryService, router: Router, private modalService: ModalService, private fb: FormBuilder,
-              private JobbyService: JobService, private clientQueryService: ClientQueryService) {
+              private clientQueryService: ClientQueryService) {
     this.editClientForm = this.fb.group({
       ClientName: [''],
       arrayConfClient: this.fb.array([])
@@ -52,9 +52,6 @@ export class ClientsTableComponent implements OnInit{
 
     this.clientQueryService.get()
       .subscribe(data => this.clientQuery = data);
-
-    this.JobbyService.get()
-      .subscribe(data => this.Jobs = data);
 
     this.dataService.get()
       .subscribe(data => this.LoggedClientsQuery$ = data);
@@ -85,6 +82,7 @@ export class ClientsTableComponent implements OnInit{
 
     this.fillClientConfiguration();
   }
+
 
 
   // form array returns localDest

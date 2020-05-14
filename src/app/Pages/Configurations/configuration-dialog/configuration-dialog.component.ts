@@ -3,6 +3,7 @@ import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Configuration} from '../../../Models/Configuration.model';
 import {ConfigurationService} from '../../../Services/Templates/DataService/ConfigurationService';
 import {ModalService} from '../../../_modal';
+import {ConfigurationTableComponent} from '../configuration-table/configuration-table.component';
 
 @Component({
   selector: 'app-configuration-dialog',
@@ -17,19 +18,22 @@ export class ConfigurationDialogComponent implements OnInit {
   arraySource: FormArray;
 
   myConfiguration: Configuration;
+  configuration: Configuration[];
 
-  constructor(private dataService: ConfigurationService, private modalService: ModalService, private fb: FormBuilder) { }
 
-  ngOnInit(){
+
+  constructor(private dataService: ConfigurationService, private modalService: ModalService, private fb: FormBuilder ) {
+
     this.newConfigurationForm = this.fb.group({
 
       configurationBasicSettings: this.fb.group({
-        ConfigurationName: ['', Validators.required],
-        BackupType: ['', Validators.required],
+        ConfigurationName: [''],
+        BackupType: [''],
         FileType: ['', Validators.required],
         MaxBackupsNumber: ['', Validators.required],
         Description: ['', Validators.required],
       }),
+
 
       recurrencePicker: this.fb.group({
         StartDate: ['', Validators.required],
@@ -55,7 +59,7 @@ export class ConfigurationDialogComponent implements OnInit {
       localDestination: this.fb.group({
         Bool: ['', Validators.required],
         SelectedLocalDest: ['', Validators.required],
-        arrayLocalDest: this.fb.array([ this.createLocalDest() ])
+        arrayLocalDest: this.fb.array([this.createLocalDest()])
       }),
 
       ftpDestination: this.fb.group({
@@ -74,11 +78,20 @@ export class ConfigurationDialogComponent implements OnInit {
     });
   }
 
+  ngOnInit() {
+    this.dataService.get()
+      .subscribe(data => this.configuration = data);
+  }
+
   // convenience getter for easy access to NewConfigurationForm fields
-  get ncf() { return this.newConfigurationForm; }
+  get ncf() {
+    return this.newConfigurationForm;
+  }
 
   // convenience getter for easy access to ArrayLocalDest
-  get ald() { return this.ncf.get('localDestination.arrayLocalDest'); }
+  get ald() {
+    return this.ncf.get('localDestination.arrayLocalDest');
+  }
 
   closeModal(idDialog: string) {
     this.modalService.close(idDialog);
@@ -111,10 +124,10 @@ export class ConfigurationDialogComponent implements OnInit {
     this.ncf.get('localDestination.SelectedLocalDest').setValue(this.ncf.get('localDestination.SelectedLocalDest').value - 1);
 
   }
-  fillData()
+
+  public FillData()
   {
-    this.con
-
+    this.ncf.get('configurationBasicSettings.ConfigurationName').setValue('Ahoj');
+    this.ncf.get('configurationBasicSettings.BackupType').setValue(this.myConfiguration.BackupType);
   }
-
 }

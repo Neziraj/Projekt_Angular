@@ -15,7 +15,7 @@ import { ClientPageComponent } from './Pages/Clients/client-page/client-page.com
 import { ClientsTableComponent } from './Pages/Clients/clients/clients.component';
 import { NewClientsComponent } from './Pages/Clients/new-clients/new-clients.component';
 // dialogs
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from './_modal';
 import { ClientsDialogComponent } from './Pages/Clients/clients-dialog/clients-dialog.component';
 import { ConfigurationDialogComponent } from './Pages/Configurations/configuration-dialog/configuration-dialog.component';

@@ -6,14 +6,11 @@
   <form [formGroup]="newConfigurationForm">
 
     <div class="Head">
-      <div formGroupName="configurationBasicSettings" class="ConfigModal">
+      <form formGroupName="configurationBasicSettings" class="ConfigModal">
 
         <label class="LabelClass">
           Název Konfigurace
           <input type="text" class="form-control" formControlName="ConfigurationName">
-        </label>
-
-        <label *ngIf="newConfigurationForm.get('configurationBasicSettings.ConfigurationName').hasError('required')">
         </label>
 
         <label class="LabelClass">
@@ -25,7 +22,7 @@
           File Type
           <input type="text" class="form-control" formControlName="FileType">
         </label>
-      </div>
+      </form>
 
 
       <div formGroupName="recurrencePicker" class="ConfigModal">
