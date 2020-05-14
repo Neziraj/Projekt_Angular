@@ -7,12 +7,12 @@
     </thead>
 
     <tbody>
-        <tr *ngFor="let config of Config,let local of DestinationLocal" >
+        <tr *ngFor="let config of Config" >
             <td>{{ config.Id }}</td>
             <td>{{ config.Name }}</td>
             <td>{{ config.Description }} </td>
           <td class="Row">
-            <button class="btn btn-outline-secondary" (click)="openModal('configuration-modal',config,local)">Nastavení</button>
+            <button class="btn btn-outline-secondary" (click)="openModal('configuration-modal',config)">Nastavení</button>
           </td>
           <td class="Row">
             <button type="button" class="btn btn-outline-danger" (click)="OnDelete(config.Id)">Smazat</button>

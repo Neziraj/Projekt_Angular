@@ -6,23 +6,28 @@
   <form [formGroup]="newConfigurationForm">
 
     <div class="Head">
-      <form formGroupName="configurationBasicSettings" class="ConfigModal">
+      <form  class="ConfigModal" formGroupName="configurationBasicSettings">
 
         <label class="LabelClass">
           Název Konfigurace
           <input type="text" class="form-control" formControlName="ConfigurationName">
         </label>
 
-        <label class="LabelClass">
+        <label class="LabelClass" >
           Backup Type
           <input type="text" class="form-control" formControlName="BackupType">
         </label>
 
+
         <label class="LabelClass">
-          File Type
-          <input type="text" class="form-control" formControlName="FileType">
+          Max. počet záloh
+          <input type="number"  class="form-control" formControlName="MaxBackupsNumber">
         </label>
+
       </form>
+
+
+
 
 
       <div formGroupName="recurrencePicker" class="ConfigModal">
@@ -54,6 +59,7 @@
         </label>
 
 
+
         <div formGroupName="WeekInterval" class="ConfigModal" style="margin: 0"
              *ngIf="newConfigurationForm.get('recurrencePicker.IntervalUnits').value=='week'">
 
@@ -83,23 +89,25 @@
 
       </div>
 
-      <div formGroupName="configurationBasicSettings" class="ConfigModal">
-        <label class="LabelClass">
-          Max. počet záloh
-          <input type="number" class="form-control" formControlName="MaxBackupsNumber">
+
+      <div class="ConfigModal" formGroupName="localDestination">
+        <label class="LabelClass" >
+          File Type
+          <input type="text" class="form-control" formControlName="FileType">
         </label>
       </div>
 
 
-      <div class="form-group ConfigModal">
-        <label class="LabelClass" style="margin: 1vh">
+      <div class="form-group ConfigModal" formGroupName="configurationBasicSettings">
+        <label class="LabelClass"  style="margin: 1vh">
           Popisek
-          <textarea class="form-control" style="width:80vh;margin:2vh" rows="5" ></textarea>
+          <textarea class="form-control"  formControlName="Description" style="width:80vh;margin:2vh" rows="5" ></textarea>
         </label>
 
       </div>
 
     </div>
+
 
 
 
@@ -176,10 +184,10 @@
       </label>
     </div>
 
-    <div class="test2">
-      <button (click)=" closeModal('configuration-new-modal')"  class="btn btn-outline-success">Uložit</button>
-      <button (click)=" closeModal('configuration-new-modal')"  class="btn btn-outline-danger">Storno</button>
-    </div>
+      <div class="test2">
+        <button (click)="CreateConfig(); closeModal('configuration-new-modal')"  class="btn btn-outline-success">Uložit</button>
+        <button (click)=" closeModal('configuration-new-modal')"  class="btn btn-outline-danger">Storno</button>
+      </div>
 
 
   </form>

@@ -3,7 +3,6 @@ import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Configuration} from '../../../Models/Configuration.model';
 import {ConfigurationService} from '../../../Services/Templates/DataService/ConfigurationService';
 import {ModalService} from '../../../_modal';
-import {ConfigurationTableComponent} from '../configuration-table/configuration-table.component';
 
 @Component({
   selector: 'app-configuration-dialog',
@@ -19,6 +18,7 @@ export class ConfigurationDialogComponent implements OnInit {
 
   myConfiguration: Configuration;
   configuration: Configuration[];
+
 
 
 
@@ -78,6 +78,7 @@ export class ConfigurationDialogComponent implements OnInit {
     });
   }
 
+
   ngOnInit() {
     this.dataService.get()
       .subscribe(data => this.configuration = data);
@@ -95,7 +96,8 @@ export class ConfigurationDialogComponent implements OnInit {
 
   closeModal(idDialog: string) {
     this.modalService.close(idDialog);
-    console.warn(this.ncf.get('configurationBasicSettings.ConfigurationName').value);
+    window.location.reload();
+
   }
 
   /*-----------------*/
@@ -125,9 +127,25 @@ export class ConfigurationDialogComponent implements OnInit {
 
   }
 
-  public FillData()
+  FillData()
   {
     this.ncf.get('configurationBasicSettings.ConfigurationName').setValue('Ahoj');
     this.ncf.get('configurationBasicSettings.BackupType').setValue(this.myConfiguration.BackupType);
   }
+
+  CreateConfig(): void{
+
+    this.myConfiguration = this.configuration['1'];
+    this.myConfiguration.Name = this.ncf.get('configurationBasicSettings.ConfigurationName').value;
+    this.myConfiguration.SavedBackupNumber = this.ncf.get('configurationBasicSettings.MaxBackupsNumber').value;
+    this.myConfiguration.Description = this.ncf.get('configurationBasicSettings.Description').value;
+    this.myConfiguration.RepeatableBackup = false;
+    this.myConfiguration.Cron = null;
+    this.myConfiguration.BackupType  = this.ncf.get('configurationBasicSettings.BackupType').value;
+
+    this.dataService.post(this.myConfiguration).subscribe(
+      object => this.configuration.push(object));
+
+  }
+
 }

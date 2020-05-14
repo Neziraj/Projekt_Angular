@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { ModelTemplate } from '../Models/ModelTemplate';
-
 @Injectable({
   providedIn: 'root'
 })
 export class TemplateDataService<T extends ModelTemplate> {
+
   constructor(private http: HttpClient) {
   }
 
@@ -26,6 +26,6 @@ export class TemplateDataService<T extends ModelTemplate> {
 
   post(item: T)
   {
-    return this.http.post<object>(this.URL, item);
+    return this.http.post<T>(this.URL, item);
   }
 }

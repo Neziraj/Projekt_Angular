@@ -23,7 +23,6 @@ export class ConfigurationPageComponent implements OnInit {
 
     this.dataService.get()
       .subscribe(data => this.configuration = data);
-
   }
 
 

@@ -17,6 +17,8 @@ import {DestLocalService} from '../../../Services/Templates/DataService/DestLoca
 export class ConfigurationTableComponent implements OnInit {
   headers = ['ID', 'Název', 'Popis', '', ''];
   Config: Configuration[];
+
+
   DestinationLocal: DestLocal[];
 
   newConfigurationForm: FormGroup;
@@ -146,11 +148,10 @@ export class ConfigurationTableComponent implements OnInit {
     this.dataService.delete(Id).subscribe( data => this.Config = data );
   }
 
-  openModal(idDialog: string, Config: Configuration, locl: DestLocal) {
+  openModal(idDialog: string, Config: Configuration) {
 
     this.modalService.open(idDialog);
     this.myConfiguration = Config;
-    this.myLocal = locl;
     this.fillData();
 
   }

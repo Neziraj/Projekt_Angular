@@ -23,7 +23,6 @@
 </table>
 
 
-
 <jw-modal id="client-edit-modal">
 
   <h1>Nastavení klienta</h1>
@@ -38,7 +37,7 @@
         <input type="checkbox" formControlName="Bool" >{{Configs[i].Name}}
     </div>
 
-    <button (click)="closeModal('client-edit-modal'); saveNewClientName();saveClientConfig()" class="btn btn-success">Uložit</button>
+    <button (click)="closeModal('client-edit-modal'); saveNewClientName()" class="btn btn-success">Uložit</button>
 
     <button (click)="closeModal('client-edit-modal')" class="btn btn-danger">Storno</button>
 
