@@ -2,7 +2,7 @@ import { ModelTemplate } from './ModelTemplate';
 
 export class DestFtp extends ModelTemplate
 {
-    IdDestSource: number;
+    IdConfiguration: number;
     Site: string;
     Login: string;
     Password: string;

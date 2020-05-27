@@ -2,6 +2,6 @@ import { ModelTemplate } from './ModelTemplate';
 
 export class Source extends ModelTemplate
 {
-    IdDestSource: number;
+    IdConfiguration: number;
     Path: string;
 }

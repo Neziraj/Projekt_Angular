@@ -7,6 +7,9 @@ import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Source} from '../../../Models/Source.model';
 import {DestLocal} from '../../../Models/DestLocal.model';
 import {DestLocalService} from '../../../Services/Templates/DataService/DestLocalService';
+import {SourceService} from '../../../Services/Templates/DataService/SourceService';
+import {DestFtp} from '../../../Models/DestFtpServer.model';
+import {DestFtpServerService} from '../../../Services/Templates/DataService/DestFtpServerService';
 
 @Component({
   selector: 'app-configuration-table',
@@ -16,7 +19,11 @@ import {DestLocalService} from '../../../Services/Templates/DataService/DestLoca
 
 export class ConfigurationTableComponent implements OnInit {
   headers = ['ID', 'Název', 'Popis', '', ''];
+
   Config: Configuration[];
+  Local: DestLocal[];
+  Source: Source[];
+  FTP: DestFtp[];
 
 
   DestinationLocal: DestLocal[];
@@ -28,8 +35,11 @@ export class ConfigurationTableComponent implements OnInit {
 
   myConfiguration: Configuration;
   myLocal: DestLocal;
+  mySource: Source;
+  myFTP: DestFtp;
 
-  constructor( private dataService: ConfigurationService, private modalService: ModalService, private fb: FormBuilder, private localService: DestLocalService) {
+  constructor( private dataService: ConfigurationService, private modalService: ModalService, private fb: FormBuilder, private localService: DestLocalService,
+               private sourceService: SourceService, private FTPService: DestFtpServerService) {
 
     this.newConfigurationForm = this.fb.group({
 
@@ -88,8 +98,18 @@ export class ConfigurationTableComponent implements OnInit {
 
   ngOnInit(){
 
-    return this.dataService.get()
+    this.dataService.get()
       .subscribe(data => this.Config = data);
+
+    this.sourceService.get()
+      .subscribe(data => this.Source = data);
+
+    this.FTPService.get()
+      .subscribe(data => this.FTP = data);
+
+    this.localService.get()
+      .subscribe(data => this.DestinationLocal = data);
+
 
   }
 
@@ -103,7 +123,9 @@ export class ConfigurationTableComponent implements OnInit {
   }
 
   closeModal(idDialog: string) {
+
     this.modalService.close(idDialog);
+
   }
 
   /*-----------------*/
@@ -129,7 +151,7 @@ export class ConfigurationTableComponent implements OnInit {
 
     this.arrayLocalDest.removeAt(this.ncf.get('localDestination.SelectedLocalDest').value);
 
-    this.ncf.get('localDestination.SelectedLocalDest').setValue(this.ncf.get('localDestination.SelectedLocalDest').value - 1);
+    this.ncf.get('localDestination.SelectedLocalDest').patchValue(this.ncf.get('localDestination.SelectedLocalDest').value - 1);
 
   }
 
@@ -137,10 +159,30 @@ export class ConfigurationTableComponent implements OnInit {
   {
     this.ncf.get('configurationBasicSettings.ConfigurationName').patchValue(this.myConfiguration.Name);
     this.ncf.get('configurationBasicSettings.BackupType').patchValue(this.myConfiguration.BackupType);
-    this.ncf.get('configurationBasicSettings.Description').setValue(this.myConfiguration.Description);
-    this.ncf.get('configurationBasicSettings.MaxBackupsNumber').setValue(this.myConfiguration.SavedBackupNumber);
-    this.ncf.get('localDestination.FileType').setValue(this.myLocal.FileSuffix);
-    this.ncf.get('localDestination.SelectedLocalDest').setValue(this.myLocal.IdDestSource);
+    this.ncf.get('configurationBasicSettings.Description').patchValue(this.myConfiguration.Description);
+    this.ncf.get('configurationBasicSettings.MaxBackupsNumber').patchValue(this.myConfiguration.SavedBackupNumber);
+
+
+    this.Source.forEach( element => {
+      if (this.myConfiguration.Id === element.IdConfiguration) {
+        this.ncf.get('source.Path').patchValue(element.Path);
+      }});
+
+    this.FTP.forEach( element => {
+      if (this.myConfiguration.Id === element.IdConfiguration) {
+        this.ncf.get('ftpDestination.Login').patchValue(element.Login);
+        this.ncf.get('ftpDestination.Port').patchValue(element.Port);
+        this.ncf.get('ftpDestination.Site').patchValue(element.Site);
+        this.ncf.get('ftpDestination.Password').setValue(element.Password);
+      }});
+
+    this.Local.forEach( element => {
+      if (this.myConfiguration.Id === element.IdConfiguration) {
+        this.ncf.get('localDestination.Path').patchValue(element.Path);
+        this.ncf.get('localDestination.FileType').patchValue(element.FileSuffix);
+      }});
+
+
   }
 
   OnDelete(Id: number)
@@ -148,12 +190,46 @@ export class ConfigurationTableComponent implements OnInit {
     this.dataService.delete(Id).subscribe( data => this.Config = data );
   }
 
+  // tslint:disable-next-line:no-shadowed-variable
   openModal(idDialog: string, Config: Configuration) {
 
     this.modalService.open(idDialog);
     this.myConfiguration = Config;
+
     this.fillData();
 
+  }
+  Save()
+  {
+
+    this.myConfiguration.Name = this.ncf.get('configurationBasicSettings.ConfigurationName').value;
+    this.myConfiguration.BackupType = this.ncf.get('configurationBasicSettings.BackupType').value;
+    this.myConfiguration.Description = this.ncf.get('configurationBasicSettings.Description').value;
+    this.myConfiguration.SavedBackupNumber = this.ncf.get('configurationBasicSettings.MaxBackupsNumber').value;
+
+    this.dataService.put(this.myConfiguration)
+      .subscribe(data => this.myConfiguration = data);
+
+
+    this.FTP.forEach( element => {
+      if (this.myConfiguration.Id === element.IdConfiguration) {
+        this.myFTP.Password =  this.ncf.get('ftpDestination.Password').value;
+        this.myFTP.Site =  this.ncf.get('ftpDestination.Site').value;
+        this.myFTP.Login =  this.ncf.get('ftpDestination.Login').value;
+        this.myFTP.Port =  this.ncf.get('ftpDestination.Port').value;
+      }});
+    this.FTPService.put(this.myFTP)
+      .subscribe(data => this.myFTP = data);
+
+    this.mySource.Path = this.ncf.get('source.Path').value;
+
+    /*
+        this.sourceService.put(this.mySource)
+        .subscribe(data => this.mySource = data);
+    */
+    /*
+        this.myLocal.Path = this.ncf.get('localDestination.FileType').value;
+     */
   }
 
 }

@@ -59,9 +59,7 @@ export class ClientsTableComponent implements OnInit {
     this.configurationService.get()
       .subscribe(data => this.Configs = data);
 
-
   }
-
 
   OnDelete(Id: number) {
     this.tableDataService.delete(Id).subscribe(data => this.LoggedClientsQuery$ = data);
@@ -102,6 +100,7 @@ export class ClientsTableComponent implements OnInit {
 
     this.arrayConfClient = this.acc as FormArray;
 
+    console.log(this.Configs);
     this.Configs.forEach(element => {
 
       this.arrayConfClient.push(this.createClientConfiguration());

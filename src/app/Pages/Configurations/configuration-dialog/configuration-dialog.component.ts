@@ -3,6 +3,9 @@ import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Configuration} from '../../../Models/Configuration.model';
 import {ConfigurationService} from '../../../Services/Templates/DataService/ConfigurationService';
 import {ModalService} from '../../../_modal';
+import {DestFtp} from '../../../Models/DestFtpServer.model';
+import {DestFtpServerService} from '../../../Services/Templates/DataService/DestFtpServerService';
+import {element} from "protractor";
 
 @Component({
   selector: 'app-configuration-dialog',
@@ -20,9 +23,14 @@ export class ConfigurationDialogComponent implements OnInit {
   configuration: Configuration[];
 
 
+  FTP: DestFtp[];
+  myFTP: DestFtp;
 
 
-  constructor(private dataService: ConfigurationService, private modalService: ModalService, private fb: FormBuilder ) {
+
+
+  constructor(private dataService: ConfigurationService, private modalService: ModalService, private fb: FormBuilder,
+              private FTPService: DestFtpServerService) {
 
     this.newConfigurationForm = this.fb.group({
 
@@ -82,6 +90,8 @@ export class ConfigurationDialogComponent implements OnInit {
   ngOnInit() {
     this.dataService.get()
       .subscribe(data => this.configuration = data);
+    this.FTPService.get()
+      .subscribe(data => this.FTP = data);
   }
 
   // convenience getter for easy access to NewConfigurationForm fields
@@ -133,18 +143,51 @@ export class ConfigurationDialogComponent implements OnInit {
     this.ncf.get('configurationBasicSettings.BackupType').setValue(this.myConfiguration.BackupType);
   }
 
-  CreateConfig(): void{
+  CreateConfig(){
+
 
     this.myConfiguration = this.configuration['1'];
     this.myConfiguration.Name = this.ncf.get('configurationBasicSettings.ConfigurationName').value;
     this.myConfiguration.SavedBackupNumber = this.ncf.get('configurationBasicSettings.MaxBackupsNumber').value;
     this.myConfiguration.Description = this.ncf.get('configurationBasicSettings.Description').value;
     this.myConfiguration.RepeatableBackup = false;
-    this.myConfiguration.Cron = null;
     this.myConfiguration.BackupType  = this.ncf.get('configurationBasicSettings.BackupType').value;
-
+    this.myConfiguration.Cron =
+      this.ncf.get('recurrencePicker.Time').value + ' ' +
+      this.ncf.get('recurrencePicker.Time').value + ' ' +
+      this.ncf.get('recurrencePicker.Interval').value + ' ' +
+      this.ncf.get('recurrencePicker.IntervalUnits').value + ' ' +
+      this.ncf.get('recurrencePicker.MonthInterval.SpecifiedDay').value + ' ';
     this.dataService.post(this.myConfiguration).subscribe(
       object => this.configuration.push(object));
+
+    /*
+    this.myConfiguration.Id = this.configuration[''].Id.max();
+
+
+
+    this.dataService.get()[''].Id.forEach(element => {
+    // this.configuration[''].Id.forEach(element => {
+      if (this.myConfiguration.Id < element)
+      {
+        this.myConfiguration.Id = element;
+      }
+    });
+
+     */
+
+    this.myFTP = this.FTP['0'];
+    this.myFTP.IdConfiguration = this.myConfiguration.Id;
+    this.myFTP.Password =  this.ncf.get('ftpDestination.Password').value;
+    this.myFTP.Site =  this.ncf.get('ftpDestination.Site').value;
+    this.myFTP.Login =  this.ncf.get('ftpDestination.Login').value;
+    this.myFTP.Port =  this.ncf.get('ftpDestination.Port').value;
+    this.myFTP.FileSuffix = null;
+
+
+    this.FTPService.post(this.myFTP).subscribe(
+      object => this.FTP.push(object));
+
 
   }
 
