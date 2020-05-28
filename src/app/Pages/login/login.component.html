@@ -4,12 +4,27 @@
 
   <div class="form-group">
     <label>Email</label>
-    <input type="text" formControlName="username" class="form-control shadow" />
+    <input type="text" formControlName="email" class="form-control shadow" />
+
+    <span *ngIf="(email.touched || email.dirty) && email.invalid && email.errors.required " 
+      class="alert alert-danger">
+      Email je vyžadován!
+    </span>
+
+    <span *ngIf="(email.dirty || email.touched) && email.invalid && email.errors.invalidEmail" 
+      class="alert alert-danger">
+      Email je ve špatném formátu!
+    </span>
   </div>
 
   <div class="form-group">
     <label>Heslo</label>
     <input type="password" formControlName="password" class="form-control shadow" />
+
+    <span *ngIf="(password.touched || password.dirty) && password.invalid && password.errors.required " 
+      class="alert alert-danger">
+      Heslo je vyžadováno!
+    </span>
   </div>
 
   <div class="form-group">

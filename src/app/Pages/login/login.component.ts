@@ -25,10 +25,17 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/']);
     }*/
     this.loginForm  =  this.formBuilder.group({
-      username: ['', Validators.required],
+      email: ['', 
+      Validators.required,
+      Validators.email
+    ],
       password: ['', Validators.required]
     });
   }
+
+  get email() { return this.loginForm.get('email'); }
+
+  get password() { return this.loginForm.get('password'); }
 
   ngOnInit(): void {
 
@@ -43,13 +50,13 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
 
     // stop here if form is invalid
-    /*if (this.loginForm.invalid) {
+    if (this.loginForm.invalid) {
       return;
-    }*/
+    }
 
     this.loading = true;
     //this.authenticationService.login('@gmail.com', 'jfůsdakfla')
-    this.authenticationService.login(this.f.username.value, this.f.password.value)
+    this.authenticationService.login(this.f.email.value, this.f.password.value)
 
       .pipe(first())
       .subscribe(

@@ -36,7 +36,7 @@ export class ClientsTableComponent implements OnInit {
 
   headers = ['ID', 'Název', 'MAC', 'Konfigurace', '', ''];
 
-  constructor(private tableDataService: ClientService, private configurationService: ConfigurationService, private dataService: LoggedClientsQueryService, router: Router, private modalService: ModalService, private fb: FormBuilder,
+  constructor(private tableDataService: ClientService, private configurationService: ConfigurationService, private dataService: LoggedClientsQueryService, private router: Router, private modalService: ModalService, private fb: FormBuilder,
                 private clientQueryService: ClientQueryService) {
     this.editClientForm = this.fb.group({
       ClientName: [''],
@@ -46,9 +46,6 @@ export class ClientsTableComponent implements OnInit {
 
 
   ngOnInit() {
-
-    this.clientQueryService.get()
-      .subscribe(data => this.clientQuery = data);
 
     this.tableDataService.get()
       .subscribe(data => this.cliet = data);
