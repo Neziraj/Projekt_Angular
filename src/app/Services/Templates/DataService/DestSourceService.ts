@@ -7,6 +7,6 @@ import { DestSource } from 'src/app/Models/DestSource.model';
 })
 export class DestSourceService extends TemplateDataService<DestSource>
 {
-  URL = this.URL + 'destsource';
+  URL = this.URL + 'destsource/';
 }
 

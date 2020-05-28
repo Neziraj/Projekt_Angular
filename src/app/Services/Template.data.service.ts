@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { ModelTemplate } from '../Models/ModelTemplate';
 
 import { AuthService } from 'src/app/_auth/services/auth.service';
@@ -28,6 +28,6 @@ export class TemplateDataService<T extends ModelTemplate> {
 
   post(item: T)
   {
-    return this.http.post<T>(this.URL + '?token=' + this.authService.getJwtToken(), item);
+    return this.http.post<T>(this.URL, item);
   }
 }

@@ -7,6 +7,6 @@ import { SettingsMail } from 'src/app/Models/SettingMail.model';
 })
 export class SettingMailService extends TemplateDataService<SettingsMail>
 {
-  URL = this.URL + 'settingsmail';
+  URL = this.URL + 'settingsmail/';
 }
 

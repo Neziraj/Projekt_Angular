@@ -7,6 +7,6 @@ import { Schedule } from 'src/app/Models/Shedule.model';
 })
 export class ScheduleService extends TemplateDataService<Schedule>
 {
-  URL = this.URL + 'schedule';
+  URL = this.URL + 'schedule/';
 }
 

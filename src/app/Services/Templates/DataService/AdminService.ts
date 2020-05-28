@@ -7,5 +7,5 @@ import { Admin } from 'src/app/Models/Admin.model';
 })
 export class AdminService extends TemplateDataService<Admin>
 {
-  URL = this.URL + 'admin';
+  URL = this.URL + 'admin/';
 }

@@ -7,6 +7,6 @@ import { DestGoogleDrive } from 'src/app/Models/DestGoogleDrive.model';
 })
 export class destGoogleDriveService extends TemplateDataService<DestGoogleDrive>
 {
-  URL = this.URL + 'destgoogledrive';
+  URL = this.URL + 'destgoogledrive/';
 }
 

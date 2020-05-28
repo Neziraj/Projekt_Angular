@@ -7,12 +7,12 @@
     </thead>
 
     <tbody>
-        <tr *ngFor='let config of Config'>
+        <tr *ngFor="let config of Config" >
             <td>{{ config.Id }}</td>
             <td>{{ config.Name }}</td>
             <td>{{ config.Description }} </td>
           <td class="Row">
-            <button class="btn btn-outline-secondary">Nastavení</button>
+            <button class="btn btn-outline-secondary" (click)="openModal('configuration-modal',config)">Nastavení</button>
           </td>
           <td class="Row">
             <button type="button" class="btn btn-outline-danger" (click)="OnDelete(config.Id)">Smazat</button>
@@ -21,3 +21,204 @@
     </tbody>
 
 </table>
+
+
+
+
+
+
+
+<jw-modal id="configuration-modal">
+
+  <h1>Nová konfigurace</h1>
+
+  <form [formGroup]="newConfigurationForm">
+
+    <div class="Head">
+      <form  class="ConfigModal" formGroupName="configurationBasicSettings">
+
+        <label class="LabelClass">
+          Název Konfigurace
+          <input type="text" class="form-control" formControlName="ConfigurationName">
+        </label>
+
+          <label class="LabelClass" >
+            Backup Type
+            <input type="text" class="form-control" formControlName="BackupType">
+          </label>
+
+
+          <label class="LabelClass">
+            Max. počet záloh
+            <input type="number"  class="form-control" formControlName="MaxBackupsNumber">
+          </label>
+
+        </form>
+
+
+
+
+
+      <div formGroupName="recurrencePicker" class="ConfigModal">
+
+        <label class="LabelClass">
+          Datum
+          <input type="date" class="form-control" formControlName="StartDate">
+
+        </label>
+
+        <label class="LabelClass">
+          Čas
+          <input type="time" class="form-control" style="width:12vh" formControlName="Time">
+        </label>
+
+
+        <label class="LabelClass" >
+          Interval zálohy
+          <input type="number" class="form-control"  formControlName="Interval" min=1 style="width: 15vh">
+        </label>
+
+        <label class="LabelClass" style="margin-left: -3vh" >
+          <select formControlName="IntervalUnits" class="form-control" style="width:10vh">
+            <option value="day">den</option>
+            <option value="week">týden</option>
+            <option value="month">měsíc</option>
+            <option value="year">rok</option>
+          </select>
+        </label>
+
+
+
+        <div formGroupName="WeekInterval" class="ConfigModal" style="margin: 0"
+             *ngIf="newConfigurationForm.get('recurrencePicker.IntervalUnits').value=='week'">
+
+          <label class="checkbox-inline CheckBoxClass" style="margin: 0">
+            Monday
+            <input type="checkbox"  formControlName="Monday">
+          </label>
+
+          <input type="checkbox" formControlName="Tuesday">
+          <input type="checkbox" formControlName="Wednesday">
+          <input type="checkbox" formControlName="Thursday">
+          <input type="checkbox" formControlName="Friday">
+          <input type="checkbox" formControlName="Saturday">
+          <input type="checkbox" formControlName="Sunday">
+        </div>
+
+        <div formGroupName="MonthInterval" class="ConfigModal"
+             *ngIf="newConfigurationForm.get('recurrencePicker.IntervalUnits').value=='month'">
+          <label class="LabelClass" style="margin: 0">
+            <select formControlName="SpecifiedDay" class="form-control">
+              <option value="day">1. den</option>
+              <option value="dayOfWeek">první sobota</option>
+            </select>
+          </label>
+
+        </div>
+
+      </div>
+
+
+      <div class="ConfigModal" formGroupName="localDestination">
+      <label class="LabelClass" >
+        File Type
+        <input type="text" class="form-control" formControlName="FileType">
+      </label>
+      </div>
+
+
+      <div class="form-group ConfigModal" formGroupName="configurationBasicSettings">
+        <label class="LabelClass"  style="margin: 1vh">
+          Popisek
+          <textarea class="form-control"  formControlName="Description" style="width:80vh;margin:2vh" rows="5" ></textarea>
+        </label>
+
+      </div>
+
+    </div>
+
+
+
+
+    <div formGroupName="localDestination" class="Local">
+      <label class="LabelClass">
+        Local Path
+        <input type="checkbox" formControlName="Bool">
+
+        <select formControlName="SelectedLocalDest">
+          <option formArrayName="arrayLocalDest"
+                  *ngFor="let item of ald['controls']; let i = index;">{{ i }}</option>
+        </select>
+
+        <div formArrayName="arrayLocalDest"
+             *ngFor="let item of ald['controls']; let i = index;">
+
+          <div formGroupName="i">
+            <input type="text" class="form-control" formControlName="Path">
+          </div>
+        </div>
+
+        <button (click)="addLocalDest()" class="btn btn-success">Přidat</button>
+        <button (click)="removeAtLocalDest()" class="btn btn-danger">Odebrat</button>
+      </label>
+
+    </div>
+
+
+
+
+
+    <div formGroupName="ftpDestination" class="FTP">
+      <input type="checkbox"  formControlName="Bool">
+
+      <label class="LabelClass">
+        Path
+        <input type="text" class="form-control" formControlName="Path" style="width: 50vh">
+      </label>
+
+      <label class="LabelClass">
+        Site
+        <input type="text" class="form-control" formControlName="Site">
+      </label>
+
+      <label class="LabelClass">
+        Password
+        <input type="text" class="form-control" formControlName="Password">
+      </label>
+
+      <label class="LabelClass">
+        Login
+        <input type="text" class="form-control" formControlName="Login">
+      </label>
+
+      <label class="LabelClass">
+        Port
+        <input type="text" class="form-control" formControlName="Port">
+      </label>
+
+      <button class="btn btn-success">Přidat</button>
+      <button class="btn btn-danger">Odebrat</button>
+
+    </div>
+
+
+
+    <div formGroupName="source" class="Local">
+      <label class="LabelClass">
+        Source
+        <input type="text" class="form-control" formControlName="Path">
+        <button class="btn btn-success">Přidat</button>
+        <button class="btn btn-danger">Odebrat</button>
+      </label>
+    </div>
+
+    <div class="test2">
+      <button (click)=" closeModal('configuration-modal');Save()"  class="btn btn-outline-success">Uložit</button>
+      <button (click)=" closeModal('configuration-modal')"  class="btn btn-outline-danger">Storno</button>
+    </div>
+
+
+  </form>
+</jw-modal>
+
+
