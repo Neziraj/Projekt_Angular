@@ -8,4 +8,7 @@ export class DestFtp extends ModelTemplate
     Password: string;
     Port: string;
     FileSuffix: string;
+    TransferMode: boolean;
+    Encryption: number;
+
 }

@@ -1,9 +1,8 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientQuery } from '../../../Models/Queries/ClientQuery';
-import { ClientQueryService } from 'src/app/Services/Templates/DataService/Queries/ClientQueryService';
-import {LoggedClientsQuery} from '../../../Models/Queries/LoggedClientsQuery';
-import {LoggedClientsQueryService} from '../../../Services/Templates/DataService/Queries/LoggedClientsQueryService';
+import { LoggedClientsQuery} from '../../../Models/Queries/LoggedClientsQuery';
+import { LoggedClientsQueryService} from '../../../Services/Templates/DataService/Queries/LoggedClientsQueryService';
 import { ClientService } from 'src/app/Services/Templates/DataService/ClientService';
 import { ConfigurationService } from 'src/app/Services/Templates/DataService/ConfigurationService';
 
@@ -36,8 +35,16 @@ export class ClientsTableComponent implements OnInit {
 
   headers = ['ID', 'Název', 'MAC', 'Konfigurace', '', ''];
 
-  constructor(private tableDataService: ClientService, private configurationService: ConfigurationService, private dataService: LoggedClientsQueryService, router: Router, private modalService: ModalService, private fb: FormBuilder,
-                private clientQueryService: ClientQueryService) {
+  constructor
+(
+    private tableDataService: ClientService,
+    private configurationService: ConfigurationService,
+    private dataService: LoggedClientsQueryService,
+    private router: Router,
+    private modalService: ModalService,
+    private fb: FormBuilder,
+    )
+  {
     this.editClientForm = this.fb.group({
       ClientName: [''],
       arrayConfClient: this.fb.array([])
@@ -47,8 +54,6 @@ export class ClientsTableComponent implements OnInit {
 
   ngOnInit() {
 
-    this.clientQueryService.get()
-      .subscribe(data => this.clientQuery = data);
 
     this.tableDataService.get()
       .subscribe(data => this.cliet = data);

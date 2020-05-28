@@ -73,11 +73,12 @@ export class ConfigurationDialogComponent implements OnInit {
       ftpDestination: this.fb.group({
         Bool: ['', Validators.required],
         SelectedFtpDest: ['', Validators.required],
-        Path: ['', Validators.required],
         Site: ['', Validators.required],
         Password: ['', Validators.required],
         Login: ['', Validators.required],
         Port: ['', Validators.required],
+        TransferMode: ['', Validators.required],
+        Encryption: ['', Validators.required],
       }),
 
       source: this.fb.group({

@@ -83,11 +83,12 @@ export class ConfigurationTableComponent implements OnInit {
       ftpDestination: this.fb.group({
         Bool: ['', Validators.required],
         SelectedFtpDest: ['', Validators.required],
-        Path: ['', Validators.required],
         Site: ['', Validators.required],
         Password: ['', Validators.required],
         Login: ['', Validators.required],
         Port: ['', Validators.required],
+        TransferMode: ['', Validators.required],
+        Encryption: ['', Validators.required],
       }),
 
       source: this.fb.group({
@@ -174,6 +175,8 @@ export class ConfigurationTableComponent implements OnInit {
         this.ncf.get('ftpDestination.Port').patchValue(element.Port);
         this.ncf.get('ftpDestination.Site').patchValue(element.Site);
         this.ncf.get('ftpDestination.Password').setValue(element.Password);
+        this.ncf.get('ftpDestination.TransferMode').setValue(element.TransferMode);
+        this.ncf.get('ftpDestination.Encryption').setValue(element.Encryption);
       }});
 
     this.Local.forEach( element => {
@@ -217,6 +220,8 @@ export class ConfigurationTableComponent implements OnInit {
         this.myFTP.Site =  this.ncf.get('ftpDestination.Site').value;
         this.myFTP.Login =  this.ncf.get('ftpDestination.Login').value;
         this.myFTP.Port =  this.ncf.get('ftpDestination.Port').value;
+        this.myFTP.TransferMode =  this.ncf.get('ftpDestination.TransferMode').value;
+        this.myFTP.Encryption =  this.ncf.get('ftpDestination.Encryption').value;
       }});
     this.FTPService.put(this.myFTP)
       .subscribe(data => this.myFTP = data);
