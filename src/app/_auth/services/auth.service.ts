@@ -11,16 +11,15 @@ import { Tokens } from '../models/tokens';
 export class AuthService {
 
   private readonly JWT_TOKEN = 'JWT_TOKEN';
-  private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
   private loggedUser: string;
 
   constructor(private http: HttpClient) {}
-  URL = 'http://localhost:49497/api/login';
+  URL = 'http://localhost:49497/api/auth';
 
-  login(user: { username: string, password: string }): Observable<boolean> {
-    return this.http.post<any>(this.URL, user)
+  login(username: string, password: string): Observable<boolean> {
+    return this.http.get<any>(this.URL + '/create/?email=' + username + '&password=' + password)
       .pipe(
-        tap(tokens => this.doLoginUser(user.username, tokens)),
+        tap(tokens => this.doLoginUser(username, tokens)),
         mapTo(true),
         catchError(error => {
           alert(error.error);
@@ -44,43 +43,29 @@ export class AuthService {
     return !!this.getJwtToken();
   }
 
-  refreshToken() {
-    return this.http.post<any>(`${config.apiUrl}/refresh`, {
-      'refreshToken': this.getRefreshToken()
-    }).pipe(tap((tokens: Tokens) => {
-      this.storeJwtToken(tokens.jwt);
-    }));
-  }
-
   getJwtToken() {
     return localStorage.getItem(this.JWT_TOKEN);
   }
 
-  private doLoginUser(username: string, tokens: Tokens) {
+  private doLoginUser(username: string, jwtToken: string) {
     this.loggedUser = username;
-    this.storeTokens(tokens);
+    this.storeJwtToken(jwtToken);
   }
 
-  private doLogoutUser() {
+   doLogoutUser() {
     this.loggedUser = null;
     this.removeTokens();
   }
 
-  private getRefreshToken() {
-    return localStorage.getItem(this.REFRESH_TOKEN);
-  }
-
-  private storeJwtToken(jwt: string) {
-    localStorage.setItem(this.JWT_TOKEN, jwt);
+  private storeJwtToken(jwtToken: string) {
+    localStorage.setItem(this.JWT_TOKEN, jwtToken);
   }
 
   private storeTokens(tokens: Tokens) {
     localStorage.setItem(this.JWT_TOKEN, tokens.jwt);
-    localStorage.setItem(this.REFRESH_TOKEN, tokens.refreshToken);
   }
 
   private removeTokens() {
     localStorage.removeItem(this.JWT_TOKEN);
-    localStorage.removeItem(this.REFRESH_TOKEN);
   }
 }

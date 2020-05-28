@@ -9,23 +9,24 @@ import { CompletedBackupComponent } from './Pages/Backups/completed-backups/comp
 import { IncomingBackupComponent } from './Pages/Backups/incoming-backup/incoming-backup.component';
 // authentication
 import { AuthGuard } from './_auth/guards/auth.guard';
-import { ClientsDialogComponent } from './Pages/Clients/clients-dialog/clients-dialog.component';
+import { LoginComponent } from './Pages/login/login.component';
 
 const routes: Routes = [
 
+  { path: '', pathMatch: 'full', redirectTo: '/login' },
   {
-    path: 'clients',
-    component: ClientPageComponent
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [AuthGuard]
   },
-  //{ path: 'clients', component: ClientPageComponent },
+  { path: 'clients', component: ClientPageComponent },
   { path: 'configurations', component: ConfigurationPageComponent },
   { path: 'backups', component: CompletedBackupComponent},
   { path: 'user', component: UserPageComponent },
   { path: 'completedbackups', component: CompletedBackupComponent },
   { path: 'incomingbackups', component: IncomingBackupComponent },
-  //{ path: 'login', component: LoginComponent},
-  // otherwise redirect to home
-  { path: '**', redirectTo: '' }
+  //  otherwise redirect to home
+  //{ path: '**', redirectTo: '' }
 ];
 
 @NgModule({
