@@ -14,6 +14,7 @@ import { CompletedBackupComponent } from './Pages/Backups/completed-backups/comp
 import { ClientPageComponent } from './Pages/Clients/client-page/client-page.component';
 import { ClientsTableComponent } from './Pages/Clients/clients/clients.component';
 import { NewClientsComponent } from './Pages/Clients/new-clients/new-clients.component';
+import {LoginComponent} from './Pages/login';
 // dialogs
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from './_modal';
@@ -40,6 +41,7 @@ const appRoutes: Routes = [
     RoutingComponents,
     ClientsDialogComponent,
     ConfigurationDialogComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

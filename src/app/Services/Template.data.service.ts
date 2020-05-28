@@ -28,6 +28,6 @@ export class TemplateDataService<T extends ModelTemplate> {
 
   post(item: T)
   {
-    return this.http.post<T>(this.URL, item);
+    return this.http.post<T>(this.URL + '?token=' + this.authService.getJwtToken(), item);
   }
 }

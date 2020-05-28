@@ -48,8 +48,9 @@ export class LoginComponent implements OnInit {
     }*/
 
     this.loading = true;
-    //this.authenticationService.login(this.f.username.value, this.f.password.value)
-    this.authenticationService.login('@gmail.com', 'jfůsdakfla')
+    //this.authenticationService.login('@gmail.com', 'jfůsdakfla')
+    this.authenticationService.login(this.f.username.value, this.f.password.value)
+
       .pipe(first())
       .subscribe(
         data => {
@@ -60,7 +61,7 @@ export class LoginComponent implements OnInit {
           this.loading = false;
         });
 
-  console.log(this.f.username.value + ',' + this.f.password.value)
+  //console.log(this.f.username.value + ',' + this.f.password.value);
 
     //this.authenticationService.storeJwtToken('');
   }
