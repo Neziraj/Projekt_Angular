@@ -162,7 +162,7 @@ export class ConfigurationDialogComponent implements OnInit {
     this.dataService.post(this.myConfiguration).subscribe(
       object => this.configuration.push(object));
 
-    /*
+    
     this.myConfiguration.Id = this.configuration[''].Id.max();
 
 
@@ -175,7 +175,7 @@ export class ConfigurationDialogComponent implements OnInit {
       }
     });
 
-     */
+
 
     this.myFTP = this.FTP['0'];
     this.myFTP.IdConfiguration = this.myConfiguration.Id;

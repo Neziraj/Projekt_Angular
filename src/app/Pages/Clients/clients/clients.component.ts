@@ -13,6 +13,7 @@ import { Client } from 'src/app/Models/Client.model';
 import {Configuration} from '../../../Models/Configuration.model';
 import {Job} from '../../../Models/Job.model';
 import {JobService} from '../../../Services/Templates/DataService/JobService';
+import {element} from "protractor";
 
 @Component({
   selector: 'app-clients-table',
@@ -22,16 +23,17 @@ import {JobService} from '../../../Services/Templates/DataService/JobService';
 export class ClientsTableComponent implements OnInit {
   editClientForm: FormGroup;
   arrayConfClient: FormArray;
+
   Configs: Configuration[];
-  myClient: Client;
-  myJob: Job;
-  cliet: Client[];
+  Clients: Client[];
   Jobs: Job[];
   LoggedClientsQuery$: LoggedClientsQuery[];
   log: LoggedClientsQuery;
   clientQuery: ClientQuery[];
-  myConfiguration: Configuration;
 
+  myConfigId: number;
+  myClient: Client;
+  myJob: Job;
 
   headers = ['ID', 'Název', 'MAC', 'Konfigurace', '', ''];
 
@@ -43,6 +45,7 @@ export class ClientsTableComponent implements OnInit {
     private router: Router,
     private modalService: ModalService,
     private fb: FormBuilder,
+    private jobService: JobService
     )
   {
     this.editClientForm = this.fb.group({
@@ -54,9 +57,8 @@ export class ClientsTableComponent implements OnInit {
 
   ngOnInit() {
 
-
     this.tableDataService.get()
-      .subscribe(data => this.cliet = data);
+      .subscribe(data => this.Clients = data);
 
     this.dataService.get()
       .subscribe(data => this.LoggedClientsQuery$ = data);
@@ -69,7 +71,6 @@ export class ClientsTableComponent implements OnInit {
   OnDelete(Id: number) {
     this.tableDataService.delete(Id).subscribe(data => this.LoggedClientsQuery$ = data);
   }
-
 
   // convenience getter for easy access to NewConfigurationForm fields
   get ecf() {
@@ -87,8 +88,15 @@ export class ClientsTableComponent implements OnInit {
     this.myClient = client;
 
     this.ecf.get('ClientName').setValue(this.myClient.Name);
-
     this.fillClientConfiguration();
+
+    this.jobService.get()['Id'].forEach(element => {
+
+      if (this.myClient.Name === element.Name)
+      {
+        this.Jobs.push(element);
+      }
+    });
   }
 
 
@@ -96,6 +104,7 @@ export class ClientsTableComponent implements OnInit {
   createClientConfiguration(): FormGroup {
     return this.fb.group({
       Bool: '',
+      ConfigId: [this.myConfigId]
     });
   }
 
@@ -105,21 +114,22 @@ export class ClientsTableComponent implements OnInit {
 
     this.arrayConfClient = this.acc as FormArray;
 
-    console.log(this.Configs);
+    //console.log(this.Configs);
     this.Configs.forEach(element => {
 
       this.arrayConfClient.push(this.createClientConfiguration());
+      this.myConfigId = element.Id;
 
     });
 
-
-    /*this.arrayConfClient = this.acc as FormArray;
-          this.ecf.get('arrayConfClient')['Bool'].at(1).patchValue(true)
-    this.arrayConfClient.push(this.createClientConfiguration());*/
+    this.arrayConfClient.controls.forEach(element => {
+      if (element.value === this.Jobs[''].Id){
+        element.patchValue(true);
+      }
+    })
   }
 
   // edit client name
-
   saveNewClientName() {
     this.myClient.DateOfLogin = new Date();
     this.myClient.Name = this.ecf.get('ClientName').value;
@@ -134,19 +144,4 @@ export class ClientsTableComponent implements OnInit {
     location.reload();
 
   }
-
-
-
-
-    /*for (this.i=0; this.i <= this.Configs.length; this.i++)
-    {
-      if(this.acc['Bool'].at.value){
-        this.myJob.IdClient = this.myClient.Id;
-        this.myJob.IdConfiguration = this.i;
-        this.jobService.post(this.myJob);
-      }
-    }*/
-
-
-
 }
