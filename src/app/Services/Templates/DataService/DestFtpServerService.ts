@@ -1,6 +1,6 @@
 import {TemplateDataService} from '../../Template.data.service';
 import {Injectable} from '@angular/core';
-import { DestFtp } from 'src/app/Models/DestFtpServer.model';
+import {DestFtp} from "../../../Models/DestFtpServer.model";
 
 @Injectable({
   providedIn: 'root'

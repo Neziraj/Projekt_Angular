@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientQuery } from '../../../Models/Queries/ClientQuery';
-import { ClientQueryService } from 'src/app/Services/Templates/DataService/Queries/ClientQueryService';
 import {LoggedClientsQuery} from '../../../Models/Queries/LoggedClientsQuery';
 import {LoggedClientsQueryService} from '../../../Services/Templates/DataService/Queries/LoggedClientsQueryService';
-import { ClientService } from 'src/app/Services/Templates/DataService/ClientService';
+import {ClientService} from "../../../Services/Templates/DataService/ClientService";
 import {Configuration} from '../../../Models/Configuration.model';
 import {ConfigurationService} from '../../../Services/Templates/DataService/ConfigurationService';
 
 /* Dialogy */
-import { ModalService } from 'src/app/_modal';
+import {ModalService} from "../../../_modal";
 import { FormGroup, Validators, FormBuilder, FormArray, FormControl  } from  '@angular/forms';
-import { Client } from 'src/app/Models/Client.model';
+import {Client} from "../../../Models/Client.model";
 
 @Component({
   selector: 'app-clients-dialog',
@@ -28,7 +27,15 @@ export class ClientsDialogComponent implements OnInit
   LoggedClientsQuery$: LoggedClientsQuery[];
 
 
-  constructor(private tableDataService: ClientService, private configurationService: ConfigurationService, private dataService: LoggedClientsQueryService, router: Router, private modalService: ModalService, private fb: FormBuilder) {
+  constructor(
+    private tableDataService: ClientService,
+    private configurationService: ConfigurationService,
+    private dataService: LoggedClientsQueryService,
+    router: Router,
+    private modalService: ModalService,
+    private fb: FormBuilder
+  )
+  {
     this.editClientForm = this.fb.group({
       ClientName: [''],
       arrayConfClient: this.fb.array([])

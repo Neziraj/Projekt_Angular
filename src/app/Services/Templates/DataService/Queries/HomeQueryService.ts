@@ -1,6 +1,6 @@
 import {TemplateDataService} from '../../../Template.data.service';
 import {Injectable} from '@angular/core';
-import { HomeQuery } from 'src/app/Models/Queries/HomeQuery';
+import {HomeQuery} from "../../../../Models/Queries/HomeQuery";
 
 @Injectable({
   providedIn: 'root'

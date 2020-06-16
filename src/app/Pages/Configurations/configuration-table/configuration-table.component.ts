@@ -21,10 +21,16 @@ export class ConfigurationTableComponent implements OnInit {
   headers = ['ID', 'Název', 'Popis', '', ''];
 
   Config: Configuration[];
-  Local: DestLocal[];
-  Source: Source[];
-  FTP: DestFtp[];
+  myConfiguration: Configuration;
 
+  Local: DestLocal[];
+  myLocal: DestLocal;
+
+  Source: Source[];
+  mySource: Source;
+
+  FTP: DestFtp[];
+  myFTP: DestFtp;
 
   DestinationLocal: DestLocal[];
 
@@ -33,14 +39,15 @@ export class ConfigurationTableComponent implements OnInit {
   arrayFtpDest: FormArray;
   arraySource: FormArray;
 
-  myConfiguration: Configuration;
-  myLocal: DestLocal;
-  mySource: Source;
-  myFTP: DestFtp;
-
-  constructor( private dataService: ConfigurationService, private modalService: ModalService, private fb: FormBuilder, private localService: DestLocalService,
-               private sourceService: SourceService, private FTPService: DestFtpServerService) {
-
+  constructor(
+    private dataService: ConfigurationService,
+    private modalService: ModalService,
+    private fb: FormBuilder,
+    private localService: DestLocalService,
+    private sourceService: SourceService,
+    private FTPService: DestFtpServerService
+  )
+  {
     this.newConfigurationForm = this.fb.group({
 
       configurationBasicSettings: this.fb.group({

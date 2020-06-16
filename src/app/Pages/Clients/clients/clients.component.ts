@@ -3,13 +3,13 @@ import { Router } from '@angular/router';
 import { ClientQuery } from '../../../Models/Queries/ClientQuery';
 import { LoggedClientsQuery} from '../../../Models/Queries/LoggedClientsQuery';
 import { LoggedClientsQueryService} from '../../../Services/Templates/DataService/Queries/LoggedClientsQueryService';
-import { ClientService } from 'src/app/Services/Templates/DataService/ClientService';
-import { ConfigurationService } from 'src/app/Services/Templates/DataService/ConfigurationService';
+import {ClientService} from "../../../Services/Templates/DataService/ClientService";
+import {ConfigurationService} from "../../../Services/Templates/DataService/ConfigurationService";
 
 /* Dialogy */
-import { ModalService } from 'src/app/_modal';
+import {ModalService} from "../../../_modal";
 import { FormGroup, Validators, FormBuilder, FormArray, FormControl  } from  '@angular/forms';
-import { Client } from 'src/app/Models/Client.model';
+import {Client} from "../../../Models/Client.model";
 import {Configuration} from '../../../Models/Configuration.model';
 import {Job} from '../../../Models/Job.model';
 import {JobService} from '../../../Services/Templates/DataService/JobService';
@@ -20,18 +20,24 @@ import {JobService} from '../../../Services/Templates/DataService/JobService';
   styleUrls: ['./clients.component.scss']
 })
 export class ClientsTableComponent implements OnInit {
-  editClientForm: FormGroup;
-  arrayConfClient: FormArray;
+
+
   Configs: Configuration[];
-  myClient: Client;
-  myJob: Job;
-  cliet: Client[];
-  Jobs: Job[];
-  LoggedClientsQuery$: LoggedClientsQuery[];
-  log: LoggedClientsQuery;
-  clientQuery: ClientQuery[];
   myConfiguration: Configuration;
 
+  Jobs: Job[];
+  myJob: Job;
+
+  Client: Client[];
+  myClient: Client;
+  clientQuery: ClientQuery[];
+
+  LoggedClientsQuery: LoggedClientsQuery[];
+  myLoggedClientsQuery: LoggedClientsQuery;
+
+
+  editClientForm: FormGroup;
+  arrayConfClient: FormArray;
 
   headers = ['ID', 'Název', 'MAC', 'Konfigurace', '', ''];
 
@@ -56,10 +62,10 @@ export class ClientsTableComponent implements OnInit {
 
 
     this.tableDataService.get()
-      .subscribe(data => this.cliet = data);
+      .subscribe(data => this.Client = data);
 
     this.dataService.get()
-      .subscribe(data => this.LoggedClientsQuery$ = data);
+      .subscribe(data => this.LoggedClientsQuery = data);
 
     this.configurationService.get()
       .subscribe(data => this.Configs = data);
@@ -67,7 +73,7 @@ export class ClientsTableComponent implements OnInit {
   }
 
   OnDelete(Id: number) {
-    this.tableDataService.delete(Id).subscribe(data => this.LoggedClientsQuery$ = data);
+    this.tableDataService.delete(Id).subscribe(data => this.LoggedClientsQuery = data);
   }
 
 
@@ -118,8 +124,6 @@ export class ClientsTableComponent implements OnInit {
     this.arrayConfClient.push(this.createClientConfiguration());*/
   }
 
-  // edit client name
-
   saveNewClientName() {
     this.myClient.DateOfLogin = new Date();
     this.myClient.Name = this.ecf.get('ClientName').value;
@@ -132,7 +136,6 @@ export class ClientsTableComponent implements OnInit {
   closeModal(idDialog: string) {
     this.modalService.close(idDialog);
     location.reload();
-
   }
 
 

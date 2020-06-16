@@ -8,14 +8,14 @@ import {IncomingBackupsQueryService} from '../../../Services/Templates/DataServi
   styleUrls: ['./incoming-backup.component.scss']
 })
 export class IncomingBackupComponent implements OnInit {
-  IncomingBackupQuery$: IncomingBackupsQuery[];
+  IncomingBackupQuery: IncomingBackupsQuery[];
   headers = ['Datum', 'Název Klienta', 'Název Konfigurace', 'Popis konfigurace'];
 
   constructor(private dataService: IncomingBackupsQueryService) { }
 
   ngOnInit(){
     this.dataService.get()
-      .subscribe(data => this.IncomingBackupQuery$ = data);
+      .subscribe(data => this.IncomingBackupQuery = data);
   }
 
 }

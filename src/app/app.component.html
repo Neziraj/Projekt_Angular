@@ -1,30 +1,5 @@
-<header>
-  <div class="container-header">
-    <ul>
-
-      <li class="Object"><a routerLink="/clients">Klienti</a></li>
-      <li class="Object"><a routerLink="/configurations">Konfigurace</a></li>
-      <li class="Object"><a routerLink="/incomingbackups"> Nadcházející zálohy </a></li>
-      <li class="Object"><a routerLink="/completedbackups">Dokončené Zálohy</a></li>
-
-
-      <nav class="navbar right">
-        <div>
-          <ul >
-              <a data-toggle="dropdown" >User</a>
-              <ul class="dropdown-menu ">
-                <li><a>Nastavení</a></li>
-                <div class="dropdown-divider"></div>
-                <li><a (click)="showToken()">O Aplikaci</a></li>
-                <div class="dropdown-divider"></div>
-                <li><a (click)="logout()">Odhlásit se</a></li>
-              </ul>
-          </ul>
-        </div>
-      </nav>
-
-
-    </ul>
-  </div>
-</header>
-<router-outlet></router-outlet>
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<app-full-layout></app-full-layout>
+<router-outlet><app-spinner></app-spinner></router-outlet>

@@ -1,6 +1,6 @@
 import {TemplateDataService} from '../../Template.data.service';
 import {Injectable} from '@angular/core';
-import { Client } from 'src/app/Models/Client.model';
+import {Client} from "../../../Models/Client.model";
 
 @Injectable({
   providedIn: 'root'

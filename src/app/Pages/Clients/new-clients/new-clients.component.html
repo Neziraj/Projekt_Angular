@@ -5,7 +5,7 @@
   </tr>
   </thead>
   <tbody class="TableBox">
-  <tr class="Row" *ngFor='let query of NewClientsQuery$'>
+  <tr class="Row" *ngFor='let query of NewClientsQuery'>
     <td>{{ query.Name }}</td>
     <td class="Row">
       <button type="button" (click)="openModal('client-new-name-modal', query)" class="btn btn-success">Přijmout</button>

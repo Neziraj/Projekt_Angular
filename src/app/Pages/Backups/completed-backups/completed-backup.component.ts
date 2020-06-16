@@ -11,7 +11,7 @@ import {CompletedBackupsQuery} from '../../../Models/Queries/CompletedBackupsQue
   styleUrls: ['./completed-backup.component.scss']
 })
 export class CompletedBackupComponent implements OnInit {
-  CompletedBackupQuery$: CompletedBackupsQuery[];
+  CompletedBackupQuery: CompletedBackupsQuery[];
 
   headers = ['Datum', 'Název Klienta', 'Název Konfigurace', 'Popis', 'Průběh'];
   constructor(private dataService: CompletedBackupsQueryService) {
@@ -19,6 +19,6 @@ export class CompletedBackupComponent implements OnInit {
 
   ngOnInit(){
     this.dataService.get()
-      .subscribe(data => this.CompletedBackupQuery$ = data);
+      .subscribe(data => this.CompletedBackupQuery = data);
   }
 }

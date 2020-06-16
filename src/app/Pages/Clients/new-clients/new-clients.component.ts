@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NewClientsQueryService } from '../../../Services/Templates/DataService/Queries/NewClientsQueryService';
-import { ClientService } from 'src/app/Services/Templates/DataService/ClientService';
+import {ClientService} from "../../../Services/Templates/DataService/ClientService";
 import { Client } from '../../../Models/Client.model';
 
 /* Dialogy */
-import { ModalService } from 'src/app/_modal';
+import {ModalService} from "../../../_modal";
 import { FormGroup, Validators, FormBuilder } from  '@angular/forms';
 
 @Component({
@@ -13,19 +13,25 @@ import { FormGroup, Validators, FormBuilder } from  '@angular/forms';
   styleUrls: ['./new-clients.component.scss']
 })
 export class NewClientsComponent implements OnInit {
-  NewClientsQuery$: Client[];
   newClientForm: FormGroup;
+
+  NewClientsQuery: Client[];
   myClient: Client;
 
   headers = ['Název', '', ''];
-  constructor( private putDataService: ClientService, private dataService: NewClientsQueryService, private modalService: ModalService, private formBuilder: FormBuilder) { }
+  constructor(
+    private putDataService: ClientService,
+    private dataService: NewClientsQueryService,
+    private modalService: ModalService,
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit() {
     this.newClientForm = this.formBuilder.group({
       ClientName: ['', Validators.required],
     });
     return this.dataService.get()
-      .subscribe(data => this.NewClientsQuery$ = data);
+      .subscribe(data => this.NewClientsQuery = data);
   }
 
    // convenience getter for easy access to NewClientForm fields

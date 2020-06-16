@@ -1,0 +1,44 @@
+.container-header {
+  width: 100%;
+  height: 7vh;
+  margin: 0;
+  font-size: 3.8vh;
+  font-weight: bold;
+  background-color: #F8F8FF;
+  box-shadow: 0 0.4vw 0.8vw 0 rgba(0, 0, 0, 0.2), 0 0.6vw 1.6vw 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+.Object {
+  display: inline-block;
+  padding-left: 4.5vw;
+}
+a
+{
+  color: black;
+  opacity: 0.5;
+}
+a:hover {
+  opacity: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
+.right {
+  opacity: 1;
+  color: Black;
+  margin-right: 4.5vw;
+  float: right;
+  margin-top: -0.8vh;
+  font-size: 4vh;
+}
+.dropdown-menu
+{
+  font-size: 1vw;
+  text-align: center;
+}
+
+
+
+
+
+

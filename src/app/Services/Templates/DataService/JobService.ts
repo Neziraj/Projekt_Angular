@@ -1,6 +1,6 @@
 import {TemplateDataService} from '../../Template.data.service';
 import {Injectable} from '@angular/core';
-import { Job } from 'src/app/Models/Job.model';
+import {Job} from "../../../Models/Job.model";
 
 @Injectable({
   providedIn: 'root'

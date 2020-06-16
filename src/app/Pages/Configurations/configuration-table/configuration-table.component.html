@@ -1,4 +1,4 @@
-<table class="TableSettings table-bordered">
+<table  class="mat-elevation-z8">
 
   <thead >
         <tr class= "TableHeader">
@@ -6,21 +6,26 @@
         </tr>
     </thead>
 
-    <tbody>
+    <tbody class="Row">
         <tr *ngFor="let config of Config" >
             <td>{{ config.Id }}</td>
             <td>{{ config.Name }}</td>
             <td>{{ config.Description }} </td>
           <td class="Row">
-            <button class="btn btn-outline-secondary" (click)="openModal('configuration-modal',config)">Nastavení</button>
+            <button mat-raised-button color="accent" class="btn" (click)="openModal('configuration-modal',config)">Nastavení</button>
           </td>
           <td class="Row">
-            <button type="button" class="btn btn-outline-danger" (click)="OnDelete(config.Id)">Smazat</button>
+            <button mat-raised-button color="warn" type="button" class="btn" (click)="OnDelete(config.Id)">Smazat</button>
           </td>
         </tr>
     </tbody>
 
 </table>
+
+
+
+
+
 
 
 
@@ -216,7 +221,7 @@
       </label>
     </div>
 
-    <div class="test2">
+    <div class="Row">
       <button (click)=" closeModal('configuration-modal');Save()"  class="btn btn-outline-success">Uložit</button>
       <button (click)=" closeModal('configuration-modal')"  class="btn btn-outline-danger">Storno</button>
     </div>

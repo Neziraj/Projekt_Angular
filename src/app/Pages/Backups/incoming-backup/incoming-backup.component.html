@@ -1,4 +1,4 @@
-<table class="TableSettings table-bordered">
+<table class="mat-elevation-z8">
   <thead>
   <tr class="TableHeader">
     <td *ngFor="let head of headers" scope="col">{{ head }}</td>
@@ -6,7 +6,7 @@
   </thead>
 
   <tbody class="TableBox" >
-  <tr class="Row" *ngFor="let query of IncomingBackupQuery$">
+  <tr class="Row" *ngFor="let query of IncomingBackupQuery">
     <td>{{ query.Datum | date:'mm:hh:dd MM.yyyy' }}</td>
     <td>{{ query.ClientName}}</td>
     <td>{{ query.ConfigurationName }}</td>

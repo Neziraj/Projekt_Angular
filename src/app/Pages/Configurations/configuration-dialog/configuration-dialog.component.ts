@@ -5,7 +5,6 @@ import {ConfigurationService} from '../../../Services/Templates/DataService/Conf
 import {ModalService} from '../../../_modal';
 import {DestFtp} from '../../../Models/DestFtpServer.model';
 import {DestFtpServerService} from '../../../Services/Templates/DataService/DestFtpServerService';
-import {element} from "protractor";
 
 @Component({
   selector: 'app-configuration-dialog',
@@ -16,22 +15,20 @@ import {element} from "protractor";
 export class ConfigurationDialogComponent implements OnInit {
   newConfigurationForm: FormGroup;
   arrayLocalDest: FormArray;
-  arrayFtpDest: FormArray;
-  arraySource: FormArray;
 
-  myConfiguration: Configuration;
   configuration: Configuration[];
-
+  myConfiguration: Configuration;
 
   FTP: DestFtp[];
   myFTP: DestFtp;
 
-
-
-
-  constructor(private dataService: ConfigurationService, private modalService: ModalService, private fb: FormBuilder,
-              private FTPService: DestFtpServerService) {
-
+  constructor(
+    private dataService: ConfigurationService,
+    private modalService: ModalService,
+    private fb: FormBuilder,
+    private FTPService: DestFtpServerService
+  )
+  {
     this.newConfigurationForm = this.fb.group({
 
       configurationBasicSettings: this.fb.group({

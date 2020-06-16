@@ -1,21 +1,29 @@
-.TableSettings
-{
-  margin-top: 10vh;
+table {
+  width: 100%;
+  text-align: center;
+
 }
+.TableHeader
+{
+  font-weight: 500;
+  font-size: larger;
+  color:#1E90FF;
+}
+
 .Head
 {
   float: left;
   width: 60%;
 }
-.test2
+.Row
 {
-  text-align: center;
-  align-items: center;
+
+  font-weight: 200;
   .btn
   {
-    margin: 15px;
-    width: 25vh;
-    height: 5vh;
+    margin: 2px;
+    width: 20vh;
+    height: 4vh;
   }
 
 }

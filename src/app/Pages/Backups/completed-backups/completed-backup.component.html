@@ -1,12 +1,12 @@
-<table class="TableSettings table-bordered">
-  <thead>
+<table class="mat-elevation-z8">
+  <thead >
   <tr class="TableHeader">
     <td *ngFor="let head of headers" scope="col">{{ head }}</td>
   </tr>
   </thead>
 
   <tbody class="TableBox" >
-  <tr class="Row" *ngFor="let query of CompletedBackupQuery$">
+  <tr class="Row" *ngFor="let query of CompletedBackupQuery">
     <td>{{ query.Datum | date:'mm:hh:dd MM.yyyy' }}</td>
     <td>{{ query.ClientName }}</td>
     <td>{{ query.ConfigurationName }}</td>
